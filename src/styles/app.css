@@ -1,0 +1,111 @@
+:root {
+  --color-bg: #1a1a2e;
+  --color-surface: #252544;
+  --color-surface-2: #2f2f55;
+  --color-primary: #c4a855;
+  --color-primary-hover: #d4b865;
+  --color-text: #e8e8f0;
+  --color-text-dim: #9999b0;
+  --color-danger: #d4655a;
+  --color-success: #5ac47a;
+
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 1rem;
+  --space-4: 1.5rem;
+  --space-5: 2rem;
+  --space-6: 3rem;
+
+  --radius: 0.75rem;
+  --tap: 2.75rem;
+
+  --font-base: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+body {
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-base);
+  font-size: 16px;
+  padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+}
+
+#app {
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+}
+
+.screen {
+  flex: 1;
+  padding: var(--space-4);
+  display: flex;
+  flex-direction: column;
+}
+
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: var(--tap);
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--radius);
+  background: var(--color-surface);
+  color: var(--color-text);
+  font-size: 1rem;
+  font-weight: 600;
+  transition: background 0.15s, transform 0.05s;
+}
+.btn:active { transform: scale(0.98); }
+.btn--primary { background: var(--color-primary); color: var(--color-bg); }
+.btn--primary:active { background: var(--color-primary-hover); }
+.btn--ghost { background: transparent; border: 1px solid var(--color-surface-2); }
+
+/* Home */
+.home {
+  justify-content: center;
+  align-items: stretch;
+  gap: var(--space-3);
+  max-width: 32rem;
+  margin: 0 auto;
+  width: 100%;
+}
+.home__title {
+  font-size: 2.75rem;
+  text-align: center;
+  color: var(--color-primary);
+  letter-spacing: 0.05em;
+  margin-bottom: var(--space-1);
+}
+.home__subtitle {
+  text-align: center;
+  color: var(--color-text-dim);
+  margin-bottom: var(--space-4);
+}
+.home__menu {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+/* Placeholder (rutas sin implementar) */
+.placeholder {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-3);
+  color: var(--color-text-dim);
+  font-style: italic;
+  text-align: center;
+}
+.placeholder__back {
+  font-style: normal;
+}
+
+@media (min-width: 768px) {
+  body { font-size: 17px; }
+  .home { padding-top: var(--space-6); }
+}
