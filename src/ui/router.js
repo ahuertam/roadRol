@@ -1,5 +1,8 @@
 // Hash router minimal. Rutas con ':param' capturan segmentos dinámicos.
-// Tras renderizar, auto-enlaza cualquier [data-nav] del HTML resultante.
+// Handlers reciben (params, container) y pueden:
+//   - devolver un string de HTML (se inyecta en container), o
+//   - escribir directamente en container y no devolver nada.
+// Tras el render, auto-enlaza cualquier [data-nav] del DOM resultante.
 
 const routes = {}
 
@@ -9,13 +12,20 @@ export function mount(routeMap) {
   render()
 }
 
-function render() {
+async function render() {
   const path = location.hash.slice(1) || '/'
   const { handler, params } = match(path)
   const app = document.getElementById('app')
-  app.innerHTML = handler(params)
+  app.innerHTML = ''
+  try {
+    const result = await handler(params, app)
+    if (typeof result === 'string') app.innerHTML = result
+  } catch (err) {
+    console.error('Router handler falló:', err)
+    app.innerHTML = `<main class="screen placeholder">Error: ${escapeHtml(err.message)}</main>`
+  }
 
-  // Auto-bind data-nav: cualquier <button data-nav="/x"> navega al hacer click
+  // Auto-bind data-nav
   app.querySelectorAll('[data-nav]').forEach((el) => {
     el.addEventListener('click', () => {
       location.hash = el.dataset.nav
@@ -44,4 +54,10 @@ function matchPattern(pattern, path) {
     else if (pp[i] !== ap[i]) return null
   }
   return params
+}
+
+function escapeHtml(s) {
+  return String(s).replace(/[&<>"']/g, (c) => ({
+    '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+  }[c]))
 }
