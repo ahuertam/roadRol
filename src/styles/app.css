@@ -64,6 +64,16 @@ body {
 .btn--sm { min-height: 2.25rem; padding: var(--space-2) var(--space-3); font-size: 0.875rem; }
 .btn--danger { color: var(--color-danger); border-color: var(--color-danger); }
 
+.visually-hidden {
+  position: absolute;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
 /* Home */
 .home {
   justify-content: center;
@@ -314,3 +324,146 @@ select.field__input { appearance: auto; }
   .form-grid { grid-template-columns: repeat(3, 1fr); }
   .character-card__stats { grid-template-columns: repeat(3, 1fr); }
 }
+
+/* ========== Setup wizard ========== */
+.setup { max-width: 40rem; margin: 0 auto; width: 100%; }
+.setup__steps {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  list-style: none;
+  padding: 0;
+  margin: 0 0 var(--space-4) 0;
+  gap: var(--space-2);
+}
+.setup__step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-1);
+  flex: 1;
+  color: var(--color-text-dim);
+  font-size: 0.75rem;
+}
+.setup__step-num {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  background: var(--color-surface);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.875rem;
+}
+.setup__step--active .setup__step-num { background: var(--color-primary); color: var(--color-bg); }
+.setup__step--active { color: var(--color-text); }
+.setup__step--done .setup__step-num { background: var(--color-success); color: var(--color-bg); }
+.setup__step + .setup__step::before {
+  content: '';
+  display: block;
+  height: 2px;
+  background: var(--color-surface-2);
+  margin-bottom: 1.75rem;
+  margin-right: var(--space-1);
+  flex: 1;
+}
+
+.setup__step-content { display: flex; flex-direction: column; flex: 1; }
+.setup__title { font-size: 1.5rem; margin-bottom: var(--space-1); }
+.setup__hint { color: var(--color-text-dim); margin-bottom: var(--space-4); font-size: 0.875rem; }
+
+.setup__options {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  margin-bottom: var(--space-4);
+}
+.setup-option {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+  padding: var(--space-3);
+  min-height: var(--tap);
+  border-radius: var(--radius);
+  background: var(--color-surface);
+  border: 2px solid transparent;
+  color: var(--color-text);
+  cursor: pointer;
+  transition: border-color 0.15s, background 0.15s;
+}
+.setup-option:active { transform: scale(0.99); }
+.setup-option--selected {
+  border-color: var(--color-primary);
+  background: rgba(196, 168, 85, 0.08);
+}
+.setup-option__name { font-weight: 600; font-size: 1rem; }
+.setup-option__hint { font-size: 0.75rem; color: var(--color-text-dim); margin-top: var(--space-1); }
+
+.setup__nav {
+  display: flex;
+  gap: var(--space-2);
+  justify-content: space-between;
+  margin-top: auto;
+  padding-top: var(--space-4);
+}
+
+.setup__counter {
+  font-size: 0.875rem;
+  color: var(--color-text-dim);
+  margin-bottom: var(--space-2);
+}
+
+.setup__empty {
+  text-align: center;
+  padding: var(--space-4) 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  align-items: center;
+  color: var(--color-text-dim);
+}
+.setup__empty .btn { min-width: 12rem; }
+
+.setup__chars {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 var(--space-3) 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+.setup-char {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-3);
+  border-radius: var(--radius);
+  background: var(--color-surface);
+  border: 2px solid transparent;
+  cursor: pointer;
+  min-height: var(--tap);
+  transition: border-color 0.15s, background 0.15s;
+}
+.setup-char:active { transform: scale(0.99); }
+.setup-char--selected {
+  border-color: var(--color-primary);
+  background: rgba(196, 168, 85, 0.08);
+}
+.setup-char__check {
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 50%;
+  background: var(--color-surface-2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.875rem;
+  color: var(--color-bg);
+  font-weight: 700;
+  flex-shrink: 0;
+}
+.setup-char--selected .setup-char__check { background: var(--color-primary); }
+.setup-char__body { display: flex; flex-direction: column; gap: var(--space-1); flex: 1; }
+.setup-char__meta { font-size: 0.75rem; color: var(--color-text-dim); }

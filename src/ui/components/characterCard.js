@@ -1,12 +1,7 @@
 // Card de personaje para la galería. Stats vitales inline-editables.
 
 import { getSystem } from '../../modules/index.js'
-
-function escapeHtml(s) {
-  return String(s ?? '').replace(/[&<>"']/g, (c) => ({
-    '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
-  }[c]))
-}
+import { escapeHtml } from '../../core/escape.js'
 
 // Devuelve el "stat vital secundario" según el sistema (AC para D&D, SAN para CoC).
 function secondaryVital(systemId) {
@@ -34,16 +29,16 @@ export function renderCharacterCard(character) {
         <div class="character-card__stat">
           <dt>HP</dt>
           <dd>
-            <span class="stat-edit" data-edit-stat="hp" data-id="${escapeHtml(character.id)}" tabindex="0" title="Click para editar">${character.stats.hp ?? '-'}</span>
+            <span class="stat-edit" data-edit-stat="hp" data-id="${escapeHtml(character.id)}" tabindex="0" title="Click para editar" role="button">${escapeHtml(character.stats.hp ?? '-')}</span>
             /
-            <span class="stat-edit" data-edit-stat="maxHp" data-id="${escapeHtml(character.id)}" tabindex="0" title="Click para editar">${character.stats.maxHp ?? '-'}</span>
+            <span class="stat-edit" data-edit-stat="maxHp" data-id="${escapeHtml(character.id)}" tabindex="0" title="Click para editar" role="button">${escapeHtml(character.stats.maxHp ?? '-')}</span>
           </dd>
         </div>
         ${vital ? `
         <div class="character-card__stat">
           <dt>${escapeHtml(vital.label)}</dt>
           <dd>
-            <span class="stat-edit" data-edit-stat="${vital.key}" data-id="${escapeHtml(character.id)}" tabindex="0" title="Click para editar">${vitalValue}</span>
+            <span class="stat-edit" data-edit-stat="${vital.key}" data-id="${escapeHtml(character.id)}" tabindex="0" title="Click para editar" role="button">${escapeHtml(vitalValue)}</span>
           </dd>
         </div>
         ` : ''}
@@ -52,10 +47,10 @@ export function renderCharacterCard(character) {
       ${character.notes ? `<p class="character-card__notes">${escapeHtml(character.notes)}</p>` : ''}
 
       <div class="character-card__actions">
-        <button class="btn btn--ghost btn--sm" data-action="edit" data-id="${escapeHtml(character.id)}">Editar</button>
-        <button class="btn btn--ghost btn--sm" data-action="duplicate" data-id="${escapeHtml(character.id)}">Duplicar</button>
-        <button class="btn btn--ghost btn--sm" data-action="export" data-id="${escapeHtml(character.id)}">Exportar</button>
-        <button class="btn btn--ghost btn--sm btn--danger" data-action="delete" data-id="${escapeHtml(character.id)}">Eliminar</button>
+        <button type="button" class="btn btn--ghost btn--sm" data-action="edit" data-id="${escapeHtml(character.id)}">Editar</button>
+        <button type="button" class="btn btn--ghost btn--sm" data-action="duplicate" data-id="${escapeHtml(character.id)}">Duplicar</button>
+        <button type="button" class="btn btn--ghost btn--sm" data-action="export" data-id="${escapeHtml(character.id)}">Exportar</button>
+        <button type="button" class="btn btn--ghost btn--sm btn--danger" data-action="delete" data-id="${escapeHtml(character.id)}">Eliminar</button>
       </div>
     </article>
   `

@@ -4,6 +4,8 @@
 //   - escribir directamente en container y no devolver nada.
 // Tras el render, auto-enlaza cualquier [data-nav] del DOM resultante.
 
+import { escapeHtml } from '../core/escape.js'
+
 const routes = {}
 
 export function mount(routeMap) {
@@ -13,8 +15,11 @@ export function mount(routeMap) {
 }
 
 async function render() {
-  const path = location.hash.slice(1) || '/'
+  const raw = location.hash.slice(1) || '/'
+  const [path, queryString] = raw.split('?')
+  const query = new URLSearchParams(queryString || '')
   const { handler, params } = match(path)
+  params.query = query
   const app = document.getElementById('app')
   app.innerHTML = ''
   try {
@@ -54,10 +59,4 @@ function matchPattern(pattern, path) {
     else if (pp[i] !== ap[i]) return null
   }
   return params
-}
-
-function escapeHtml(s) {
-  return String(s).replace(/[&<>"']/g, (c) => ({
-    '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
-  }[c]))
 }

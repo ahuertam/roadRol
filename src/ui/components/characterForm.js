@@ -2,6 +2,7 @@
 // ponytail: el handler de submit se conecta desde la pantalla; aquí solo emitimos HTML.
 
 import { settings } from '../../modules/index.js'
+import { escapeHtml } from '../../core/escape.js'
 
 function fieldHtml(field, value) {
   const v = value ?? field.default ?? ''
@@ -35,7 +36,7 @@ function groupHtml(group, label, fields, draft) {
   `
 }
 
-export function renderCharacterForm({ draft, system, isEdit }) {
+export function renderCharacterForm({ draft, system, isEdit, returnTo = '/gallery' }) {
   const vitalFields = system.characterSchema.fields.filter(f => f.group === 'vital')
   const abilityFields = system.characterSchema.fields.filter(f => f.group === 'ability')
 
@@ -69,15 +70,9 @@ export function renderCharacterForm({ draft, system, isEdit }) {
       </label>
 
       <div class="form-actions">
-        <button type="button" class="btn btn--ghost" data-nav="/gallery">Cancelar</button>
+        <button type="button" class="btn btn--ghost" data-nav="${escapeHtml(returnTo)}">Cancelar</button>
         <button type="submit" class="btn btn--primary">${isEdit ? 'Guardar cambios' : 'Crear personaje'}</button>
       </div>
     </form>
   `
-}
-
-function escapeHtml(s) {
-  return String(s ?? '').replace(/[&<>"']/g, (c) => ({
-    '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
-  }[c]))
 }

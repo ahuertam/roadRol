@@ -40,7 +40,9 @@ export async function saveCharacter(/** @type {Character} */ character) {
   const now = new Date().toISOString()
   const c = {
     ...character,
-    id: character.id ?? newId(),
+    // ponytail: || en vez de ?? para que un id vacío se considere ausente.
+    // ?? solo dispara con null/undefined, no con ''.
+    id: character.id || newId(),
     createdAt: character.createdAt ?? now,
     updatedAt: now
   }
@@ -67,7 +69,8 @@ export async function saveGame(/** @type {Game} */ game) {
   const now = new Date().toISOString()
   const g = {
     ...game,
-    id: game.id ?? newId(),
+    // ponytail: || en vez de ?? para que un id vacío se considere ausente.
+    id: game.id || newId(),
     createdAt: game.createdAt ?? now,
     updatedAt: now
   }

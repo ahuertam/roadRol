@@ -5,6 +5,7 @@ import { renderHome } from './ui/screens/home.js'
 import { renderPlaceholder } from './ui/screens/placeholder.js'
 import { renderCharacterNew, renderCharacterEdit } from './ui/screens/character.js'
 import { renderGallery } from './ui/screens/gallery.js'
+import { renderSetup } from './ui/screens/setup.js'
 import { seedIfEmpty } from './core/seed.js'
 import {
   listCharacters, getCharacter, saveCharacter, deleteCharacter,
@@ -14,19 +15,30 @@ import { downloadJSON, readJSONFile, validateShape, defaultFilename } from './co
 import { newId } from './core/id.js'
 import { systems, settings, getSystem, getSetting } from './modules/index.js'
 
-// Seed inicial idempotente (corre antes del primer render)
-seedIfEmpty().catch((err) => console.error('Seed falló:', err))
+// Seed inicial idempotente. Se hace antes de montar rutas para evitar que la
+// primera navegación a galería vea un array vacío durante el primer arranque.
+// ponytail: await top-level no soportado por el target; usamos un async IIFE.
+;(async () => {
+  try {
+    await seedIfEmpty()
+  } catch (err) {
+    console.error('Seed falló:', err)
+  }
+  mountApp()
+})()
 
-mount({
-  '/':                          renderHome,
-  '/setup':                     (p, c) => { c.innerHTML = renderPlaceholder('Setup de partida', '/') },
-  '/game':                      (p, c) => { c.innerHTML = renderPlaceholder('Partida en curso', '/') },
-  '/game/:id':                  (p, c) => { c.innerHTML = renderPlaceholder(`Partida ${p.id}`, '/') },
-  '/player':                    (p, c) => { c.innerHTML = renderPlaceholder('Vista de jugador', '/') },
-  '/gallery':                   renderGallery,
-  '/character/new/:system':     renderCharacterNew,
-  '/character/:id':             renderCharacterEdit
-})
+function mountApp() {
+  mount({
+    '/':                          renderHome,
+    '/setup':                     renderSetup,
+    '/game':                      (p, c) => { c.innerHTML = renderPlaceholder('Partida en curso', '/') },
+    '/game/:id':                  (p, c) => { c.innerHTML = renderPlaceholder(`Partida ${p.id}`, '/') },
+    '/player':                    (p, c) => { c.innerHTML = renderPlaceholder('Vista de jugador', '/') },
+    '/gallery':                   renderGallery,
+    '/character/new/:system':     renderCharacterNew,
+    '/character/:id':             renderCharacterEdit
+  })
+}
 
 // ponytail: expone la API en window solo en dev para probar desde la consola.
 // En producción desaparece (tree-shaking lo quita).

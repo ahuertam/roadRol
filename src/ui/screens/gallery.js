@@ -5,12 +5,7 @@ import { listCharacters, getCharacter, saveCharacter, deleteCharacter } from '..
 import { getSystem, systems } from '../../modules/index.js'
 import { renderCharacterCard } from '../components/characterCard.js'
 import { downloadJSON, defaultFilename } from '../../core/importExport.js'
-
-function escapeHtml(s) {
-  return String(s ?? '').replace(/[&<>"']/g, (c) => ({
-    '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
-  }[c]))
-}
+import { escapeHtml } from '../../core/escape.js'
 
 export async function renderGallery(params, container) {
   // Estado de UI vive en este closure
@@ -40,8 +35,10 @@ export async function renderGallery(params, container) {
         <header class="gallery__header">
           <h1>Galería de personajes</h1>
           <div class="gallery__filters">
-            <input type="search" data-search class="field__input" placeholder="Buscar por nombre…" value="${escapeHtml(state.query)}" />
-            <select data-system-filter class="field__input">
+            <label class="visually-hidden" for="gallery-search">Buscar personajes</label>
+            <input id="gallery-search" type="search" data-search class="field__input" placeholder="Buscar por nombre…" value="${escapeHtml(state.query)}" aria-label="Buscar personajes" />
+            <label class="visually-hidden" for="gallery-system-filter">Filtrar por sistema</label>
+            <select id="gallery-system-filter" data-system-filter class="field__input" aria-label="Filtrar por sistema">
               ${systemOptions}
             </select>
           </div>

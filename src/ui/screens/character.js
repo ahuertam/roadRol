@@ -5,19 +5,16 @@
 import { getSystem } from '../../modules/index.js'
 import { getCharacter, saveCharacter } from '../../core/storage.js'
 import { renderCharacterForm } from '../components/characterForm.js'
-
-function escapeHtml(s) {
-  return String(s ?? '').replace(/[&<>"']/g, (c) => ({
-    '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
-  }[c]))
-}
+import { escapeHtml } from '../../core/escape.js'
 
 export async function renderCharacterNew(params, container) {
   const system = getSystem(params.system)
   if (!system) {
-    container.innerHTML = `<main class="screen placeholder">Sistema "${escapeHtml(params.system)}" no existe.<br><br><button class="btn btn--ghost" data-nav="/gallery">← Galería</button></main>`
+    const back = escapeHtml(params.query?.get('returnTo') || '/gallery')
+    container.innerHTML = `<main class="screen placeholder">Sistema "${escapeHtml(params.system)}" no existe.<br><br><button class="btn btn--ghost" data-nav="${back}">← Volver</button></main>`
     return
   }
+  const returnTo = params.query?.get('returnTo') || '/gallery'
   mount(container, {
     title: 'Nuevo personaje',
     system,
@@ -29,7 +26,8 @@ export async function renderCharacterNew(params, container) {
       stats: { ...system.defaultStats() },
       notes: ''
     },
-    isEdit: false
+    isEdit: false,
+    returnTo
   })
 }
 
@@ -49,19 +47,21 @@ export async function renderCharacterEdit(params, container) {
     system,
     systemId: character.system,
     draft: character,
-    isEdit: true
+    isEdit: true,
+    returnTo: '/gallery'
   })
 }
 
 function mount(container, ctx) {
+  const backLabel = ctx.returnTo === '/setup' ? '← Setup' : '← Galería'
   container.innerHTML = `
     <main class="screen character">
       <header class="character__header">
-        <button class="btn btn--ghost btn--sm" data-nav="/gallery">← Galería</button>
+        <button type="button" class="btn btn--ghost btn--sm" data-nav="${escapeHtml(ctx.returnTo)}">${backLabel}</button>
         <h1 class="character__title">${escapeHtml(ctx.title)}</h1>
         <span class="character__system">${escapeHtml(ctx.system.name)}</span>
       </header>
-      ${renderCharacterForm({ draft: ctx.draft, system: ctx.system, isEdit: ctx.isEdit })}
+      ${renderCharacterForm({ draft: ctx.draft, system: ctx.system, isEdit: ctx.isEdit, returnTo: ctx.returnTo })}
     </main>
   `
   wireForm(container, ctx)
@@ -103,8 +103,14 @@ function wireForm(container, ctx) {
       return
     }
 
-    await saveCharacter(character)
-    location.hash = '/gallery'
+    try {
+      await saveCharacter(character)
+      location.hash = ctx.returnTo
+    } catch (err) {
+      // No navegamos: el usuario no pierde lo que llevaba escrito
+      console.error('saveCharacter falló:', err)
+      showFormErrors(form, [`No se pudo guardar (${err.name || 'Error'}). Comprueba el espacio disponible y vuelve a intentarlo.`])
+    }
   })
 }
 
