@@ -1,0 +1,98 @@
+{
+  "name": "El Culto del Ojo que Todo lo Ve (La Llamada de Cthulhu)",
+  "system": "cthulhu",
+  "setting": "horror",
+  "missions": [
+    {
+      "id": "culto-1",
+      "title": "Pinturas que sangran",
+      "brief": "En la galería de arte Crane, en Boston, tres pinturas han empezado a sangrar. No es pintura roja: es sangre real, del mismo tipo. La policía archivó el caso como vandalismo, pero el conservador, Theodore Crane, sabe que no hay forma de que alguien entrara y pintara con sangre sin ser visto. Las tres pinturas son copias idénticas de un mismo cuadro: 'El Ojo que Todo lo Ve', pintado por un artista desaparecido en 1890, Ambrose Garth. Theodore paga 300 dólares a quien descubra qué está pasando y detenga las pinturas antes de que la galería cierre.",
+      "objectives": [
+        "Investigar la galería Crane",
+        "Hablar con Theodore y los empleados",
+        "Investigar a Ambrose Garth, el pintor original",
+        "Descubrir por qué las pinturas sangran"
+      ],
+      "encounters": [
+        {
+          "type": "conversation",
+          "title": "Theodore Crane, el conservador",
+          "description": "Theodore, 45 años, nervioso, sentado en su despacho rodeado de catálogos. Les entrega la foto del cuadro original: 'La pintura original está en un ático aquí. Nunca la he vendido. La copié tres veces por insistencia de un coleccionista que murió hace un mes, Robert Halsey. Halsey era... obsesivo. Pagaba cualquier cosa por las copias. Una semana después de su muerte, las copias empezaron a sangrar. Y la original también. Halsey tenía un diario, que su viuda guarda. Habla con ella. Pero no vayas solo.'",
+          "difficulty": "easy"
+        },
+        {
+          "type": "puzzle",
+          "title": "La pintura original",
+          "description": "En el ático, cubierta por una sábana, la pintura original. Muestra un ojo gigante, central, con la pupila como un sol. CD 15 Ocultismo: el ojo contiene un glifo arcano que parece moverse cuando se le observa. CD 14 Historia del Arte: la pintura fue hecha por Garth tras pasar un año en una institución mental en 1889. Al tocar la pintura, el investigador siente un escalofrío (Cordura automática 0/1). Detrás de la pintura, escrito a carbón: 'El que mira al ojo es visto. El que es visto es tomado.'",
+          "difficulty": "medium",
+          "rewards": "Pista del ojo observador, advertencia sobre la observación."
+        },
+        {
+          "type": "conversation",
+          "title": "La viuda Margaret Halsey",
+          "description": "Margaret, 60 años, vestida de luto, vive en una mansión de Beacon Hill. Si los PJs la visitan con tacto (CD 60 Carisma), les deja leer el diario de Robert. El diario cuenta: 'La pintura me hablaba. Decía que si compraba las tres copias, el ojo se completaría. Y entonces podría ver más allá. Vi cosas. Cosas que no debería haber visto. La semana pasada, el ojo me pidió un sacrificio. Le di lo que me pidió. Ahora me pide más. No voy a dárselo. Voy a destruir las copias. Y si no puedo... moriré.' Si los PJs preguntan qué le pidió, Margaret baja la voz: 'A mi hijo. Pero me negué. Por eso me quedé viuda.'",
+          "difficulty": "medium",
+          "rewards": "Historia del culto, el ojo pide sacrificios, las copias son parte de un ritual."
+        },
+        {
+          "type": "trap",
+          "title": "La sala de las copias",
+          "description": "En la galería, las tres copias están alineadas en una pared. Cuando los PJs entran, las tres pinturas empiezan a sangrar a chorros. CD 12 Cordura automática: 1d3 por presenciar el fenómeno. Si los PJs intentan destruir las copias con fuego, este no las quema (son indestructibles). Si las cubren con lonas, la sangre se filtra. La única forma es romper el cristal protector (CD 13 Fuerza) y romper las pinturas con un objeto contundente, pero entonces se oye un grito que no es humano y algo se mueve en la pared del fondo.",
+          "difficulty": "medium"
+        },
+        {
+          "type": "discovery",
+          "title": "El ojo detrás de la pared",
+          "description": "En la pared del fondo, donde están colgadas las copias, hay una trampilla oculta. CD 15 Investigación: la trampilla lleva a un pasadizo que conecta la galería con las catacumbas debajo de Boston. Al fondo, una cámara con un altar dedicado al 'Ojo que Todo lo Ve'. Sobre el altar, una calavera con un ojo dentro (de cristal, pero el iris se mueve). Si los PJs destruyen la calavera, el ojo se rompe y todas las pinturas dejan de sangrar de golpe. Si no, las pinturas seguirán hasta que se complete el ritual (que requiere 9 víctimas más, según el diario de Robert).",
+          "difficulty": "hard",
+          "rewards": "Calavera-ojo destruida, maldición rota, 300 dólares de Theodore, posible descubrimiento: el ojo era un fragmento de un ser superior, y su destrucción alertará a ese ser (futuras misiones)."
+        }
+      ]
+    },
+    {
+      "id": "culto-2",
+      "title": "Los hijos del Ojo",
+      "brief": "La calavera fue destruida, pero el ojo no era un objeto: era un fragmento de un ser superior llamado 'El Que Mira'. Su destrucción alertó al ser, que ha enviado a sus 'hijos' —humanos con un tercer ojo en la frente, cultivados en el Ojo que Todo lo Ve durante generaciones— a recuperar el fragmento. Los hijos están en Boston, y planean una reunión en la vieja iglesia de la Trinidad para resucitar al ser. Los investigadores tienen 7 días para detenerlos. Theodore les paga 1.000 dólares extra, y la viuda Margaret ofrece su mansión como base.",
+      "objectives": [
+        "Identificar a los hijos del Ojo (4 conocidos en Boston)",
+        "Encontrar la vieja iglesia de la Trinidad",
+        "Detener el ritual de resurrección",
+        "Destruir el segundo fragmento del ser (si lo hay)"
+      ],
+      "encounters": [
+        {
+          "type": "conversation",
+          "title": "El soplón Ezra",
+          "description": "Ezra, 25 años, ex-miembro del culto, se acerca a los investigadores en un pub irlandés de North End. Si le pagan 50 dólares, les da los nombres de 4 hijos: 'Jonathan Hale, banquero, vive en Back Bay. Marta Selden, profesora de arte en el museo. Cornelius Doyle, policía. Y un tal 'Maestro', que nunca he visto. La iglesia está en Jamaica Plain, abandonada desde 1900. El ritual es en 7 días, durante el próximo eclipse lunar.' Si los PJs preguntan cómo identificarlos: 'Todos tienen un símbolo. Una cicatriz con forma de ojo en la muñeca izquierda. Es su marca. Si ven a alguien con esa marca, huyan. Son peligrosos.'",
+          "difficulty": "medium",
+          "rewards": "Nombres y ubicaciones de los hijos, fecha y lugar del ritual, marca de identificación."
+        },
+        {
+          "type": "puzzle",
+          "title": "El símbolo de identificación",
+          "description": "En la muñeca de cada hijo, hay una cicatriz con forma de ojo. Esconde un tatuaje arcano que solo se ve bajo luz ultravioleta (CD 12 Ocultismo). El tatuaje contiene un conjuro de protección contra el Ojo: si un PJ se tatúa el mismo símbolo invertido en su propia muñeca (CD 14 Medicina, doloroso), gana +10% a resistir la mirada del Ojo en el ritual. Si no, deben llevar espejos o capas reflectantes.",
+          "difficulty": "hard"
+        },
+        {
+          "type": "combat",
+          "title": "Jonathan Hale, el banquero",
+          "description": "Hale (HP 35, AC 12, daga ceremonial 1d4+2, conjuro 'Mirada del Ojo' que paraliza 1d4 rondas con salvación de Cordura CD 15) es el primero de los hijos. Si los PJs lo confrontan en su casa de Back Bay, pelea con desesperación. Si lo capturan, revela que el Maestro es su propia madre, Beatrice Hale, una mujer de 80 años que todos creen muerta. Si lo matan, los otros 3 hijos se alertan.",
+          "difficulty": "medium"
+        },
+        {
+          "type": "conversation",
+          "title": "Marta Selden, la profesora",
+          "description": "Marta (HP 22, AC 10, sin armas, pero tiene un 'ojo interior' que puede lanzar conjuros telepáticos: 'Confusión' CD 15 Cordura o actuar 1d4 rondas en contra de los PJs) es la segunda hija. Si los PJs la abordan con respeto (CD 60 Carisma), les dice: 'Yo no quiero resucitarlo. Mi 'padre' me obliga. Si me liberáis, os ayudo. Sé dónde está el segundo fragmento. Está en la cripta de la iglesia, bajo el altar. Pero necesitaréis a alguien con sangre Hale para activarlo. Yo no soy Hale. Jonathan sí lo era.'",
+          "difficulty": "medium"
+        },
+        {
+          "type": "combat",
+          "title": "La iglesia de la Trinidad y el ritual",
+          "description": "La iglesia está llena de 20 cultistas y en el altar, Beatrice Hale, una anciana con un tercer ojo abierto en la frente, está canalizando al Ojo. Cornelius Doyle, el policía, está a su lado. CD 15 Ocultismo: para detener el ritual, los PJs deben destruir el altar (donde está el segundo fragmento) o matar/aturdir a Beatrice. Si no lo hacen en 10 rondas, el Ojo se manifiesta: una entidad colosal aparece sobre Boston, todos los PJs pierden 1d10 de Cordura y la humanidad cambia para siempre. Si los PJs usan a Marta como aliada, ella puede desactivar el ritual cantando (CD 14 Interpretación, requiere 1 ronda de canto).",
+          "difficulty": "hard",
+          "rewards": "Ritual detenido, segundo fragmento destruido, 1.000 dólares de Theodore y Margaret, posible retirada del Ojo durante 100 años, o su manifestación permanente (futuras campañas)."
+        }
+      ]
+    }
+  ]
+}

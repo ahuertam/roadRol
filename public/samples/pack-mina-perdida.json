@@ -1,0 +1,52 @@
+{
+  "name": "La Mina Perdida (D&D 5e)",
+  "system": "dnd5e",
+  "setting": "fantasy",
+  "missions": [
+    {
+      "id": "mina-1",
+      "title": "Investigar la mina abandonada",
+      "brief": "El pueblo de Robledo lleva una semana sin noticias del capataz de la mina del Cerro Negro. Los viajeros que se acercan juran haber oído martillazos en la noche y visto luces bajo tierra. El alcalde ofrece 200 piezas de oro a quien traiga respuestas.",
+      "objectives": [
+        "Encontrar al capataz Hiram (vivo o muerto)",
+        "Descubrir qué está moviéndose bajo tierra",
+        "Recuperar el cristal rojo del altar antiguo"
+      ],
+      "encounters": [
+        {
+          "type": "combat",
+          "title": "Emboscada en el puente de madera",
+          "description": "Tres goblins emboscados entre los troncos. Luchan cobardemente y huyen si uno cae. Uno tiene una daga curva con runas élficas.",
+          "difficulty": "easy",
+          "rewards": "3d6 PO, daga curva con runas (10 PO)"
+        },
+        {
+          "type": "puzzle",
+          "title": "La puerta de los cuatro símbolos",
+          "description": "Una puerta de piedra con cuatro relieves: un sol, una luna, una estrella, una montaña. Solo uno abre. Pista: el capataz Hiram decía 'cuando el sol cae, las montañas beben'.",
+          "difficulty": "medium",
+          "rewards": "Acceso a la cámara central"
+        },
+        {
+          "type": "trap",
+          "title": "Suelo que se hunde",
+          "description": "CD 15 Sabiduría al entrar para notar tablones sueltos. Si fallan, hacen una salvación de Destreza CD 13 o caen 3m (1d6 daño). El suelo se repara solo después de 1d4 rondas.",
+          "difficulty": "medium"
+        },
+        {
+          "type": "conversation",
+          "title": "El espectro del capataz Hiram",
+          "description": "Hiram aparece como un espíritu encadenado al altar. Culpable de profanar la tumba por ambición, ahora no puede descansar hasta que alguien selle el altar. Sabe el nombre del verdadero enemigo: el nigromante Vael que viene en 3 noches.",
+          "difficulty": "hard"
+        },
+        {
+          "type": "combat",
+          "title": "Esbirros de Vael",
+          "description": "Cuatro esqueletos animados (HP 13, CA 13) y una sombra (HP 16, CA 12, resistencia a no-muertos) custodian el altar. Si la sombra cae, los esqueletos la siguen.",
+          "difficulty": "hard",
+          "rewards": "Cristal rojo (valor 500 PO), anillo de protección +1"
+        }
+      ]
+    }
+  ]
+}

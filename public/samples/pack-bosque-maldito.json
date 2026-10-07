@@ -1,0 +1,100 @@
+{
+  "name": "Crónicas del Bosque Maldito (D&D 5e)",
+  "system": "dnd5e",
+  "setting": "fantasy",
+  "missions": [
+    {
+      "id": "aldebrook-1",
+      "title": "Las desapariciones de Aldebrook",
+      "brief": "El pueblo de Aldebrook, al borde del Bosque de Robledo, lleva dos semanas sin noticias de tres leñadores que entraron a talar. Hace tres días también desapareció la hija del herrero, Elsa, una chica de diecisiete años. El alcalde Ernan Birchwood teme que sea cosa del bosque — que está 'malito' desde hace un año. Ofrece 50 monedas de oro de adelanto y otras 200 por cabeza recuperada, más 500 si se descubre la causa.",
+      "objectives": [
+        "Investigar las tres desapariciones de los leñadores",
+        "Encontrar a la hija del herrero, Elsa (viva si es posible)",
+        "Identificar qué está maldito en el bosque"
+      ],
+      "encounters": [
+        {
+          "type": "conversation",
+          "title": "El alcalde Ernan Birchwood",
+          "description": "Ernan Birchwood, un hombre calvo y barrigón de 50 años, recibe a los PJs en su despacho del ayuntamiento. Está pálido, no ha dormido en tres días. Les entrega un saco de cuero con 50 PO, un mapa del bosque con una X en la cabaña del primer leñador, y la chaqueta de Elsa manchada con un líquido negro que huele a tierra podrida. Ernan suplica que la traigan de vuelta — es la prometida de su hijo. Si los PJs preguntan, él sabe que un ermitaño vive en el corazón del bosque, una tal Morwen, pero la gente del pueblo le tiene miedo.",
+          "difficulty": "easy"
+        },
+        {
+          "type": "puzzle",
+          "title": "Las huellas imposibles",
+          "description": "La cabaña del primer leñador, Tom Marsh, está cerrada desde dentro. CD 15 Investigación para notar que el pestillo está echado pero la ventana está abierta. Adentro: una mesa volcada, manchas de sangre en el suelo, y junto a la chimenea, unas huellas de barro que se dirigen al bosque. CD 13 Supervivencia o CD 15 Naturaleza: las huellas no son humanas — son de un lobo gigante, pero más grandes de lo normal. Y entre las huellas hay otras, más pequeñas, con forma de pie humanoide, descalzo, y con un sexto dedo.",
+          "difficulty": "medium",
+          "rewards": "Pista clave: marca de seis dedos = la Marca de Verra, la bruja del bosque."
+        },
+        {
+          "type": "combat",
+          "title": "Acecho en el claro de los robles",
+          "description": "Cuando los PJs cruzan el claro central, dos lobos gigantes (HP 26, CA 14, +5 a impactar, 2d6+4 daño por mordisco) saltan desde los árboles. No son los normales: tienen los ojos amarillos y verruguitas negras alrededor del hocico. Si uno cae, el otro huye hacia el norte (donde está la cabaña de la bruja). Tras el combate, CD 12 Naturaleza: los lobos estaban alimentados con carne humana, hace menos de un día.",
+          "difficulty": "medium",
+          "rewards": "Colmillo de lobo gigante (10 PO), trofeo de cazador."
+        },
+        {
+          "type": "conversation",
+          "title": "La ermitaña Morwen",
+          "description": "Una mujer de 70 años, encorvada, con un vestido de tela basta y un bastón de roble. Vive en una cabaña de piedra cubierta de musgo, oculta entre los árboles centenarios. Si los PJs la respetan, ella les cuenta: la bruja Verra ha vuelto al bosque después de 30 años. Verra sirve a algo más antiguo, algo que vive bajo el robledo milenario en el centro. La cura para la hija del herrero está en el Corazón, pero el precio será alto. Si los PJs la tratan con desdén o la atacan, Morwen se transforma en una lechuza y huye, perdiendo los PJs esta información crucial.",
+          "difficulty": "medium",
+          "rewards": "Mapa del robledo milenario, amuleto de protección contra encantos (un solo uso)."
+        },
+        {
+          "type": "combat",
+          "title": "La cabaña de Verra, la Bruja del Bosque",
+          "description": "Una cabaña de madera y huesos, rodeada de cuervos. Dentro, sobre un caldero burbujeante, Verra — la Bruja del Bosque (HP 75, CA 16, hechizos: bola de fuego, sueño, manos ardientes; bastón de roble que hace 1d8+3 daño). Tras ella, en una jaula de hierro, está Elsa, viva pero hipnotizada con los ojos en blanco. Si Verra baja a 30 HP, intenta huir dejando un caldero ardiendo. Si los PJs la derrotan, antes de morir dice: 'Yo solo soy la sierva. Destruid el Corazón, si osáis, bajo el robledo. Y ved qué le crece a la tierra de mi sangre.'",
+          "difficulty": "hard",
+          "rewards": "Bastón de roble (+1 a hechizos de nigromancia), 200 PO en monedas antiguas, Elsa liberada (viva, con amnesia del cautiverio), pista: el Corazón Putrefacto."
+        }
+      ]
+    },
+    {
+      "id": "corazon-2",
+      "title": "El Corazón del Bosque",
+      "brief": "Verra, antes de morir, reveló que ella solo era una sierva. El verdadero mal es un Corazón Putrefacto que late bajo un robledo milenario en el centro del bosque. La hija del herrero, Elsa, fue liberada pero sigue en estado de shock y necesita una cura ritual que solo el espíritu del robledo conoce. Ernan Birchwood se ofrece a acompañar a los PJs como guía — conoce los senderos aunque no le gusta la magia.",
+      "objectives": [
+        "Encontrar el robledo milenario en el centro del bosque",
+        "Destruir el Corazón Putrefacto",
+        "Curar a Elsa del encantamiento de Verra",
+        "Volver a Aldebrook con pruebas (un trofeo del Corazón)"
+      ],
+      "encounters": [
+        {
+          "type": "trap",
+          "title": "Las raíces que atrapan",
+          "description": "Una sección del sendero parece firme pero el suelo es de turba blanda. CD 13 Sabiduría al entrar para notar que el musgo está aplastado en patrones circulares. Si los PJs fallan, las raíces del suelo se cierran alrededor de sus tobillos (CD 15 Fuerza para liberarse, 2d6 daño por ronda). Si dos PJs se liberan, pueden sacar a los demás. Si nadie se mueve en 3 rondas, el musgo empieza a liberar esporas (CD 12 Constitución o enfermedad, 1d4 Constitución/24h durante 3 días).",
+          "difficulty": "medium"
+        },
+        {
+          "type": "puzzle",
+          "title": "La puerta de los cinco robles",
+          "description": "Cinco robles enormes forman un círculo. En la corteza del más antiguo hay runas antiguas: cinco palabras en común, una en dracónico, una en celestial, una en infernal, una en primordial y una en élfico. Solo una es la respuesta. Pista de Morwen (si los PJs la tienen): 'el que vive con el bosque entra sin llave'. CD 15 Arcano o CD 18 Historia: la respuesta es la palabra élfica 'Aldaron', que significa 'árbol guardián'. Si fallan, los robles liberan un conjuro de miedo (CD 13 Sabiduría o huir 1 minuto).",
+          "difficulty": "hard",
+          "rewards": "Acceso al claro del robledo milenario."
+        },
+        {
+          "type": "combat",
+          "title": "Los hijos del Corazón",
+          "description": "En el claro, los PJs son atacados por 4 arbustos animados (HP 22, CA 13, 1d6+2 daño, vulnerabilidad al fuego) y 1 druida muerto-viviente (HP 45, CA 15, lanza +1 hace 1d6+1, conjuro de pared de espinas). El druida lleva un bastón de roble con un corazón de cristal en la punta — si se rompe, todos los arbustos se marchitan.",
+          "difficulty": "hard",
+          "rewards": "Bastón de roble con corazón de cristal (50 PO a un coleccionista, componente de ritual)."
+        },
+        {
+          "type": "conversation",
+          "title": "El espíritu del Robledo Milenario",
+          "description": "El árbol milenario es enorme, 20 metros de circunferencia, con un rostro severo tallado en la corteza que parpadea al acercarse los PJs. Si le hablan con respeto, el espíritu accede a curar a Elsa a cambio de una promesa: plantar un roble nuevo en el claro de Aldebrook, donde antes había uno que Verra mató. También advierte: el Corazón Putrefacto está dentro del árbol, latiendo, alimentándose de la tierra. Solo el fuego lo destruye — un solo ataque de fuego directo mientras late.",
+          "difficulty": "medium",
+          "rewards": "Elsa curada (gracias al espíritu), conjuro 'Hablar con los árboles' (1 vez al día para el PJ que hizo la promesa)."
+        },
+        {
+          "type": "combat",
+          "title": "El Corazón Putrefacto",
+          "description": "Dentro del árbol milenario, en una cámara de raíces, late un corazón de carne negra del tamaño de un carro, con cuatro tentáculos (HP 30 cada uno, CA 14, 2d6+3 daño, vulnerabilidad al fuego) que lo defienden. Cada tentáculo se regenera en 1d4 rondas si no se destruye con fuego. Cuando los 4 tentáculos están quemados, el Corazón queda expuesto: un solo ataque de fuego lo destruye definitivamente. Si los PJs no tienen acceso a fuego, pueden usar el bastón de roble con corazón de cristal (de los hijos del Corazón) como catalizador, pero se rompe en el proceso.",
+          "difficulty": "hard",
+          "rewards": "Trofeo del Corazón Putrefacto (sirve como prueba para el alcalde), 500 PO prometidos, título honorífico 'Cazadores del Bosque' en Aldebrook, posible aliado (el espíritu del robledo)."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,98 @@
+{
+  "name": "El Sanatorio de Piedra Gris (La Llamada de Cthulhu)",
+  "system": "cthulhu",
+  "setting": "horror",
+  "missions": [
+    {
+      "id": "sanatorio-1",
+      "title": "Los pacientes desaparecidos",
+      "brief": "En 1920, el Sanatorio de Piedra Gris para enfermedades mentales cerró tras un incendio. Los 47 pacientes y 12 doctores fallecieron o desaparecieron. En 1925, una nueva administración reabrió el sanatorio, pero en los últimos seis meses, 8 pacientes han 'escapado' sin dejar rastro, y 3 enfermeras han pedido el traslado tras sufrir 'crisis nerviosas'. La dirección del sanatorio (ahora llamado Hospital Psiquiátrico de North Shore) contrata a los investigadores para resolver el misterio de las desapariciones sin armar escándalo. Pagan 200 dólares por paciente recuperado, 1.000 por descubrir la causa.",
+      "objectives": [
+        "Infiltrarse en el sanatorio (como paciente o como personal)",
+        "Hablar con los pacientes, enfermeras y doctores",
+        "Investigar las zonas cerradas (sótano, ala este)",
+        "Descubrir la causa de las desapariciones"
+      ],
+      "encounters": [
+        {
+          "type": "conversation",
+          "title": "El director Dr. Howard Ashford",
+          "description": "Ashford, 55 años, bigote canoso, mirada cansada, recibe a los investigadores en su despacho. Les entrega credenciales falsas de 'inspectores sanitarios' y un plano del sanatorio. 'El ala este fue el antiguo edificio. Lo cerramos tras el incendio, pero los pacientes nuevos escuchan cosas. Mi predecesor, el Dr. Whitmore, murió en 1924 en circumstances poco claras. Su diario está en mi oficina, en un cajón cerrado. Léanlo antes de bajar al sótano.' Si los PJs preguntan por Whitmore, Ashford palidece: 'Era brillante. Y obsesivo. Buscaba algo en el sótano. Algo que no debió encontrar.'",
+          "difficulty": "easy"
+        },
+        {
+          "type": "puzzle",
+          "title": "El diario del Dr. Whitmore",
+          "description": "El diario está cerrado con un candado de combinación de 3 dígitos. CD 12 Ocultismo: la fecha en la que Whitmore empezó a obsesionarse es 15/04/1923. La combinación es 1-5-2-3 (día, mes, día, mes). El diario describe: 'He encontrado debajo del ala este, en los túneles de calefacción olvidados, una sociedad secreta que se reunía aquí antes de 1900. La Sociedad del Sueño Eterno. Hacían rituales con los pacientes, sedados, para abrir un portal a un lugar que llaman 'el País del Sueño'. En 1920, cuando intenté destruirlo, provoqué el incendio. Pero el portal sigue abierto, esperando. Y lo que viene de allí viene en busca de cuerpos para regresar.'",
+          "difficulty": "medium",
+          "rewards": "Historia de la Sociedad del Sueño, ubicación del sótano, naturaleza de las desapariciones."
+        },
+        {
+          "type": "conversation",
+          "title": "La paciente Eleanor Vance",
+          "description": "Eleanor, 28 años, es una de las pacientes más lúcidas. Si los PJs la visitan con amabilidad (CD 60 Carisma), les dice: 'Lo veo todas las noches. Un hombre alto, sin cara, que viene de debajo de mi cama. Se lleva a los que no pueden gritar. Le digo a las enfermeras, pero no me creen. El doctor Whitmore sí me creía. Él bajó a buscarlo. Nunca volvió.' Si le preguntan por su 'don', explica: 'Antes del sanatorio, era médium. Veo cosas que otros no ven. Ahora veo cómo vienen a llevarse a mis compañeros.'",
+          "difficulty": "medium",
+          "rewards": "Confirmación de la actividad paranormal, posible aliada (puede guiar a los PJs al sótano)."
+        },
+        {
+          "type": "trap",
+          "title": "Los túneles de calefacción",
+          "description": "Los túneles están debajo del ala este, accesibles por una trampilla en el sótano. CD 14 Supervivencia o 16 Luz: el túnel está oscuro, y al fondo se oye un zumbido bajo, como de algo respirando. Hay 3 trampas mecánicas (piso que cede, dardos oxidados, una bola de plomo colgante). Si los PJs avanzan sin灯 (sin luz), se pierden y bajan al subsótano sin querer. Si llevan luz, el 'hombre sin cara' retrocede (es vulnerable a la luz directa).",
+          "difficulty": "medium"
+        },
+        {
+          "type": "discovery",
+          "title": "La cámara del ritual",
+          "description": "Al fondo del túnel, una cámara con un círculo ritual tallado en el suelo. En el centro, una piedra negra del tamaño de un escritorio con símbolos. La piedra emite calor y un zumbido. Alrededor, 8 catres vacíos con correas de cuero — los pacientes desaparecidos. Los catres están vacíos, pero hay manchas de sangre. En la pared, una inscripción: 'Sueña conmigo y serás mío.' Si los PJs tocan la piedra, oyen una voz (Cordura automática 1d3). La piedra es un portal al País del Sueño. Solo se destruye con un conjuro arcano o con sal consagrada encima.",
+          "difficulty": "hard",
+          "rewards": "Portal encontrado, ubicación de los pacientes (en el País del Sueño, no en este plano)."
+        }
+      ]
+    },
+    {
+      "id": "sanatorio-2",
+      "title": "El País del Sueño",
+      "brief": "Los pacientes están en el País del Sueño, una dimensión accesible solo durmiendo o a través de la piedra negra. Para rescatarlos, los investigadores deben o bien destruir la piedra (que devolverá a los pacientes a la realidad) o entrar al País del Sueño a través de la piedra y traerlos de vuelta. El País del Sueño es un lugar de ciudades abandonadas, cielos rojos y criaturas que no deberían existir. La estadía prolongada allí drena Cordura y Salud. La ventana para actuar es de 3 días, antes de que los pacientes se pierdan para siempre.",
+      "objectives": [
+        "Destruir la piedra negra o entrar al País del Sueño",
+        "Encontrar a los 8 pacientes desaparecidos",
+        "Devolverlos a la realidad",
+        "Salir sin perder más de 1d6 de Cordura"
+      ],
+      "encounters": [
+        {
+          "type": "trap",
+          "title": "El ritual de entrada",
+          "description": "Para entrar al País del Sueño a través de la piedra, los PJs deben dormir en los catres. CD 12 Cordura automática: ver el País del Sueño por primera vez. Si entran solos, el viaje dura 1 día subjetivo (3 horas reales). Si entran en grupo, todos van al mismo lugar pero pueden dispersarse. La salida requiere encontrar la 'puerta de vuelta' (una segunda piedra en el País del Sueño) o esperar a que la piedra los devuelva al cerrar el portal en este plano (otra persona la destruye).",
+          "difficulty": "medium"
+        },
+        {
+          "type": "discovery",
+          "title": "La ciudad de Ulthar",
+          "description": "En el País del Sueño, los PJs llegan a una ciudad de gatos. En la plaza central, una gata negra con un collar de plata les habla telepáticamente: 'Buscáis a los durmientes. Están en la torre del sur, donde el Devorador de Almas los tiene. Pero el Devorador tiene un punto débil: la música. Si alguien toca una melodía que no haya escuchado antes, se distrae 1d4 minutos. Usadlo bien.'",
+          "difficulty": "easy"
+        },
+        {
+          "type": "combat",
+          "title": "Las larvas del sueño",
+          "description": "En el camino a la torre, los PJs encuentran 4 larvas del sueño (HP 15, AC 10, mordisco onírico 1d4 + 1d3 Cordura). Son criaturas sin forma, traslúcidas, que atacan con chillidos. La luz de las lámparas (que los PJs deben llevar) las debilita. Si los PJs usan música (un PJ toca un instrumento o canta), las larvas huyen.",
+          "difficulty": "easy"
+        },
+        {
+          "type": "conversation",
+          "title": "El Devorador de Almas",
+          "description": "En la cima de la torre, una entidad sin forma definida, hecha de sombras y de dientes, observa a 8 figuras humanas durmiendo en catres flotantes (los pacientes). El Devorador dice: 'Estos cuerpos son míos. Los traje aquí hace meses. Son mis ovejas. Si los queréis, debéis darme algo equivalente. Ocho almas por ocho almas. ¿Quién de vosotros dormirá para siempre?' Si los PJs atacan, el Devorador tiene HP 80, AC 14, multiaattack con 2 tentáculos (1d8+3 + dreno de Cordura 1d4). Si tocan música (un PJ con habilidad musical, CD 14 Interpretación), se distrae 1d6 minutos. Durante la distracción, los PJs pueden liberar a 1 paciente por ronda. Si todos tocan música, el Devorador se enfurece y ataca con furia.",
+          "difficulty": "hard",
+          "rewards": "Pacientes liberados (si el Devorador es distraído o derrotado), acceso a la puerta de vuelta."
+        },
+        {
+          "type": "trap",
+          "title": "La puerta de vuelta",
+          "description": "Para volver a la realidad, los PJs deben llegar a la segunda piedra (en una colina al norte) y tocarla mientras están despiertos. CD 12 Cordura automática: la separación del País del Sueño duele. Si los PJs traen a los pacientes, deben despertarlos primero (CD 15 Medicina o Psicoanálisis). Si algún PJ perdió demasiada Cordura (< 30), queda atrapado en el País del Sueño. Al volver, la piedra negra del sanatorio se agrieta y se apaga — el portal se cierra. Los pacientes despiertan en sus catres, con recuerdos vagos pero vivos.",
+          "difficulty": "hard",
+          "rewards": "Pacientes devueltos, portal destruido, Cordura 1d6 por presenciar el País del Sueño, 1.000 dólares de recompensa."
+        }
+      ]
+    }
+  ]
+}

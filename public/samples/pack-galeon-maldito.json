@@ -1,0 +1,99 @@
+{
+  "name": "El Galeón Maldito (D&D 5e)",
+  "system": "dnd5e",
+  "setting": "fantasy",
+  "missions": [
+    {
+      "id": "galeon-puerto",
+      "title": "La Dama de Hielo",
+      "brief": "En el puerto de Salobrena, el capitán Brennan está desesperado. El galeón 'La Dama de Hielo' apareció hace tres días frente a la costa, sin velas, sin tripulación, balanceándose con la marea. Brennan envió a cinco marineros a inspeccionarlo; solo uno volvió, enloqueciendo y hablando de 'la mujer pálida que cantaba'. Ofrece 200 piezas de oro a quien traiga el cuaderno de bitácora del capitán anterior, que llevaba su hija.",
+      "objectives": [
+        "Hablar con el capitán Brennan en la taberna del Puerto Negro",
+        "Conseguir un mapa que indique dónde fue La Dama antes de aparecer",
+        "Subir al galeón y recuperar el cuaderno de bitácora",
+        "Descubrir qué le pasó a la tripulación"
+      ],
+      "encounters": [
+        {
+          "type": "conversation",
+          "title": "El capitán Brennan",
+          "description": "Brennan, 50 años, barba canosa, ojo de cristal, les espera en la trastienda de la taberna. Pálido, no duerme desde hace tres días. Les entrega una botella de ron y un mapa de la zona dibujado a mano: 'Aquí apareció el barco. Pero antes estaba más al sur, en las Islas de la Bruma. Buscad a Mormo, el viejo cartógrafo, en la taberna del Faro Roto — él sabrá.'",
+          "difficulty": "easy"
+        },
+        {
+          "type": "puzzle",
+          "title": "El mapa del cartógrafo Mormo",
+          "description": "Mormo, 70 años, sin dientes, vive en el Faro Roto, una taberna en ruinas. Por 5 PO, enseña un mapa mucho más antiguo: 'La Dama fue mi barco hace cuarenta años. La perdí en la Cueva del Kraken, en la isla sin nombre. Si vais, no bajéis al fondo. La daga de las mareas sella al Kraken. Mi hija Lena la perdió.' CD 12 Investigación o 15 Historia: el mapa muestra una cueva con marcas de marea.",
+          "difficulty": "medium",
+          "rewards": "Mapa a la isla, advertencia sobre el Kraken, ubicación de la daga."
+        },
+        {
+          "type": "trap",
+          "title": "La pasarela del galeón",
+          "description": "Una pasarela de madera conecta el muelle con el barco. CD 13 Supervivencia: la pasarela está encantada — los tablones se mueven solos. Si fallan, un PJ cae al agua (no letal, pero queda empapado y debe repetir la prueba). Si nadie cae, se oye un canto suave desde la bodega del barco.",
+          "difficulty": "easy"
+        },
+        {
+          "type": "combat",
+          "title": "El contramaestre y los marineros zombis",
+          "description": "En la cubierta, el contramaestre (HP 38, CA 12, garfio +4 que hace 1d6+3 daño) ataca sin hablar, flanqueado por 2 marineros zombis (HP 22, CA 9, 1d6+1 daño). Son lentos pero implacables. Si el contramaestre cae, los zombis huyen a la bodega. Su propósito: proteger el cofre del capitán.",
+          "difficulty": "medium",
+          "rewards": "Cuchillo de marinero, llaves del cofre."
+        },
+        {
+          "type": "discovery",
+          "title": "El cofre del capitán y la mujer pálida",
+          "description": "En el camarote del capitán, un cofre cerrado con llave. Dentro: el cuaderno de bitácora, 100 PO en monedas marinas, un medallón con la foto de una mujer joven — Lena, la hija de Mormo. En la última página del cuaderno: 'La mujer del mar me ofrece la paz a cambio de una vida. Cada noche me pide que me quede. No podré resistir mucho más.' Si los PJs leen en voz alta la última línea, oyen el canto más cerca — y ven, por la escotilla, a una mujer pálida con un vestido de algas. Si huyen, se va. Si la atacan, desaparece en el agua.",
+          "difficulty": "hard",
+          "rewards": "Cuaderno de bitácora (entregable a Brennan), 100 PO, pista: la mujer es la hija perdida de Mormo convertida en sirena oscura."
+        }
+      ]
+    },
+    {
+      "id": "galeon-cueva",
+      "title": "La Cueva del Kraken",
+      "brief": "El cuaderno de bitácora menciona una cueva en una isla sin nombre al sur. Allí, hace cuarenta años, la Dama de Hielo perdió una reliquia: la Daga de las Mareas, única arma que sella al Kraken que duerme en la cueva. La mujer pálida del galeón es Lena, hija del cartógrafo Mormo, convertida en criatura abisal por una maldición del Kraken. Si los PJs no recuperan la daga, el Kraken despertará en el próximo equinoccio.",
+      "objectives": [
+        "Encontrar la cueva en la isla sin nombre",
+        "Recuperar la Daga de las Mareas",
+        "Devolver a Lena a su forma humana (si es posible)",
+        "Sellar al Kraken antes del equinoccio (3 días)"
+      ],
+      "encounters": [
+        {
+          "type": "trap",
+          "title": "Las mareas que suben",
+          "description": "La cueva tiene mareas internas que suben cada 10 minutos. CD 12 Supervivencia al entrar: notan marcas de agua en las paredes. Si ignoran la advertencia, en el tercer ciclo las aguas llegan al techo del primer nivel. Solo hay tiempo para llegar al fondo antes de que sea imposible salir (a menos que puedan respirar bajo el agua o volar).",
+          "difficulty": "medium"
+        },
+        {
+          "type": "conversation",
+          "title": "El fantasma del primer contramaestre",
+          "description": "En la pared del segundo nivel hay un esqueleto de marinero atado a un ancla. Si los PJs le hablan con respeto (CD 12 Religión), su fantasma aparece: 'Buscáis la daga. Está en la cámara del fondo, tras la puerta de coral. Pero cuidado: la daga elige a su portador. Si vuestro corazón es débil, os maldecirá. La mujer del barco fue mi capitana. Amaba el mar más que a sí misma. Si la liberáis, debe querer volver.'",
+          "difficulty": "medium",
+          "rewards": "Advertencia sobre la daga, pista para liberar a Lena."
+        },
+        {
+          "type": "combat",
+          "title": "Los guardianes sahuagin",
+          "description": "3 sahuagin (HP 22, CA 12, lanza con tres puntas 1d6+1, multiaattack: lanza + mordisco 1d4) custodian la cámara de coral. Son crueles pero pueden parlamentar en su idioma (CD 15 Historia: el PJ sabe que los sahuagin respetan la fuerza — si los PJs ganan el combate con contundencia, los demás huyen y revelan que la puerta de coral solo se abre con la daga).",
+          "difficulty": "medium",
+          "rewards": "Tridentes, perla negra (50 PO), información sobre la puerta."
+        },
+        {
+          "type": "puzzle",
+          "title": "La puerta de coral",
+          "description": "Una puerta viva de coral rojo. Tiene una cerradura de hueso y un ojo central que parpadea. Solo se abre con la Daga de las Mareas, pero esta está en un altar al otro lado de una grieta submarina. CD 14 Atletismo: cruzar la grieta nadando (los PJs sin habilidad acuática deben usar una cuerda y unPJ con 15+ en Atletismo). El ojo de la puerta escanea a quien se acerca: si su intención es egoísta (destruir la cueva, robar el coral), la puerta se cierra con pinchos venenosos.",
+          "difficulty": "medium"
+        },
+        {
+          "type": "combat",
+          "title": "La Daga de las Mareas y la maldición",
+          "description": "En un altar de coral negro, la Daga de las Mareas (una hoja de obsidiana con una perla en la empuñadura) espera. Al tocarla, el PJ que la tome debe superar una salvación de Sabiduría CD 15 o quedar maldecido (1d4 daño necrótico cada vez que usa la daga, hasta que se selle al Kraken). La daga tiene 3 cargas: cada uso contra el Kraken consume una y sella uno de sus tentáculos. Si se sella el Kraken completamente, este queda dormido 100 años. Si Lena (la mujer pálida) está presente y libre de su maldición, la daga se rompe y la sella eternamente.",
+          "difficulty": "hard",
+          "rewards": "Daga de las Mareas (sella al Kraken), 1000 PO en perlas del altar, posible aliado: Lena liberada."
+        }
+      ]
+    }
+  ]
+}

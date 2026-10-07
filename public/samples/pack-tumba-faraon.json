@@ -1,0 +1,100 @@
+{
+  "name": "La Tumba del Faraón de Arena (D&D 5e)",
+  "system": "dnd5e",
+  "setting": "fantasy",
+  "missions": [
+    {
+      "id": "faraon-1",
+      "title": "La maldición del oasis",
+      "brief": "En la ciudad de Al-Khem, el scholars Mohtep ha descubierto la entrada a la tumba del Faraón Setemb, un rey-faraón que murió hace 4.000 años. Tres de sus aprendices ya han muerto: uno desangrado por la nariz, otro devorado por escorpiones, el tercero simplemente... envejeció 50 años en una noche. Mohtep, que no se atreve a entrar, paga 1.000 PO por lossellos de oro del faraón y otros 2.000 por la máscara funeraria. Advierte: los sellos están malditos. Solo quien no tema a la muerte podrá llevarlos.",
+      "objectives": [
+        "Encontrar el oasis de los Susurros (a 3 días al sur de Al-Khem)",
+        "Entrar en la tumba del Faraón Setemb",
+        "Recuperar los tres sellos de oro",
+        "Encontrar la máscara funeraria",
+        "Descubrir la causa de las maldiciones"
+      ],
+      "encounters": [
+        {
+          "type": "conversation",
+          "title": "Mohtep, el scholars asustado",
+          "description": "Mohtep, 60 años, encorvado, manchas de tinta en los dedos, vive en una casa llena de pergaminos. Tiembla cuando entrega el mapa: 'La tumba está en un oasis que solo aparece en las noches de luna nueva. La entrada tiene un sello arcano. Si no lo desactivan, las maldiciones se multiplican. Hay un símbolo en la entrada que reconozco: el de la Serpiente Eterna. Es el símbolo de un culto de hace 4.000 años que aún existe.'",
+          "difficulty": "easy"
+        },
+        {
+          "type": "trap",
+          "title": "El oasis de las arenas movedizas",
+          "description": "El oasis es un espejismo: las palmeras están a 200 metros de donde parece. El camino de entrada tiene arenas movedizas. CD 15 Supervivencia para encontrar el camino seguro. Si fallan, los PJs caen en arenas movedizas: CD 12 Atletismo para liberarse, 1d6 daño por turno atrapado.",
+          "difficulty": "medium"
+        },
+        {
+          "type": "puzzle",
+          "title": "La puerta de la Serpiente Eterna",
+          "description": "Una puerta de arenisca con una serpiente tallada que se muerde la cola. Tres anillos de bronce alrededor piden una palabra de paso. CD 15 Arcano o CD 18 Religión: la palabra es 'Am-heh' (el devorador de millones, un aspecto del faraón). Si fallan, las arenas movedizas del oasis se filtran dentro y comienza a inundarse el pasillo. Si pronuncian la palabra correctamente, los anillos giran y la puerta se abre.",
+          "difficulty": "medium",
+          "rewards": "Acceso a la tumba."
+        },
+        {
+          "type": "combat",
+          "title": "Los guardianes del primer pasillo",
+          "description": "4 momias (HP 26, CA 11, puño seco 1d6+1 + dreno de calor vital que reduce el máximo de HP en 1d4 hasta descanso largo) custodian el primer corredor. Visten armaduras deterioradas y sus vendas están frescas. Detrás de ellas, un escriba con un cuchillo de oro intenta huir.",
+          "difficulty": "hard",
+          "rewards": "Cuchillo de oro del escriba (150 PO), pista: hay un sumo sacerdote vivo en la tumba."
+        },
+        {
+          "type": "conversation",
+          "title": "El sumo sacerdote Neb-Ra",
+          "description": "Neb-Ra, un humanoide con piel bronceada y un ojo izquierdo de ónice, está arrodillado frente a un altar. Si lo capturan, confiesa: 'Esperé 4.000 años para que alguien viniera. Soy el último guardián del Faraón Setemb. Si me matan, la maldición se libera. Si me dejan vivir, les daré los sellos y la máscara. Solo pido que no toquen el sarcófago: lo que hay dentro debe seguir durmiendo.' Si los PJs le hacen daño o lo matan, las maldiciones se intensifican (todos los PJs quedan marcados).",
+          "difficulty": "medium",
+          "rewards": "Sellos de oro (entregables a Mohtep por 1.000 PO), ubicación de la máscara (subsótano, tras la cámara del sarcófago), información sobre el verdadero peligro."
+        }
+      ]
+    },
+    {
+      "id": "faraon-2",
+      "title": "El despertar del Faraón",
+      "brief": "Neb-Ra entregó los sellos, pero la máscara sigue en la cámara del sarcófago, en el subsótano. Antes de morir (o huir, si lo dejan), reveló que el Faraón Setemb no está momificado: está en animación suspendida, alimentado por un artefacto llamado el Corazón de Horus. Si alguien toca el sarcófago sin neutralizar el Corazón primero, el faraón despertará completamente. Tiene 24 horas para volver a Al-Khem con la máscara, antes de que el calor del desierto derrita las vendas de las momias y la tumba entera se vuelva un problema regional.",
+      "objectives": [
+        "Llegar a la cámara del sarcófago",
+        "Encontrar y destruir el Corazón de Horus",
+        "Recuperar la máscara funeraria",
+        "Salir de la tumba antes de que se inunde de arenas movedizas"
+      ],
+      "encounters": [
+        {
+          "type": "trap",
+          "title": "El pasillo de los espejos",
+          "description": "Un pasillo con espejos de obsidiana a ambos lados. Si un PJ se mira más de 6 segundos, queda petrificado durante 1 hora (CD 15 Sabiduría o verse atrapado). Los espejos reflejan versiones del PJ muerto por diversos enemigos. Solo quien no tema a su propia muerte puede cruzarlo sin riesgo (CD 12 Sabiduría al inicio del pasillo: si pasa, evita los espejos).",
+          "difficulty": "hard"
+        },
+        {
+          "type": "puzzle",
+          "title": "La cerradura de la cámara",
+          "description": "Una puerta de bronce macizo con tres cerraduras. Las llaves son tres anillos de oro con jeroglíficos — son los sellos que Neb-Ra entregó. Si usan los sellos correctos, la puerta se abre. Si usan otra cosa, las cerraduras se cierran con un conjuro de fuego (2d6 daño al primer PJ en tocar la puerta). Si intentan forzar (CD 20 Fuerza), la puerta aguanta y el techo comienza a desmoronarse.",
+          "difficulty": "medium"
+        },
+        {
+          "type": "combat",
+          "title": "Los hijos del Faraón",
+          "description": "En la antecámara, dos momias más grandes que las anteriores: el príncipe Khaemwaset (HP 60, CA 14, espada de oro +1 hace 1d8+3) y la princesa Meritamun (HP 50, CA 13, bastón de rayo: 3d6 daño eléctrico a distancia). Son más rápidas que las momias comunes y tienen tácticas de combate.",
+          "difficulty": "deadly",
+          "rewards": "Espada de oro del príncipe (500 PO), bastón de rayo de la princesa (300 PO)."
+        },
+        {
+          "type": "conversation",
+          "title": "El fantasma de la reina Nefertari",
+          "description": "Una mujer bella, vestida con un traje de lino blanco, aparece flotando junto al sarcófago. Si los PJs le hablan con respeto, ella les dice: 'El Corazón de Horus está debajo de mi ataúd. Si lo rompen, mi esposo despertará y los matará. Si lo entonan, mi esposo dormirá otro milenio y la máscara será suya. Pero saben que la máscara también está maldita: quien la lleve dormirá al faraón, y los muertos del desierto le obedecerán.' Si no la respetan, la temperatura baja 20 grados y todos los PJs hacen una salvación de Constitución CD 13 o sufren 1d4 de daño por frío.",
+          "difficulty": "hard",
+          "rewards": "Información crucial sobre el Corazón y la máscara, posible aliado: la reina como espíritu tutelar si la dejan en paz."
+        },
+        {
+          "type": "trap",
+          "title": "El Corazón de Horus y la decisión final",
+          "description": "Bajo el sarcófago, en una caja de cristal: el Corazón de Horus, un rubí del tamaño de un puño que late. CD 14 Arcano: el rubí solo se destruye con un conjuro de disipar magia. Si lo rompen físicamente, el Faraón Setemb despierta inmediatamente (HP 200, AC 18, multiaattack con espada + hechizos de maldición; casi imposible para PJs de nivel 1-5). Si lo 'entierran' en arena (CD 10 Supervivencia), el Faraón sigue dormido. Si lo dejan, en 24 horas despertará.",
+          "difficulty": "hard",
+          "rewards": "Máscara funeraria de Setemb (1.500 PO si se vende, pero la maldición acecha), 2.000 PO por la máscara, paz en la región."
+        }
+      ]
+    }
+  ]
+}

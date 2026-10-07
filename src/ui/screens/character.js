@@ -104,8 +104,13 @@ function wireForm(container, ctx) {
     }
 
     try {
-      await saveCharacter(character)
-      location.hash = ctx.returnTo
+      const saved = await saveCharacter(character)
+      // ponytail: si volvemos al wizard, le pasamos el id por query para auto-seleccionar
+      if (ctx.returnTo === '/setup' && saved?.id) {
+        location.hash = `${ctx.returnTo}?selectChar=${encodeURIComponent(saved.id)}`
+      } else {
+        location.hash = ctx.returnTo
+      }
     } catch (err) {
       // No navegamos: el usuario no pierde lo que llevaba escrito
       console.error('saveCharacter falló:', err)

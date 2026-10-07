@@ -1,23 +1,24 @@
-// Wrapper IndexedDB. Dos object stores: characters y games.
-// ponytail: apertura lazy (singleton). Cada función abre la DB solo si hace falta.
+// Wrapper IndexedDB. Tres object stores: characters, games y packs.
+// ponytail: apertura lazy (singleton). Migración v1 → v2 añade 'packs'.
 
 import { openDB } from 'idb'
 import { newId } from './id.js'
 
 const DB_NAME = 'roadrol'
-const DB_VERSION = 1
+const DB_VERSION = 2
 
 let dbPromise = null
 
 function getDB() {
   if (!dbPromise) {
     dbPromise = openDB(DB_NAME, DB_VERSION, {
-      upgrade(db) {
-        if (!db.objectStoreNames.contains('characters')) {
+      upgrade(db, oldVersion) {
+        if (oldVersion < 1) {
           db.createObjectStore('characters', { keyPath: 'id' })
-        }
-        if (!db.objectStoreNames.contains('games')) {
           db.createObjectStore('games', { keyPath: 'id' })
+        }
+        if (oldVersion < 2) {
+          db.createObjectStore('packs', { keyPath: 'id' })
         }
       }
     })
@@ -41,7 +42,6 @@ export async function saveCharacter(/** @type {Character} */ character) {
   const c = {
     ...character,
     // ponytail: || en vez de ?? para que un id vacío se considere ausente.
-    // ?? solo dispara con null/undefined, no con ''.
     id: character.id || newId(),
     createdAt: character.createdAt ?? now,
     updatedAt: now
@@ -69,7 +69,6 @@ export async function saveGame(/** @type {Game} */ game) {
   const now = new Date().toISOString()
   const g = {
     ...game,
-    // ponytail: || en vez de ?? para que un id vacío se considere ausente.
     id: game.id || newId(),
     createdAt: game.createdAt ?? now,
     updatedAt: now
@@ -80,4 +79,30 @@ export async function saveGame(/** @type {Game} */ game) {
 
 export async function deleteGame(id) {
   return (await getDB()).delete('games', id)
+}
+
+// ----- Packs -----
+
+export async function listPacks() {
+  return (await getDB()).getAll('packs')
+}
+
+export async function getPack(id) {
+  return (await getDB()).get('packs', id)
+}
+
+export async function savePack(/** @type {Pack} */ pack) {
+  const db = await getDB()
+  const now = new Date().toISOString()
+  const p = {
+    ...pack,
+    id: pack.id || newId(),
+    importedAt: pack.importedAt ?? now
+  }
+  await db.put('packs', p)
+  return p
+}
+
+export async function deletePack(id) {
+  return (await getDB()).delete('packs', id)
 }

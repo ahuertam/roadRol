@@ -1,0 +1,101 @@
+{
+  "name": "El Asedio de Piedra Alta (D&D 5e)",
+  "system": "dnd5e",
+  "setting": "fantasy",
+  "missions": [
+    {
+      "id": "piedra-alta-1",
+      "title": "La fortaleza asediada",
+      "brief": "La fortaleza de Piedra Alta, en la frontera norte, lleva tres meses asediada por el Señor de la Guerra Krom, un semiorco con un ejército de 800 orcos. La castellana Ygritte, una enana de 60 años, ha aguantado gracias a las murallas, pero se les acaba la comida y la moral. Envió un cuervo pidiendo ayuda a la orden de aventureros más cercana. Si los PJs aceptan, reciben 500 PO de anticipo y la promesa de tierras para cada uno si la fortaleza sobrevive.",
+      "objectives": [
+        "Llegar a Piedra Alta sin ser detectados por el ejército de Krom",
+        "Hablar con la castellana Ygritte",
+        "Descubrir cómo romper el asedio",
+        "Reunir aliados dentro de la fortaleza"
+      ],
+      "encounters": [
+        {
+          "type": "trap",
+          "title": "El paso de las águilas",
+          "description": "Para entrar sin ser vistos, los PJs deben cruzar un paso de montaña vigilado por exploradores orcos. CD 15 Sigilo para evitarlos. Si fallan, 4 orcos exploradores (HP 15, AC 13, arco corto 1d6+2) atacan. Si ganan el combate rápido, los PJs pueden continuar sin alertar al ejército principal. Si tardan, Krom envía un batallón a investigar.",
+          "difficulty": "medium"
+        },
+        {
+          "type": "conversation",
+          "title": "La castellana Ygritte Piedraférrea",
+          "description": "Ygritte, enana de barba trenzada con anillos de plata, los recibe en la sala del trono, austera y fría. Les entrega un mapa de la fortaleza y explica: 'Krom tiene un campamento principal al este y otro menor al norte. Si destruimos el menor y llevamos su comida a la ciudad hambrienta al sur, los aldeanos podrían rebelarse. Necesitamos 200 aldeanos armados. Eso es 100 libras de oro en suministros, y el oro está en una cámara sellada en la fortaleza que solo mi hermano muerto conocía.'",
+          "difficulty": "easy",
+          "rewards": "Mapa, información sobre la cámara del oro, contacto con el líder rebelde del sur."
+        },
+        {
+          "type": "puzzle",
+          "title": "La cámara sellada del hermano muerto",
+          "description": "La cámara del oro está en el sótano, protegida por una cerradura mecánica de 4 discos giratorios. Cada disco tiene 12 runas. El hermano de Ygritte, Balin Piedraférrea, dejó una nota cifrada: 'La edad del roble al sol, la edad de la luna al ocaso, la edad del hierro en la fragua, la edad del oro en la montaña.' CD 15 Investigación o 18 Historia: las respuestas son 7, 12, 4, 9. Si fallan, la cerradura libera un gas venenoso (CD 13 Constitución o 2d6 daño de veneno).",
+          "difficulty": "hard",
+          "rewards": "100 libras de oro, información sobre el ritual para llamarlos a los aldeanos."
+        },
+        {
+          "type": "combat",
+          "title": "Emboscada en el camino al sur",
+          "description": "Al llevar el oro al campamento rebelde, 8 orcos de una patrulla perdida (HP 15, AC 13, cimitarra 1d6+2) atacan en un desfiladero. Si los PJs ganan rápido, pueden continuar sin levantar sospechas. Si tardan, llega una segunda patrulla.",
+          "difficulty": "medium",
+          "rewards": "Cimitarras orcas, botín menor."
+        },
+        {
+          "type": "conversation",
+          "title": "El líder rebelde Aldric",
+          "description": "Aldric, 45 años, exsoldado, lidera 200 aldeanos hambrientos en el bosque del sur. Si los PJs le prometen comida y un lugar en la nueva Piedra Alta (tras la victoria), acepta unirse a la fortaleza. Si desconfía (CD 14 Persuasión), exige también una promesa escrita. Si los PJs lo engañan, los aldeanos se van y la fortaleza cae.",
+          "difficulty": "medium",
+          "rewards": "200 aldeanos armados, apoyo logístico para el asalto final."
+        }
+      ]
+    },
+    {
+      "id": "piedra-alta-2",
+      "title": "La caída de Krom",
+      "brief": "Con los aldeanos, los PJs tienen 200 combatientes extra. Ygritte propone un plan: una salida nocturna para destruir el campamento menor del norte, mientras ella lidera una salida desde la fortaleza para distraer. Si los PJs destruyen el campamento del norte y capturan al subcomandante Varn, Krom perderá la moral y deberá negociar o retirarse. Krom es un semiorco de 8 pies con un hacha de guerra mágica: temible, pero no invencible.",
+      "objectives": [
+        "Destruir el campamento orco del norte",
+        "Capturar o matar al subcomandante Varn",
+        "Proteger a los aldeanos (bajas civiles son inaceptables)",
+        "Negociar la retirada de Krom (si es posible)"
+      ],
+      "encounters": [
+        {
+          "type": "trap",
+          "title": "Las trampas del campamento",
+          "description": "El campamento está rodeado de trampas: fosas, cuerdas con campanas, calderos de aceite hirviendo. CD 13 Supervivencia o 15 Ingeniería para desactivarlas. Si las activan, suena la alarma: 4 orcos (HP 15, AC 13) aparecen en 2 rondas.",
+          "difficulty": "medium"
+        },
+        {
+          "type": "combat",
+          "title": "La tienda del subcomandante Varn",
+          "description": "Varn (HP 70, AC 15, hacha de batalla +1 que hace 1d8+3, multiaattack) es un orco de 7 pies con cicatrices rituales. Si lo capturan vivo, puede negociar la retirada de Krom. Si lo matan, Krom entrará en furia y atacará la fortaleza al amanecer (combate final en las murallas).",
+          "difficulty": "hard",
+          "rewards": "Hacha de Varn (hacha de batalla +1), documentos con los planes de Krom (incluyen una debilidad: el ojo izquierdo de Krom está tuerto, y su hacha mágica no funciona si se le rompe el mango)."
+        },
+        {
+          "type": "conversation",
+          "title": "La mujer-orco Garra",
+          "description": "En una tienda aparte, una orco con armadura de cuero,Garrasangrienta (HP 35, AC 14, lanza 1d6+3), interroga a un aldeano capturado. Si los PJs la atacan, los aldeanos capturados (8) serán ejecutados. Si la capturan, revela que Krom está perdiendo hombres por deserción y está buscando la paz a espaldas de su ejército.",
+          "difficulty": "medium",
+          "rewards": "Información sobre la moral de Krom, posible aliado: Garra está cansada de la guerra y cambiaría de bando por una promesa de tierras."
+        },
+        {
+          "type": "combat",
+          "title": "Batalla campal en la línea de asedio",
+          "description": "La salida principal de Ygritte encuentra resistencia. 6 orcos de línea (HP 15, AC 13) defienden las máquinas de asedio. Si los PJs usan aldeanos para proteger a los civiles, los aldeanos luchan mejor. Si los PJs van solos, los aldeanos son rodeados.",
+          "difficulty": "medium",
+          "rewards": "Armas de asedio capturadas, moral para los defensores."
+        },
+        {
+          "type": "combat",
+          "title": "Krom, el Señor de la Guerra",
+          "description": "Si los PJs forzaron la batalla final, Krom (HP 180, AC 17, hacha de guerra del Carnicero +2 que hace 1d10+4, multiaattack con hacha + mordisco 1d4+2) aparece en las murallas con 4 guardaespaldas orcos (HP 15, AC 13). Si los PJs traen la información del mango del hacha, pueden romperla con un ataque dirigido (CD 13 para impactar el mango específicamente). Si no, el combate es deadly. Si Varn está vivo, Krom se rinde al ver a su hermano capturado.",
+          "difficulty": "deadly",
+          "rewards": "Hacha del Carnicero (hacha de guerra +2), 2.000 PO de recompensa, el título de 'Héroes de Piedra Alta' y tierras para cada PJ, posible vasallaje: Krom, si se rinde, jura no volver a atacar el norte."
+        }
+      ]
+    }
+  ]
+}

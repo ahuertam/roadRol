@@ -1,0 +1,100 @@
+{
+  "name": "Las Profundidades de Innsmouth (La Llamada de Cthulhu)",
+  "system": "cthulhu",
+  "setting": "horror",
+  "missions": [
+    {
+      "id": "innsmouth-1",
+      "title": "La herencia del tío Abner",
+      "brief": "El investigador es contactado por un abogado de Boston: el tío Abner Marsh, muerto hace tres semanas, le ha dejado una casa en Innsmouth, un pueblo costero de Massachusetts conocido por su mala reputación. El testamento incluye una advertencia: 'No vayas a la Sociedad Histórica. No preguntes por la Orden Esotérica de Dagon. No vayas al muelle después del ocaso. Si lo haces, vete.' Acompañado, el investigador viaja a Innsmouth para reclamar la herencia y descubrir por qué el tío, que nunca hablaba de su pasado, dejó esta advertencia.",
+      "objectives": [
+        "Llegar a Innsmouth sin llamar la atención",
+        "Recoger las llaves de la casa Marsh en la oficina del abogado local",
+        "Inspeccionar la casa del tío Abner",
+        "Descubrir qué escondía el tío en su sótano"
+      ],
+      "encounters": [
+        {
+          "type": "conversation",
+          "title": "El abogado Jeremiah Pickman",
+          "description": "Pickman, 60 años, calvo, con un ojo de cristal, recibe al investigador en una oficina polvorienta. Está nervioso: 'No he entrado a esa casa en 20 años. Su tío y yo crecimos juntos. Hace 30 años él se fue y no volvió hasta 1920. Cuando volvió, no era el mismo. Nadie en Innsmouth quería hablar con él. La Sociedad Histórica de Innsmouth tiene un sótano que nadie ha visto. Su tío me dijo una vez: 'Abajo hay documentos que podrían hundir a todo el pueblo.' Si quiere ir a la Sociedad, hágalo de día, con luz, y con muchos testigos. Si encuentra algo... quémelo. No lo publique.'",
+          "difficulty": "easy"
+        },
+        {
+          "type": "puzzle",
+          "title": "La casa Marsh",
+          "description": "La casa está cerrada desde hace tres semanas. Dentro huele a sal y a podrido. CD 12 Ocultismo: en la sala de estar hay un cuadro al revés de un pez con cara humana. Si lo cuelgan correctamente, revela un compartimento en la pared con un diario. El diario de Abner: '1923, marzo. Volví a Innsmouth. No pude evitarlo. Papá me dijo que no lo hiciera, pero el cambio ya está hecho. La marca de la Orden está en mi cuello. Cada vez que duermo, sueño con el Padre Dagon. Pronto iré al muelle. Pronto seré uno de ellos. Pero no quiero que mi sobrino-nieto herede esto. Si me escuchas, Jeremiah: quema esta casa cuando yo muera. O mejor, deja que alguien la investigue, alguien listo, alguien que pueda destruir lo que escondo en el sótano.'",
+          "difficulty": "medium",
+          "rewards": "Diario de Abner, pista sobre el sótano."
+        },
+        {
+          "type": "discovery",
+          "title": "El sótano de la casa Marsh",
+          "description": "El sótano está cerrado con una puerta de hierro con símbolos marinos tallados. CD 15 Ocultismo: los símbolos son deidades marinas olvidadas. La cerradura no es mecánica, sino que requiere untar la puerta con agua de mar (CD 12 Supervivencia: hay un balde con agua de mar en la cocina). Al untar, la puerta se abre sola. Dentro, en una mesa, hay un altar con un ídolo de piedra que representa a una criatura humanoide con cabeza de pez y ojos enormes. Al tocarlo, el investigador siente un escalofrío (Cordura automática 0/1d3). En un rincón, una caja de madera contiene documentos encuadernados en piel: los registros de la Orden Esotérica de Dagon, fechados desde 1840. Cada página describe uniones entre humanos y 'los que viven en las profundidades'.",
+          "difficulty": "hard",
+          "rewards": "Documentos de la Orden (combustible si se queman), ídolo de Dagon (un objeto peligroso)."
+        },
+        {
+          "type": "conversation",
+          "title": "La vecina Zadok Allen",
+          "description": "Zadok Allen, 92 años, ciego, vive en la casa de al lado. Si el investigador le pregunta con respeto (CD 60 Carisma), habla: '¿Abner Marsh? Sí, lo conocí de chico. Se fue cuando los Federales quemaron la mitad del pueblo en 1927. Volvió en 1920, pero no era humano del todo. Su padre, Allard Marsh, era uno de los fundadores de la Orden. Ahora todo el pueblo es parte de la Orden. Los Marsh, los Waite, los Gilman, los Olmstead. Todos. Si quiere irse vivo, váyase antes del ocaso. Si quiere ver al Padre Dagon, vaya al muelle a las 3 de la mañana. Pero no vuelva.'",
+          "difficulty": "medium",
+          "rewards": "Historia del pueblo, advertencia sobre la Orden, horario del ritual."
+        },
+        {
+          "type": "trap",
+          "title": "La Sociedad Histórica de Innsmouth",
+          "description": "El edificio de la Sociedad Histórica parece abandonado, pero no lo está. Al entrar, los PJs son recibidos por un grupo de aldeanos con rostros sospechosos. CD 14 Persuasión o 16 Engaño: si fingen ser turistas, el guía, un hombre llamado Lawton, les muestra el museo (que exhibe artefactos fenicios y máscaras rituales). Si preguntan por el sótano, Lawton se tensa y aparecen 3 aldeanos más. Si los PJs aceptan que solo quieren ver el museo, escapan. Si insisten, son capturados y encerrados en el sótano de la Sociedad hasta el ocaso (donde el ritual comienza).",
+          "difficulty": "medium"
+        }
+      ]
+    },
+    {
+      "id": "innsmouth-2",
+      "title": "La Orden de Dagon",
+      "brief": "Los documentos del tío Abner y las pistas de Zadok Allen apuntan a una verdad terrible: Innsmouth es un pueblo de híbridos humano-profundidad, y la Orden Esotérica de Dagon prepara un ritual para invocar al Padre Dagon desde el fondo del mar. El ritual es en la noche del próximo plenilunio (5 días). Los investigadores deben encontrar y destruir el ídolo central, liberar a los rehenes capturados, o alertar a las autoridades federales de Massachusetts (que ya quemaron el pueblo una vez en 1927).",
+      "objectives": [
+        "Encontrar el ídolo central de la Orden (en algún lugar bajo la Sociedad)",
+        "Rescatar a los rehenes del sótano (si los PJs fueron capturados antes)",
+        "Destruir el ídolo o alertar a las autoridades",
+        "Salir vivos de Innsmouth antes del plenilunio"
+      ],
+      "encounters": [
+        {
+          "type": "puzzle",
+          "title": "El mapa del subterráneo",
+          "description": "En los documentos de Abner hay un mapa que muestra un túnel que conecta la Sociedad Histórica con el muelle, pasando por debajo de varias casas. La entrada al túnel está en el sótano de la Sociedad. CD 15 Investigación: el túnel tiene tres bifurcaciones, cada una marcada con un símbolo diferente. El símbolo correcto es el de Dagon (un pez con cara humana), el mismo del ídolo. Si fallan, los PJs se pierden y pueden acabar en casas de la Orden (más peligro).",
+          "difficulty": "medium"
+        },
+        {
+          "type": "conversation",
+          "title": "El preso Nathan Marsh",
+          "description": "En el sótano de la Sociedad, encerrado en una celda, Nathan Marsh (sobrino del tío Abner, 35 años) lleva dos semanas preso. Si lo liberan, revela: 'Me capturaron cuando vine a buscar a mi tío. Soy medio Marsh, pero no quiero ser parte de la Orden. El ritual del plenilunio requiere siete voluntarios o siete víctimas. Si no llegan a siete, toman a la fuerza. Hay tres voluntarios ya: Lawton, la Sra. Gilman y el Sr. Waite. Les faltan cuatro.' Si los PJs le piden que les ayude, acepta, pero les advierte: 'No soy un guerrero. Pero conozco el pueblo mejor que nadie.'",
+          "difficulty": "medium",
+          "rewards": "Aliado local, información sobre el ritual y los voluntarios."
+        },
+        {
+          "type": "combat",
+          "title": "Los guardias de la Orden",
+          "description": "5 aldeanos convertidos (HP 22, AC 12, garfios de pesca 1d6+2, debilidad a la luz del día) custodian el corredor hacia la cámara del ídolo. Si los PJs llegan de día, están en desventaja (luz solar los ciega parcialmente). Si llegan de noche, los guardias están en su elemento.",
+          "difficulty": "medium",
+          "rewards": "Llaves de la cámara central, máscaras rituales (de coleccionista, 50 PO cada una)."
+        },
+        {
+          "type": "discovery",
+          "title": "La cámara del ídolo central",
+          "description": "Una cámara circular con un estanque central. En el fondo, un ídolo colosal de Dagon (3 metros de alto, con ojos de rubí). Los ojos emiten un brillo verdoso. Alrededor, 7 sillas vacías para los participantes del ritual. En una pared, un panel de control con 7 palancas. CD 12 Ocultismo: las palancas controlan las compuertas del estanque. Si se activan todas, el estanque se llena y el ídolo cobra vida. Si los PJs destruyen los ojos del ídolo (CD 15 ataque, requiere arma contundente o fuego), este pierde su poder. Si tiran el ídolo al estanque y lo sellan con sal, queda neutralizado 100 años.",
+          "difficulty": "hard",
+          "rewards": "Idolo destruido (los híbridos de Innsmouth empiezan a debilitarse), o neutralizado (tregua temporal)."
+        },
+        {
+          "type": "trap",
+          "title": "La huida y la opción federal",
+          "description": "Si los PJs destruyen o neutralizan el ídolo, la Orden entera de Innsmouth se vuelve contra ellos. 30 aldeanos híbridos les persiguen hasta el límite del pueblo. La única escapatoria es: (a) huir por el túnel hacia el muelle y escapar en barco (CD 14 Atletismo, el bote se aleja de la costa), o (b) telegrafiar al gobierno federal desde la oficina del telégrafo (CD 12 Persuasión con el operador, que es parte de la Orden pero tiene miedo de la autoridad). Si eligen (b), los Federales llegan en 24 horas y queman Innsmouth otra vez (los PJs escapan antes). Si no escapan a tiempo, son capturados y ofrendados.",
+          "difficulty": "hard",
+          "rewards": "Salida de Innsmouth, posible recompensa federal (500 dólares), una ciudad menos en el mapa, trauma (Cordura automática 1d3 al presenciar la quema de Innsmouth)."
+        }
+      ]
+    }
+  ]
+}

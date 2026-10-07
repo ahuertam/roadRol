@@ -6,6 +6,8 @@ import { renderPlaceholder } from './ui/screens/placeholder.js'
 import { renderCharacterNew, renderCharacterEdit } from './ui/screens/character.js'
 import { renderGallery } from './ui/screens/gallery.js'
 import { renderSetup } from './ui/screens/setup.js'
+import { renderGame } from './ui/screens/game.js'
+import { renderPacks } from './ui/screens/packs.js'
 import { seedIfEmpty } from './core/seed.js'
 import {
   listCharacters, getCharacter, saveCharacter, deleteCharacter,
@@ -32,11 +34,12 @@ function mountApp() {
     '/':                          renderHome,
     '/setup':                     renderSetup,
     '/game':                      (p, c) => { c.innerHTML = renderPlaceholder('Partida en curso', '/') },
-    '/game/:id':                  (p, c) => { c.innerHTML = renderPlaceholder(`Partida ${p.id}`, '/') },
+    '/game/:id':                  renderGame,
     '/player':                    (p, c) => { c.innerHTML = renderPlaceholder('Vista de jugador', '/') },
     '/gallery':                   renderGallery,
     '/character/new/:system':     renderCharacterNew,
-    '/character/:id':             renderCharacterEdit
+    '/character/:id':             renderCharacterEdit,
+    '/packs':                     renderPacks
   })
 }
 

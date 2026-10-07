@@ -1,0 +1,96 @@
+{
+  "name": "La Maldición de Kha-em-waset (La Llamada de Cthulhu)",
+  "system": "cthulhu",
+  "setting": "horror",
+  "missions": [
+    {
+      "id": "momia-1",
+      "title": "El despertar en el museo",
+      "brief": "En el Museo de Historia Natural de la Universidad Miskatonic, una momia egipcia de 3.000 años — Kha-em-waset, hijo del faraón — ha empezado a moverse. No es una resurrección completa: solo se levanta de su sarcófago entre la medianoche y las 3 de la mañana, escribe algo en jeroglíficos en las paredes, y vuelve a su ataúd. La conservadora jefe, Dra. Adelaide Whipple, está aterrorizada: tres vigilantes han renunciado, dos han sido encontrados dormidos en posiciones imposibles, y la momia ha escrito una sola palabra 14 veces en la pared: 'LIBRAR'. La universidad paga 500 dólares a quien descubra qué quiere la momia y la detenga. Mejor aún: quien la 'libere' de forma segura recibirá una recompensa federal de 2.000 dólares.",
+      "objectives": [
+        "Investigar la sala egipcia del museo de noche",
+        "Ver a la momia en acción",
+        "Descifrar los jeroglíficos",
+        "Descubrir qué pide Kha-em-waset"
+      ],
+      "encounters": [
+        {
+          "type": "conversation",
+          "title": "Dra. Adelaide Whipple",
+          "description": "Adelaide, 50 años, pelo canoso recogido, bata blanca, está en su despacho. Les entrega una foto de los jeroglíficos y el catálogo del museo: 'Kha-em-waset fue un sumo sacerdote de Osiris, hijo del faraón Ramsés IX. Se dice que intentó robar el ojo de Horus del templo de Karnak y fue momificado vivo como castigo. Su sarcófago tiene un conjuro que dice: 'El que robe el ojo morirá dos veces.' La momia aparece solo a investigadores con descendencia egipcia. No creo en maldiciones, pero... hace tres noches, escribí en mi diario. Esta mañana, había un jeroglífico nuevo: 'LIBRAR.' Es como si me respondiera.'",
+          "difficulty": "easy"
+        },
+        {
+          "type": "puzzle",
+          "title": "Los jeroglíficos de Kha-em-waset",
+          "description": "La pared tiene 14 inscripciones de 'LIBRAR' y, además, una sola inscripción larga que aparece solo de noche (CD 14 Ocultismo para verla a simple vista, o CD 10 con una luz negra). Traducción: 'Yo robé el ojo. Morí dos veces. La primera fue en vida. La segunda, en este sarcófago, no termina nunca. Cada noche despierto y escribo LIBRAR porque aún no he aprendido a no hacerlo. Pero tú, lector, puedes liberarme. Encuentra el ojo. Devuélvelo a Karnak. O quémalo. Pero no lo dejes en este museo. Es lo que me mantiene atado.'",
+          "difficulty": "medium"
+        },
+        {
+          "type": "trap",
+          "title": "La sala egipcia de noche",
+          "description": "Para ver a la momia, los PJs deben pasar la noche en la sala (con permiso de Adelaide, o de incógnito). CD 12 Sigilo para no alertar al vigilante: a las 12:30, la momia se levanta de su sarcófago. CD 12 Cordura automática: ver a una momia de 3.000 años caminar. La momia camina lentamente hasta una pared, escribe con su dedo meñique, y vuelve al sarcófago. Si los PJs la tocan, el toque es cálido, no frío. Si la atacan, no responde — sigue escribiendo. Si la interrogan, escribe: '¿TIENES EL OJO?'",
+          "difficulty": "medium"
+        },
+        {
+          "type": "conversation",
+          "title": "El vigilante nocturno Marcus",
+          "description": "Marcus, 40 años, ex-marine, está contratado como vigilante del museo de noche. Les dice: 'La momia se levanta cada noche. Yo le tengo miedo. Pero una vez, le dejé un papel y un lápiz en el suelo. A la mañana siguiente, había escrito: 'EL OJO ESTA EN LA CAJA 17.' Revisé la caja 17. No hay nada. Pero la caja 17 es una de las cajas de seguridad del ático. Solo la Dra. Whipple tiene la llave.'",
+          "difficulty": "easy",
+          "rewards": "Ubicación del ojo: caja fuerte de Adelaide."
+        },
+        {
+          "type": "discovery",
+          "title": "La caja fuerte y el ojo",
+          "description": "La caja fuerte de Adelaide contiene, además de documentos confidenciales, un pequeño cofre de bronce con un ojo de obsidiana dentro. CD 13 Investigación o CD 15 Historia: el ojo es de obsidiana negra, con un iris de oro. Mide 3 cm. Al tocarlo, todos los PJs sienten un escalofrío. Si los PJs preguntan a Adelaide, ella confiesa: 'Lo encontré en 1920, en una excavación en Egipto. Lo traje de contrabando. Pensé que era inofensivo. Cuando lo traje al museo, Kha-em-waset empezó a despertarse. Si se lo llevan, tal vez descanse. Pero llévenlo lejos de aquí. O quémenlo. Lo que sea, pero no lo dejen.'",
+          "difficulty": "hard"
+        }
+      ]
+    },
+    {
+      "id": "momia-2",
+      "title": "La última noche de Kha-em-waset",
+      "brief": "Los PJs tienen el ojo. Pero llevarlo es peligroso: donde va el ojo, hay seguidores de un culto egipcio que también lo quieren (creen que abre 'la Puerta de Osiris' hacia la vida eterna). Y la momia, ahora sin su atadura, comienza a despertar más cada noche. Tiene 3 días para devolver el ojo a Karnak (Egipto, imposible por mar en ese plazo) o destruirlo en un ritual correcto. Una pista: el ojo se destruye con la fórmula del 'Ojo de Horus', un conjuro egipcio que requiere los nombres de los 4 hijos de Horus (Imsety, Hapy, Duamutef, Qebehsenuef) pronunciados sobre el ojo mientras se entierra en arena del Nilo.",
+      "objectives": [
+        "Destruir el ojo de obsidiana en un ritual",
+        "Conseguir arena del Nilo (¿hay algún egiptólogo en la universidad?)",
+        "Evitar al culto egipcio que persigue el ojo",
+        "Liberar a Kha-em-waset definitivamente"
+      ],
+      "encounters": [
+        {
+          "type": "conversation",
+          "title": "El profesor de egiptología Dr. Salim Hassan",
+          "description": "Salim, 60 años, egipcio-americano, experto en la XVIII dinastía, trabaja en la universidad. Si los PJs le piden arena del Nilo, les entrega una bolsa pequeña: 'Tengo una muestra de mis excavaciones de 1910. La arena no es importante por su composición, sino por su procedencia. El ritual necesita arena que haya tocado el Nilo. Esta lo ha hecho.' Si los PJs le preguntan por el culto, les pone en alerta: 'Hay un grupo llamado los Hijos de Osiris que llevan años buscando ese ojo. Creen que abre la puerta a la resurrección completa. No son gente de fiar. Su líder en Boston es un tal Youssef, propietario de una tienda de antigüedades en North End.'",
+          "difficulty": "easy",
+          "rewards": "Arena del Nilo, advertencia sobre los Hijos de Osiris, ubicación del líder."
+        },
+        {
+          "type": "trap",
+          "title": "El robo en la habitación del hotel",
+          "description": "Si los PJs duermen con el ojo, este emite un brillo verdoso. CD 13 Percepción: 3 figuras encapuchadas intentan entrar por la ventana. Si los PJs no se despiertan, el ojo es robado y deben recuperarlo. Si pelean, son 3 Hijos de Osiris (HP 18, AC 11, cimitarra corta 1d6+1, fanatismo: +1d6 de daño si pelean por su dios).",
+          "difficulty": "medium"
+        },
+        {
+          "type": "combat",
+          "title": "Youssef y su tienda",
+          "description": "En la tienda de antigüedades, Youssef (HP 50, AC 13, bastón con serpiente de bronce en la empuñadura que hace 1d6+2 + veneno CD 13) y 4 Hijos custodian el ojo robado. Si los PJs entran sin plan (CD 14 Sigilo para acercarse sin ser vistos), la pelea es dura. Si usan un plan (CD 12 Persuasión para engañar a Youssef, haciéndose pasar por compradores), pueden recuperar el ojo sin combate.",
+          "difficulty": "hard"
+        },
+        {
+          "type": "conversation",
+          "title": "Kha-em-waset despierto",
+          "description": "De vuelta en el museo, Kha-em-waset ya no solo escribe: habla. Una voz grave, con eco, sale del sarcófago: 'Me has traído de vuelta. O has venido a destruir el ojo. Si lo destruyes, mi alma descansará. Si lo devuelves, mi alma seguirá maldita. Si lo entregas a esos locos de Osiris, una plaga caerá sobre Boston. Decide, y decide rápido. El alba está cerca. Si no actúas antes del alba, la momia despertará del todo, y yo... no seré yo.'",
+          "difficulty": "medium"
+        },
+        {
+          "type": "puzzle",
+          "title": "El ritual del Ojo de Horus",
+          "description": "Para destruir el ojo, los PJs deben pronunciar los nombres de los 4 hijos de Horus mientras lo entierran en la arena del Nilo. CD 14 Ocultismo: 'Imsety protege el hígado. Hapy los pulmones. Duamutef el estómago. Qebehsenuef los intestinos.' Si los PJs pronuncian los nombres correctamente (en egipcio antiguo, no en español), el ojo se funde en la arena. Si fallan, este explota en una nube negra (Cordura automática 1d6). Kha-em-waset cae de rodillas, llora sin lágrimas, y por primera vez en 3.000 años, sonríe. 'Gracias. Mi nombre era Kha-em-waset. Que los dioses te guarden. Adiós.' Su cuerpo se desmorona en arena.",
+          "difficulty": "hard",
+          "rewards": "Ojo destruido, maldición rota, Kha-em-waset liberado, 500 dólares del museo + 2.000 federales, la momia del museo ahora es polvo (las autoridades la confiscan como prueba)."
+        }
+      ]
+    }
+  ]
+}

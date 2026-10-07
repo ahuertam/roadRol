@@ -1,0 +1,94 @@
+{
+  "name": "La Nave de las Estrellas (La Llamada de Cthulhu)",
+  "system": "cthulhu",
+  "setting": "horror",
+  "missions": [
+    {
+      "id": "nave-1",
+      "title": "El meteorito de la colina",
+      "brief": "En una colina cerca de Arkham, cayó un meteorito hace 3 semanas. La granja cercana, los Wilcox, han cambiado: ya no hablan con los vecinos, cosechan a las 3 de la mañana, y la hija menor, Lavinia (10 años), dice que 'los hombres del cielo vienen a buscarla' cada noche. El profesor de astronomía de Miskatonic, Dr. Pickman (no el pintor, otro), ha examinado el meteorito: 'No es un mineral conocido. Tiene símbolos grabados que no son de ningún idioma terrestre. Y emite una señal de radio cada 12 horas. La misma señal. Quien lo trajo vuelve.' Ofrece 500 dólares por recuperar el meteorito antes de que llegue quien lo envió.",
+      "objectives": [
+        "Visitar la granja de los Wilcox",
+        "Hablar con la familia",
+        "Investigar el meteorito",
+        "Recuperarlo antes del próximo avistamiento"
+      ],
+      "encounters": [
+        {
+          "type": "conversation",
+          "title": "El padre Nahum Wilcox",
+          "description": "Nahum, 50 años, granjero robusto, está pálido y demacrado. Tiene los ojos inyectados en sangre. Les dice: 'Lavinia no duerme. Dice que los hombres altos vienen del cielo. Visten de plata, con ojos como faroles. Le hablan en un idioma que ella no entiende, pero que entiende. Lavan el cuerpo de mi hija con ungüentos. Quieren llevársela. Pero ella es mi hija. No me la van a llevar.' Si los PJs preguntan por el meteorito, Nahum les lleva a la colina. Si los PJs preguntan por la madre, Nahum se tensa: 'Mi mujer, Martha, está en la casa. No habla desde hace 9 días. Solo mira el cielo. Y ríe.'",
+          "difficulty": "medium"
+        },
+        {
+          "type": "conversation",
+          "title": "La madre Martha Wilcox",
+          "description": "Martha, 45 años, sentada en una mecedora, mira al cielo. Si los PJs le hablan, no responde verbalmente, pero tararea una melodía que no es de este mundo. CD 14 Cordura automática al escucharla: la melodía contiene patrones que la mente humana rechaza. Si los PJs le preguntan qué ve, susurra: 'Vienen. Los Elegidos. Lavinia es una de ellos. La van a llevar a las estrellas. No tenemos derecho a detenerlos. Es su destino.'",
+          "difficulty": "hard"
+        },
+        {
+          "type": "trap",
+          "title": "La colina del meteorito",
+          "description": "En la cima de la colina, un cráter de 5 metros. En el centro, un objeto negro de 1 metro, angular, con símbolos grabados. Al acercarse, los PJs sienten un zumbido en los dientes. Si lo tocan, el objeto se enfría o calienta al instante (Cordura automática 0/1). Al anochecer, el objeto emite un haz de luz vertical hacia el cielo, y se oye un sonido grave. Si los PJs están en la colina en ese momento, son 'seleccionados' para la abducción.",
+          "difficulty": "hard"
+        },
+        {
+          "type": "conversation",
+          "title": "La niña Lavinia",
+          "description": "Lavinia, 10 años, ojos enormes y grises, está en el granero. Si los PJs se acercan con amabilidad (CD 60 Carisma), les dice: 'No sois de los suyos. Sois humanos normales. Los míos son los de las estrellas. Quieren mi cuerpo porque es especial. Mi mente es de aquí. Mi cuerpo es de allí. Me han prometido que cuando crezca, volveré con ellos. No tengáis miedo. La abducción es suave. Y luego, podré volar.' Si los PJs le preguntan cuándo vienen, Lavinia mira el cielo: 'Cuando la gran luz suba. Mañana por la noche.'",
+          "difficulty": "hard"
+        },
+        {
+          "type": "discovery",
+          "title": "El mensaje del meteorito",
+          "description": "Los símbolos del meteorito son coordenadas. CD 15 Ocultismo o CD 18 Ciencia: el mensaje dice: 'Punto de abducción. Coordenadas terrestres 42.6N 71.5W. Fecha de recogida: 14/10/1924, 23:00. Sujeto: Lavinia Wilcox. Sujeto alternativo: cualquier humano con potencial telepático.' CD 14 Astronomía: las coordenadas apuntan a esta colina. Si los PJs destruyen el meteorito (con explosivos, con ácido, o enterrándolo a 50 metros bajo tierra), la abducción se cancela. Si lo llevan a una ciudad con 10.000 habitantes, los alienígenas toman a otro 'sujeto alternativo'.",
+          "difficulty": "hard"
+        }
+      ]
+    },
+    {
+      "id": "nave-2",
+      "title": "Los hombres de plata",
+      "brief": "Los PJs destruyeron el meteorito. Lavinia, furiosa, dice: 'Ahora vendrán de todos modos. Saben que estoy aquí. Y saben que alguien les estorba.' Esa misma noche, una luz aparece en el cielo y se posa sobre la granja: una nave, plateada, del tamaño de un autobús. Tres figuras altas, delgadas, con ojos brillantes, bajan y exigen que les entreguen a Lavinia. Si no, 'tomarán a quien sea.' Los PJs deben defender a la familia, repeler la abducción, o negociar. La madre Martha está de su lado (es de los 'elegidos'). El padre Nahum prefiere entregar a la hija antes de perder a su esposa también. Y Lavinia quiere irse.",
+      "objectives": [
+        "Defender a Lavinia (si eligen pelear)",
+        "Negociar con los alienígenas (si eligen parlamentar)",
+        "Escapar de la granja con la familia (si eligen huir)",
+        "Resolver el dilema de Lavinia (quiere irse)"
+      ],
+      "encounters": [
+        {
+          "type": "conversation",
+          "title": "Los hombres de plata",
+          "description": "Las figuras se comunican telepáticamente. Su mensaje: 'Somos los Custodios de la Estela. Hace 100 años plantamos una semilla en esta colina. La semilla es la niña. Crece. Pronto florecerá. Si nos la entregan, la tierra prosperará. Si no, otros 1.000 humanos morirán en la próxima cosecha. Decidan en 10 minutos.' Si los PJs preguntan por qué Lavinia, responden: 'Su sangre tiene el patrón. Solo una en 10 millones. Si la perdemos, esperaremos 100 años más.' Si los PJs preguntan si son peligrosos, una luz blanca de su nave destruye un árbol a 100 metros (sin hacer daño a los PJs, solo demostrando poder).",
+          "difficulty": "hard"
+        },
+        {
+          "type": "trap",
+          "title": "El campo de fuerza",
+          "description": "Si los PJs intentan huir, la nave activa un campo de fuerza alrededor de la granja. CD 14 Ciencia o 16 Ingeniería: el campo bloquea todo lo eléctrico, pero no lo mecánico. Si los PJs tienen un coche de 1920, el motor funciona pero las luces no. Si tienen un caballo, escapa. Si van a pie, deben cruzar 5 km de campo abierto bajo un cielo rojo (Cordura 1d3).",
+          "difficulty": "hard"
+        },
+        {
+          "type": "combat",
+          "title": "Los rayos paralizantes",
+          "description": "Si los PJs pelean, los alienígenas disparan rayos de luz paralizante. CD 15 Destreza o quedarse paralizado 1d6 horas. Si están paralizados, los alienígenas toman a Lavinia y se van. Si hieren a un alienígena, este se regenera en 1d4 rondas. Si los PJs usan espejos para reflejar los rayos, los alienígenas se sorprenden y piden una tregua. La pelea directa es muy difícil (3 alienígenas con HP 80 cada uno, AC 16, multiaattack con 2 rayos paralizantes).",
+          "difficulty": "deadly"
+        },
+        {
+          "type": "conversation",
+          "title": "Lavinia toma la decisión",
+          "description": "Lavinia se adelanta y habla a los alienígenas en su idioma mental. Luego se vuelve a los PJs: 'Les dije que estoy cansada de esperar. Quiero irme. Pero les pedí una cosa a cambio: que curen a mi madre y que mi padre viva en paz. Si lo prometen, me voy con ellos. Si no, peleo.' Si los PJs le preguntan por qué, Lavinia explica: 'Mamá quiere que me vaya. Papá me retiene por amor, no por voluntad. Yo quiero ver las estrellas. Llevamos aquí 10 años esperando. Es hora.' Es una decisión adulta de una niña de 10 años, con el peso de los mitos cósmicos de Lovecraft.",
+          "difficulty": "hard"
+        },
+        {
+          "type": "discovery",
+          "title": "La negociación final",
+          "description": "Los alienígenas aceptan: curarán a Martha (devolviéndole la cordura y la palabra) y protegerán a Nahum durante 10 años. A cambio, se llevan a Lavinia. La niña abraza a su padre, le susurra 'te quiero' y sube a la nave. Martha despierta, grita, pero es de alivio. Nahum llora durante horas. La nave desaparece en el cielo. Los PJs reciben 1.000 dólares de Nahum (todo lo que tiene) y una promesa: si algún día quieren saber de Lavinia, miren al cielo en noches de estrellas fugaces. A veces, una luz verde les saludará.",
+          "difficulty": "hard",
+          "rewards": "500 dólares del Dr. Pickman + 1.000 de Nahum, Martha curada, futuro abierto: futuras misiones con los Custodios de la Estela como aliados o antagonistas."
+        }
+      ]
+    }
+  ]
+}

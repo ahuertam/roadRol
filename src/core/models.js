@@ -47,9 +47,38 @@ export const SCHEMA_VERSION = 1
  * @property {string} setting
  * @property {GameStatus} status
  * @property {string[]} characters      ids de Character
- * @property {Object|null} mission      { title, brief, objectives[] }
+ * @property {Object|null} mission      { title, brief, objectives[], encounters[], sourcePackId, sourceMissionId }
  * @property {Encounter[]} encounters
  * @property {string|null} currentEncounterId
+ * @property {number} missionCursor
  * @property {string} createdAt
  * @property {string} updatedAt
+ */
+
+/**
+ * @typedef {Object} PackEncounterTemplate
+ * @property {EncounterType} type
+ * @property {string} title
+ * @property {string} description
+ * @property {string} [difficulty]
+ * @property {string} [rewards]
+ */
+
+/**
+ * @typedef {Object} PackMission
+ * @property {string} id
+ * @property {string} title
+ * @property {string} brief
+ * @property {string[]} [objectives]
+ * @property {PackEncounterTemplate[]} encounters
+ */
+
+/**
+ * @typedef {Object} Pack
+ * @property {string} id
+ * @property {string} name
+ * @property {string} system
+ * @property {string} [setting]
+ * @property {PackMission[]} missions
+ * @property {string} importedAt
  */

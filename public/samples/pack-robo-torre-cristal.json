@@ -1,0 +1,99 @@
+{
+  "name": "Robo en la Torre de Cristal (D&D 5e)",
+  "system": "dnd5e",
+  "setting": "fantasy",
+  "missions": [
+    {
+      "id": "torre-1",
+      "title": "El contrato del Gremio de Sombras",
+      "brief": "En la ciudad libre de Puerto Escondido, el Gremio de Sombras — una red de ladrones y espías — ha contactado a los PJs. Su líder, la elfa Sombría Vex'ahlia, ofrece 5.000 PO por el Bastón de Luz Eterna, un artefacto mágico guardado en la cámara acorazada del archimago Solium, en la Torre de Cristal. La torre tiene 12 pisos, 80 guardias, 30 magos y trampas por doquier. Los PJs tienen 2 semanas para preparar el golpe. Es solo robo: nada de matar, a menos que sea inevitable.",
+      "objectives": [
+        "Infiltrarse en la Torre de Cristal",
+        "Evitar a los guardias y magos",
+        "Encontrar la cámara acorazada del bastón",
+        "Robar el Bastón de Luz Eterna",
+        "Salir vivos sin matar a nadie (preferentemente)"
+      ],
+      "encounters": [
+        {
+          "type": "conversation",
+          "title": "Vex'ahlia en la taberna El Ojo de la Aguja",
+          "description": "Vex'ahlia, elfa oscura de ojos violeta, los recibe en la trastienda de la taberna, sentada en una mesa rodeada de mapas. Les entrega tres documentos: el plano de la torre (con los puntos ciegos de los guardias), una lista de nombres de los magos y sus horarios, y una nota sobre la contraseña del día. 'El bastón está en el piso 11, cámara 11-A. La cerradura es mágica, solo se abre con la voz del archimago o con un ganzúa arcana. Conozco a un enano que las hace. 200 PO extra, fuera del contrato.'",
+          "difficulty": "easy",
+          "rewards": "Plano de la torre, lista de magos, contacto para ganzúas arcanas."
+        },
+        {
+          "type": "puzzle",
+          "title": "La entrada del servicio",
+          "description": "Para entrar sin ser detectados, los PJs deben disfrazarse de personal de limpieza o mercaderes. La entrada del servicio tiene un guardián que pide una contraseña. CD 15 Engaño o 14 Persuasión: la contraseña del día es 'Luz de cristal' (cambia cada día). Si fallan, pueden sobornar al guardián (50 PO) o dejarlo inconsciente (CD 13 Sigilo + 1d4 daño no letal).",
+          "difficulty": "medium"
+        },
+        {
+          "type": "trap",
+          "title": "Las trampas del pasillo principal",
+          "description": "El pasillo principal está plagado de trampas: baldosas que disparan dardos (CD 15 Percepción o 13 Trampas), un charco de agua electrificado (CD 13 para notar, salvación de Destreza CD 15 o 3d6 daño eléctrico), y una puerta con conjuro de alarma. Si se activa alguna, el piso 4 envía magos a investigar.",
+          "difficulty": "hard"
+        },
+        {
+          "type": "conversation",
+          "title": "El mago aprendiz Renaldo",
+          "description": "En el piso 7, un mago joven y nervioso (Renaldo, 22 años, desesperado por dinero para pagar una deuda) está de guardia. Si los PJs le ofrecen 500 PO y prometen sacarlo de la torre, les da la contraseña mágica del día y les dice la ubicación exacta del bastón. Si lo delatan, se suicida.",
+          "difficulty": "medium",
+          "rewards": "Contraseña mágica, información precisa sobre la cámara del bastón."
+        },
+        {
+          "type": "trap",
+          "title": "La cámara acorazada del piso 11",
+          "description": "La cámara tiene tres cerraduras: una mecánica, una arcana y una trampa. La mecánica es un puzzle de cinco discos (CD 15 Investigación: 4, 1, 5, 2, 6 — un código que Renaldo susurró). La cerradura arcana necesita la contraseña 'Lumen aeternum' (que Renaldo les dio). La trampa: si abren sin desactivar, una explosión de luz daña 4d6 a todos en un radio de 10 pies y alerta a todo el piso. Con la ganzúa arcana del enano de Vex'ahlia, la trampa se desactiva sola.",
+          "difficulty": "hard",
+          "rewards": "Acceso al Bastón de Luz Eterna."
+        }
+      ]
+    },
+    {
+      "id": "torre-2",
+      "title": "La huida con el bastón",
+      "brief": "Los PJs tienen el bastón. Pero ahora tienen que salir con él. La torre entera se ha activado: alarmas, magos corriendo, y el archimago Solium ha invocado un elemental de fuego para proteger sus aposentos. Los PJs deben llegar a la salida del servicio, donde Vex'ahlia les espera con un carruaje. Cada minuto que pasa, los magos afinan más su búsqueda. Si capturan a un PJ, pueden negociar (devolver el bastón por libertad). Si matan a un mago, Solium convierte al PJ en rana y huye con el bastón.",
+      "objectives": [
+        "Escapar del piso 11 con el bastón",
+        "Evitar o neutralizar al elemental de fuego",
+        "Llegar a la salida del servicio sin matar a nadie",
+        "Encontrar a Vex'ahlia y cobrar el pago"
+      ],
+      "encounters": [
+        {
+          "type": "combat",
+          "title": "El elemental de fuego",
+          "description": "Un elemental de fuego de 12 pies (HP 102, AC 13, multiaattack con 2 golpes de slam 2d6+4 cada uno + 2d6 de daño por fuego) bloquea la escalera principal. Vulnerabilidad a frío y al agua. Si los PJs usan el Bastón de Luz Eterna contra él (un ataque), este se debilita (1d8 de daño radiante adicional). Si lo destruyen, Solium pierde mucho poder pero queda muy enfadado.",
+          "difficulty": "hard"
+        },
+        {
+          "type": "conversation",
+          "title": "El archimago Solium",
+          "description": "Solium, 70 años, barba blanca hasta la cintura, robes azules brillantes, aparece flotando. Si los PJs le devuelven el bastón, perdona la intrusión y les da 1.000 PO de 'donación' a la universidad. Si huyen, lanza un hechizo de persecución que durará 24 horas. Si los PJs le piden trabajo, les ofrece 5.000 PO por robar un libro a su rival, el archimago Malignor.",
+          "difficulty": "hard"
+        },
+        {
+          "type": "trap",
+          "title": "La escalera secreta del piso 5",
+          "description": "Para evitar el combate del elemental, los PJs pueden usar una escalera secreta detectada en el plano. Pero tiene una trampa: un conjuro de miedo (CD 15 Sabiduría o huir 1 minuto). Si lo pasan, llegan al piso 3 sin alertar a nadie.",
+          "difficulty": "medium"
+        },
+        {
+          "type": "conversation",
+          "title": "El cocinero cómplice",
+          "description": "En la cocina del piso 2, un cocinero gordo (Tobias) que odia a Solium (le debe 3 meses de sueldo) acepta distraer a los guardias del piso 1 si le dan 100 PO y prometen llevarlo con ellos. Es un PNJ útil para un escape limpio.",
+          "difficulty": "easy",
+          "rewards": "Aliado improvisado, distracción de 3 guardias."
+        },
+        {
+          "type": "discovery",
+          "title": "El carruaje de Vex'ahlia",
+          "description": "En la salida del servicio, un carruaje negro espera. Vex'ahlia, dentro, sonríe: 'Cinco minutos más y me iba sin vosotros. Toma, tu parte. Y un consejo: el bastón emite una señal mágica. Solium os perseguirá. Os recomiendo ir al sur, donde mi gremio tiene contactos para esconderlo.' Entrega un saco con 5.000 PO y un mapa con un escondite seguro. Si los PJs aceptan el trabajo de Solium (robar el libro de Malignor), Vex'ahlia les corta el contacto — no traicionan a un cliente.",
+          "difficulty": "easy",
+          "rewards": "5.000 PO de Vex'ahlia, escondite seguro, posible nuevo contrato (misión de Solium)."
+        }
+      ]
+    }
+  ]
+}

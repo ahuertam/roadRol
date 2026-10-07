@@ -1,0 +1,103 @@
+{
+  "name": "Expediente Whately (La Llamada de Cthulhu)",
+  "system": "cthulhu",
+  "setting": "horror",
+  "missions": [
+    {
+      "id": "whately-busqueda",
+      "title": "La desaparición del profesor Whately",
+      "brief": "El decano Morgan, de la biblioteca de la Universidad Miskatonic, ha contratado a los investigadores. El profesor Nathaniel Whately, especialista en historia colonial, desapareció hace nueve días. La policía lo archivó como 'mayor que se fue a pescar', pero Morgan sabe que Whately estaba investigando algo: un libro sin catalogar que él mismo encontró en el sótano del archivo hace dos meses. La última vez que se le vio, llevaba el libro bajo el brazo y se dirigía a la vieja mansión Whately, en las afueras de Arkham, herencia de familia que nadie ha habitado en treinta años. El decano paga 50 dólares por pista sólida, 200 por encontrarlo (vivo o muerto).",
+      "objectives": [
+        "Hablar con el decano Morgan en la universidad",
+        "Descifrar el diario cifrado de Whately (dejado en su escritorio)",
+        "Entrevistar a la casera del profesor, la Sra. Penniman",
+        "Investigar al librero de viejo Ezekiel Whateley, dueño de la tienda de libros prohibidos",
+        "Encontrar la mansión Whately y cualquier pista del profesor"
+      ],
+      "encounters": [
+        {
+          "type": "conversation",
+          "title": "El decano Henry Morgan",
+          "description": "Morgan, 60 años, cabello canoso peinado hacia atrás, recibe a los investigadores en su despacho lleno de libros. Está visiblemente nervioso. Les entrega la tarjeta de identificación del profesor (foto de 1923, bigote fino, ojos hundidos), una nota a mano dejada en su escritorio ('Las llaves están donde siempre. No puedo esperar más.') y un adelanto de 25 dólares. Si los PJs preguntan por la familia Whately, Morgan palidece: 'Una rama menor. El último de la línea directa murió en 1893. Algo turbio. No indaguen demasiado.' Si le preguntan por el libro, Morgan confiesa que es un manuscrito encuadernado en piel marrón, sin título, escrito en una mezcla de inglés antiguo y símbolos que no reconoce.",
+          "difficulty": "easy",
+          "rewards": "25 dólares de adelanto, tarjeta del profesor, pista inicial (el mensaje en la nota)."
+        },
+        {
+          "type": "puzzle",
+          "title": "El diario cifrado de Whately",
+          "description": "En el escritorio de Whately hay un diario de cuero con las últimas cuatro páginas escritas en una clave. El sistema es el Liber Primus, una clave de sustitución que Whately mencionó en clase hace años. Tirada de Ocultismo o Crédito Académico (CD 12): los PJs con formación en criptografía o que recuerden las conferencias de Whately pueden descifrar las notas. Si fallan, pueden llevarlo a Ezekiel Whateley, pero entonces él sabrá que están buscando el libro y puede reaccionar de forma impredecible. Notas decodificadas: 'He descifrado la última entrada del manuscrito. Menciona 'El ojo que mira desde la colina' y una cita en Innsmouth Road, kilómetro 17. Voy a la mansión. Si no vuelvo en tres días, quemad mi despacho.'",
+          "difficulty": "medium",
+          "rewards": "Ubicación exacta de la mansión (Innsmouth Road, km 17), advertencia de peligro."
+        },
+        {
+          "type": "conversation",
+          "title": "La casera, Sra. Cornelia Penniman",
+          "description": "Mujer mayor, 70 años, viuda de un predicador, vive en una casa modesta cerca del campus. Le alquiló la habitación del ático al profesor hace tres años. Si los PJs le preguntan con amabilidad (CD 60 Carisma), ella les cuenta: en las últimas dos semanas, Whately apenas dormía. Lo oía murmurar a las 3 de la mañana. Una noche, ella subió y lo encontró de rodillas frente a la ventana, con el libro abierto, repitiendo: 'Viene, viene, ya está aquí.' Otra vez olía a sal marina en su habitación, aunque estamos a 200 km del mar. Le da a los PJs una caja de cerillas vacía que Whately dejó caer, con un símbolo raro pintado en relieve.",
+          "difficulty": "medium",
+          "rewards": "Pista del estado mental de Whately, símbolo arcano (lleva a Ezekiel Whateley)."
+        },
+        {
+          "type": "conversation",
+          "title": "El librero Ezekiel Whateley",
+          "description": "Ezekiel Whateley, 55 años, enjuto, gafas gruesas, vive en la trastienda de 'Whateley's Curiosities', una tienda de libros viejos en French Hill. Es pariente lejano del profesor (tercer primo, según él). Si los PJs le enseñan el símbolo de la caja de cerillas, lo reconoce inmediatamente y se pone pálido: 'No deberíais estar preguntando por esto. Esa marca es de la Sociedad de la Llama Eterna. No existen. Nunca existieron. Si Whately estaba con ellos, está muerto o peor que muerto.' Si le preguntan por la mansión, Ezekiel les da una advertencia: 'No entréis después del ocaso. Lo que vive allí solo despierta cuando no hay luz.' Si le pagan 10 dólares, les da un frasco de polvo blanco: 'Sal marina consagrada. No tenéis suficiente para todo lo que vais a encontrar, pero os puede salvar la vida una vez.'",
+          "difficulty": "hard",
+          "rewards": "Advertencia sobre la Sociedad, ubicación y peligro de la mansión, frasco de sal sagrada (un solo uso, hace 1d6 de daño a no-muertos, evita posesión)."
+        },
+        {
+          "type": "trap",
+          "title": "La verja de la mansión Whately",
+          "description": "La verja de hierro forjado tiene un mecanismo oculto en la cerradura. CD 12 Mecanismo o descubrir al manipular: la cerradura está maldita. Si se fuerza sin desactivar, una aguja hipodérmica sale de la cerradura e inocula un veneno (CD 13 Constitución o sufrir 1d6 de daño y 1 punto de POD perdido durante 24h). Si la desactivan correctamente, la verja se abre sin problema. Dentro del jardín, 5 tumbas sin nombre se inclinan hacia la casa. El aire huele a sal y a podrido. Si los PJs entran después del ocaso, todos pierden 1 punto de COR por la visión inicial de la casa — un rostro pálido les observa desde una ventana del segundo piso, luego desaparece.",
+          "difficulty": "medium",
+          "rewards": "Acceso a la mansión."
+        }
+      ]
+    },
+    {
+      "id": "whately-mansion",
+      "title": "La mansión Whately",
+      "brief": "Los investigadores llegan a la mansión Whately al amanecer. Es una casa colonial de tres plantas, todas las ventanas tapiadas excepto las del segundo piso. La puerta principal está abierta. Dentro, el polvo tiene 30 años, pero hay huellas recientes — un solo par de zapatos, pequeñas, como de mujer o de hombre delgado. La Sociedad de la Llama Eterna usó este lugar como refugio durante generaciones. Aquí es donde el profesor Whately encontró el manuscrito, y aquí fue donde perdió la cabeza. Lo que queda de él, y del libro, está dentro.",
+      "objectives": [
+        "Encontrar al profesor Whately (vivo, muerto, o lo que quede de él)",
+        "Recuperar el manuscrito encuadernado en piel marrón",
+        "Destruir el manuscrito si es posible, o llevarlo de vuelta al decano Morgan",
+        "Salir vivo de la mansión"
+      ],
+      "encounters": [
+        {
+          "type": "trap",
+          "title": "La escalera podrida",
+          "description": "Los primeros seis escalones de la escalera principal están podridos. CD 13 Supervivencia o notar al pisar el primero. Si fallan, la escalera cede y el PJ cae 3 metros, sufriendo 2d6 de daño y quedando aturdido 1 ronda. Si algún PJ queda atascado, los demás pueden sacarlo con CD 10 Fuerza. Hay una cuerda en el armario del recibidor que pueden usar para subir de forma segura después.",
+          "difficulty": "medium"
+        },
+        {
+          "type": "conversation",
+          "title": "El retrato de la abuela Whately",
+          "description": "En el salón principal, un retrato al óleo de una mujer del siglo XVIII, Abigail Whately, cuelga sobre la chimenea. Los ojos del retrato siguen a los PJs. Si alguien le habla directamente con respeto, ella susurra desde el marco (tirada de Escuchar a CD 60): 'Mi hijo enterró el libro en la cripta. Debajo de la losa con la estrella de cinco puntas. Él ya no es mi hijo. Lo que queda de él ya no es él. Sed rápidos. La Llama viene con la noche.' Si le faltan al respeto o la atacan, todos los PJs pierden 1d3 COR. Si usan sal consagrada en ella, el retrato arde y revela un compartimento secreto con una nota: 'El ojo que mira desde la colina. La puerta está en el sótano, detrás de la panoplia.'",
+          "difficulty": "hard",
+          "rewards": "Ubicación del manuscrito (cripta, losa con estrella), advertencia sobre 'la Llama' (cultistas que vienen de noche), posible aliado (Abigail como espíritu tutelar)."
+        },
+        {
+          "type": "puzzle",
+          "title": "La panoplia de armas",
+          "description": "Una colección de espadas, mosquetes y escudos decora el salón del segundo piso. En el centro hay una panoplia con un escudo que tiene tallada una estrella de cinco puntas. Detrás de la panoplia hay una puerta oculta. CD 12 Ocultismo o Crédito Académico: la estrella es el símbolo de la Sociedad de la Llama Eterna, y solo quien lo reconozca puede pronunciar la palabra de paso (en hebreo: 'Or'). Si la pronuncian correctamente, la panoplia gira revelando un pasadizo secreto. Si no, los PJs deben forzar la puerta (CD 15 Fuerza) y hacen ruido suficiente para que cualquier cosa que esté escuchando sepa que han llegado.",
+          "difficulty": "medium",
+          "rewards": "Acceso al sótano y a la cripta."
+        },
+        {
+          "type": "conversation",
+          "title": "El profesor Whately, transformado",
+          "description": "En la cripta, arrodillado frente a una losa con la estrella, está el profesor Whately — pero ya no es él. Viste la misma ropa que en su foto de identificación, pero tiene los ojos en blanco, y susurra palabras en un idioma desconocido mientras traza símbolos en el suelo con los dedos. Si los PJs intentan hablar con él, no responde a su nombre pero sí a 'el libro' o 'el manuscrito'. Si le muestran el símbolo de la caja de cerillas, se gira y dice con voz de otro: 'Llegas tarde. La Llama ya tiene el cuerpo. Solo queda el recipiente.' Si le atacan, huye hacia el pasadizo (los PJs pueden perseguirlo). Si usan sal consagrada, grita y se desploma, volviendo en sí por un momento — dice: 'El libro me ha poseído. El manuscrito es el conducto. Destruidlo. No lo leáis. No lo dejéis en la mansión. Si no, acabará conmigo y con quien lo lea.'",
+          "difficulty": "hard",
+          "rewards": "Información sobre el manuscrito, advertencia sobre su peligrosidad, el profesor recuperado temporalmente (1d4 horas antes de caer de nuevo en trance si no se destruye el libro)."
+        },
+        {
+          "type": "trap",
+          "title": "La cripta y la decisión final",
+          "description": "Bajo la losa con la estrella, en un ataúd de plomo, está el manuscrito encuadernado en piel marrón. Al tocarlo, el PJ siente un escalofrío (tirada de Cordura automática: 0/1d3). Si lo abre, las páginas están escritas en un idioma arcano, con ilustraciones que muestran a un ser cósmico de muchos ojos. Cualquier PJ que lea una página en voz alta pierde 1d6 COR y el libro susurra. Para destruirlo, solo el fuego lo reduce a cenizas (5 minutos de exposición a fuego vivo). Si los PJs no lo destruyen aquí, deben llevarlo a algún lugar seguro y quemarlo allí. Si escapan de la mansión al ocaso, oyen pasos bajando por la escalera de caracol que conduce al sótano — la Sociedad de la Llama Eterna viene. Si no han salido antes de la puesta del sol, la mansión se llena de cultistas y de cosas peores, y la probabilidad de salir con vida baja al 50%.",
+          "difficulty": "hard",
+          "rewards": "El manuscrito (destruido o conservado para entregar al decano), 200 dólares de recompensa final si lo devuelven, posiblemente la amistad del profesor Whately si lo salvaron, posible enemistad permanente de la Sociedad de la Llama Eterna."
+        }
+      ]
+    }
+  ]
+}

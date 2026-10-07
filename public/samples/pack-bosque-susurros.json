@@ -1,0 +1,99 @@
+{
+  "name": "El Bosque de los Susurros (D&D 5e)",
+  "system": "dnd5e",
+  "setting": "fantasy",
+  "missions": [
+    {
+      "id": "susurros-1",
+      "title": "El pueblo que duerme",
+      "brief": "El pueblo de Somnolencia, en el límite del Bosque de los Susurros, lleva dos meses sumido en un sueño colectivo. Todos los habitantes duermen desde el ocaso hasta el mediodía, y los que despiertan cuentan sueños idénticos: una mujer de plata que los llama al bosque. La médica del pueblo, Helga, está despierta porque está embarazada (los sueños no afectan a no natos). Pide ayuda: 1.500 PO por encontrar la causa y detenerla.",
+      "objectives": [
+        "Investigar el pueblo dormido",
+        "Hablar con los pocos que despiertan (Helga, los niños pequeños, forasteros)",
+        "Encontrar al culpable en el bosque",
+        "Detener la maldición sin matar a los afectados"
+      ],
+      "encounters": [
+        {
+          "type": "conversation",
+          "title": "Helga, la médica despierta",
+          "description": "Helga, 35 años, en su tercer mes de embarazo, está agotada. Les entrega un cuaderno con los sueños: todos mencionan 'la dama de plata al borde del lago'. Les dice: 'Antes de la maldición, había un grupo de bardo. Se quedaron tres días cantando en el claro central. Luego se fueron. Y luego empezó esto.' Si los PJs le preguntan por el bardo, recuerda: el líder era un elfo de nombre Lirael.",
+          "difficulty": "easy",
+          "rewards": "Cuaderno de sueños, ubicación del claro central, nombre del bardo."
+        },
+        {
+          "type": "puzzle",
+          "title": "Los sueños colectivos",
+          "description": "En la posada, un niño de 7 años (Elias) está despierto, dibujando los sueños. CD 12 Investigación: el dibujo muestra el claro, el lago, una dama de plata sobre las aguas, y una caja de música abierta a sus pies. El niño explica: 'La dama quiere su música. Se la robaron. Está triste y no puede dormir.' La caja de música es la clave.",
+          "difficulty": "medium"
+        },
+        {
+          "type": "trap",
+          "title": "El camino de los susurros",
+          "description": "En el bosque, los PJs oyen susurros que llaman sus nombres. CD 15 Sabiduría o 18 Voluntad: si fallan, abandonan el camino principal y se pierden 1d4 horas. Si pasan, llegan al claro.",
+          "difficulty": "medium"
+        },
+        {
+          "type": "conversation",
+          "title": "El bardo Lirael en el claro",
+          "description": "Un elfo de pelo largo plateado, Lirael, 200 años, está sentado en una roca tocando una lira. Si los PJs le preguntan, confiesa: 'La dama de plata es mi esposa, Seraphine. Hace cien años, ambos éramos mortales. Ella murió. Mi amor era tan grande que un hada me ofreció traerla de vuelta: 'Solo tienes que tocar la Caja de Música de Plata a la luz de la luna, en un lugar que améis, y ella volverá. Pero si la caja se rompe, el hechizo se extiende: cualquiera que sueñe con ella se unirá a su sueño eterno.' Hace dos meses, la caja se cayó y se rompió. Ahora Seraphine llama a todos a su lado. Solo si encuentro a un artesano que arregle la caja y yo la devuelva a su lugar original, ella volverá a dormir sola.'",
+          "difficulty": "medium",
+          "rewards": "Historia de Seraphine, ubicación de los pedazos de la caja, petición: encontrar al artesano."
+        },
+        {
+          "type": "combat",
+          "title": "Los guardianes del lago",
+          "description": "Al borde del lago, la dama de plata aparece como una ilusión (CD 18 Arcano para ver a los guardias invisibles). 4 guardianes sylvari (HP 28, AC 14, espada de cristal 1d6+3) defienden el lugar. Si los PJs luchan, la dama desaparece. Si llegan con respeto (CD 15 Carisma), la dama les muestra los pedazos de la caja y les pide que los lleven a un artesano en la ciudad de Lira, a 3 días al este.",
+          "difficulty": "hard",
+          "rewards": "Pedazos de la caja de música, mapa a Lira, bendición de la dama: todos los PJs tienen +1 a Sabiduría hasta que la maldición se rompa."
+        }
+      ]
+    },
+    {
+      "id": "susurros-2",
+      "title": "La melodía reparada",
+      "brief": "Los PJs tienen los pedazos de la Caja de Música de Plata. En la ciudad de Lira, un artesano enano llamado Bronn puede repararla. Pero Bronn les pide algo a cambio: quiere que le devuelvan un favor. Hace 50 años, su hija fue hechizada por un hada y duerme en una torre de cristal. Si la liberan, él repara la caja gratis. Si no, cobra 2.000 PO (que los PJs ya gastaron en comida y viajes).",
+      "objectives": [
+        "Llegar a Lira",
+        "Hablar con Bronn, el artesano enano",
+        "Liberar a la hija de Bronn (si quieren reparar la caja gratis)",
+        "Devolver la caja reparada a Lirael",
+        "Romper la maldición del pueblo Somnolencia"
+      ],
+      "encounters": [
+        {
+          "type": "conversation",
+          "title": "Bronn, el artesano enano",
+          "description": "Bronn, 120 años, enano de barba naranja trenzada con cobre, vive en un taller de relojería. Les examina los pedazos: 'Esto es hechicería fey. Puedo repararla, sí, pero tardaré 3 días. Y necesito que me devuelvan a mi hija. Hace 50 años la hada Lunesta me la robó. Ahora duerme en la Torre del Lago de los Cisnes. Si la traen de vuelta, les reparo la caja gratis y les doy un reloj de arena mágico (un solo uso, congela 1 ronda). Si no la traen, 2.000 PO.'",
+          "difficulty": "easy"
+        },
+        {
+          "type": "puzzle",
+          "title": "El camino a la Torre del Lago de los Cisnes",
+          "description": "La torre está en un lago encantado, visible solo al amanecer de los equinoccios (hoy). CD 14 Supervivencia: encontrar el camino correcto entre los juncos, que cambian de posición. Si los PJs tienen un mapa de la dama de plata (de la misión anterior), lo usan como guía (ventaja en la tirada).",
+          "difficulty": "medium"
+        },
+        {
+          "type": "combat",
+          "title": "Los cisnes guardianes",
+          "description": "4 cisnes gigantes (HP 22, AC 12, pico 1d6+2, aleteo 1d4+1) custodian el puente a la torre. Son hechizados por el hada. Si los PJs no luchan (CD 15 Naturaleza para encontrar la forma de romper el hechizo: el agua del lago los libera), pueden pasar sin matar.",
+          "difficulty": "medium"
+        },
+        {
+          "type": "conversation",
+          "title": "Lunesta, el hada caprichosa",
+          "description": "En la cima de la torre, una hada de alas iridiscentes (Lunesta) está sentada junto a una joven enana dormida (Hilda, 50 años pero parece 20). Lunesta explica: 'La robé porque Bronn me rechazó hace 60 años. La chica es mi venganza. Si me la dejáis, os doy un regalo. Si insistís en llevárosla, debéis darme algo equivalente en valor emocional.' Si los PJs ofrecen algo personal (un recuerdo, una promesa, su cabello), Lunesta acepta y libera a Hilda. Si pelean, Lunesta polimorfa en un dragón rojo y huye con Hilda (perdiendo la caja gratis y al aliado).",
+          "difficulty": "hard",
+          "rewards": "Hilda liberada, caja de música reparada gratis, reloj de arena mágico, posible enemistad o amistad con Lunesta según la negociación."
+        },
+        {
+          "type": "discovery",
+          "title": "El ritual de la melodía",
+      "description": "De vuelta en el claro del Bosque de los Susurros, Lirael toma la caja reparada y la abre a la luz de la luna llena. Una melodía de plata sale de la caja. La dama de plata, Seraphine, aparece por última vez, sonríe a su esposo, y ambos desaparecen en un destello. La caja se cierra sola, vacía. En Somnolencia, esa misma noche, todo el pueblo despierta de golpe, con hambre y desorientado pero vivo. La maldición se rompe.",
+          "difficulty": "easy",
+          "rewards": "1.500 PO de Helga, amistad de Lirael (futuras misiones en el bosque), la caja de música vacía (ahora un objeto de museo, 500 PO)."
+        }
+      ]
+    }
+  ]
+}

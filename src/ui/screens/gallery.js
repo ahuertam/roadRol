@@ -32,8 +32,11 @@ export async function renderGallery(params, container) {
 
     container.innerHTML = `
       <main class="screen gallery">
-        <header class="gallery__header">
+        <header class="gallery__topbar">
+          <button type="button" class="btn btn--ghost btn--sm" data-nav="/">← Inicio</button>
           <h1>Galería de personajes</h1>
+        </header>
+        <header class="gallery__header">
           <div class="gallery__filters">
             <label class="visually-hidden" for="gallery-search">Buscar personajes</label>
             <input id="gallery-search" type="search" data-search class="field__input" placeholder="Buscar por nombre…" value="${escapeHtml(state.query)}" aria-label="Buscar personajes" />

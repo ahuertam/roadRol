@@ -7,6 +7,7 @@ export function renderHome() {
         <button class="btn btn--primary" data-nav="/setup">Nueva partida</button>
         <button class="btn" data-nav="/game">Continuar partida</button>
         <button class="btn" data-nav="/gallery">Galería de personajes</button>
+        <button class="btn" data-nav="/packs">Packs de misiones</button>
         <button class="btn" data-nav="/setup">Importar</button>
       </nav>
     </main>
