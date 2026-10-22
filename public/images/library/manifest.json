@@ -1,0 +1,182 @@
+{
+  "version": 1,
+  "description": "Librería base de imágenes para RoadRol. Cada imagen tiene tags semánticos. El matching entity→imagen se hace por intersección de tags.",
+  "defaultStyle": "fantasy or horror art, atmospheric, no text, no logos, dramatic lighting",
+  "defaultSize": [768, 512],
+  "images": [
+    {
+      "slug": "dnd-forest-ambush",
+      "tags": ["dnd5e", "fantasy", "forest", "combat", "ambush", "night", "goblin", "outdoor"],
+      "prompt": "goblin ambush at night in a dark forest, fantasy rpg art, dramatic lighting, three small green creatures attacking from shadows",
+      "system": "dnd5e"
+    },
+    {
+      "slug": "dnd-dungeon-corridor",
+      "tags": ["dnd5e", "fantasy", "dungeon", "corridor", "dark", "indoor", "exploration"],
+      "prompt": "dark stone dungeon corridor with torches, fantasy rpg art, atmospheric, narrow passage with old carvings on walls",
+      "system": "dnd5e"
+    },
+    {
+      "slug": "dnd-dragon-lair",
+      "tags": ["dnd5e", "fantasy", "dragon", "boss", "lair", "cave", "treasure", "fire"],
+      "prompt": "ancient red dragon in a vast treasure-filled cave lair, fantasy rpg art, dramatic lighting, gold coins and gems piled high",
+      "system": "dnd5e"
+    },
+    {
+      "slug": "dnd-tavern",
+      "tags": ["dnd5e", "fantasy", "tavern", "warm", "social", "indoor", "npc", "meeting"],
+      "prompt": "cozy medieval tavern interior with adventurers gathered around a wooden table, fantasy rpg art, warm firelight, mugs and food",
+      "system": "dnd5e"
+    },
+    {
+      "slug": "dnd-wizard-tower",
+      "tags": ["dnd5e", "fantasy", "wizard", "magic", "tower", "indoor", "books", "arcanic"],
+      "prompt": "wizard's tower study with floating books, glowing runes, and arcane artifacts, fantasy rpg art, magical atmosphere",
+      "system": "dnd5e"
+    },
+    {
+      "slug": "dnd-ancient-ruins",
+      "tags": ["dnd5e", "fantasy", "ruins", "mystery", "puzzle", "outdoor", "exploration", "ancient"],
+      "prompt": "mysterious ancient stone ruins overgrown with vines and moss, fantasy rpg art, soft sunlight, hidden doorway",
+      "system": "dnd5e"
+    },
+    {
+      "slug": "dnd-mountain-pass",
+      "tags": ["dnd5e", "fantasy", "mountain", "travel", "outdoor", "snow", "journey", "highlands"],
+      "prompt": "snowy mountain pass with a narrow trail, fantasy rpg art, distant peaks, cold wind, adventurers silhouettes",
+      "system": "dnd5e"
+    },
+    {
+      "slug": "dnd-undead-crypt",
+      "tags": ["dnd5e", "fantasy", "undead", "crypt", "horror", "combat", "indoor", "skeleton"],
+      "prompt": "undead crypt with stone sarcophagi and skeletal warriors rising, fantasy rpg horror art, dust and cobwebs, eerie green light",
+      "system": "dnd5e"
+    },
+    {
+      "slug": "dnd-treasure-vault",
+      "tags": ["dnd5e", "fantasy", "treasure", "vault", "gold", "magic", "indoor", "reward"],
+      "prompt": "ancient treasure vault with piles of gold coins, jeweled chalices, and a glowing magic sword on a pedestal, fantasy rpg art",
+      "system": "dnd5e"
+    },
+    {
+      "slug": "dnd-village",
+      "tags": ["dnd5e", "fantasy", "village", "peaceful", "outdoor", "medieval", "social", "travel"],
+      "prompt": "peaceful medieval village at sunset with thatched-roof houses and a small market square, fantasy rpg art, warm light",
+      "system": "dnd5e"
+    },
+    {
+      "slug": "dnd-ship-deck",
+      "tags": ["dnd5e", "fantasy", "ship", "pirate", "sea", "outdoor", "combat", "travel"],
+      "prompt": "wooden pirate ship deck at sea with billowing sails, fantasy rpg art, dramatic sky, crew on deck, adventure",
+      "system": "dnd5e"
+    },
+    {
+      "slug": "dnd-throne-room",
+      "tags": ["dnd5e", "fantasy", "throne", "king", "royal", "indoor", "social", "npc"],
+      "prompt": "grand royal throne room with a king on a golden throne, banners and knights, fantasy rpg art, marble columns",
+      "system": "dnd5e"
+    },
+    {
+      "slug": "dnd-campfire-night",
+      "tags": ["dnd5e", "fantasy", "campfire", "night", "rest", "outdoor", "social", "calm"],
+      "prompt": "adventurers resting around a campfire at night in a clearing, fantasy rpg art, warm glow, stars above, peaceful",
+      "system": "dnd5e"
+    },
+    {
+      "slug": "dnd-fey-grove",
+      "tags": ["dnd5e", "fantasy", "fey", "forest", "magic", "outdoor", "mystery", "enchanted"],
+      "prompt": "enchanted fey grove with glowing mushrooms, floating lights, and twisted silver trees, fantasy rpg art, ethereal beauty",
+      "system": "dnd5e"
+    },
+    {
+      "slug": "dnd-puzzle-door",
+      "tags": ["dnd5e", "fantasy", "puzzle", "door", "runes", "mystery", "indoor", "dungeon"],
+      "prompt": "ancient stone door with glowing magical runes and a complex mechanical puzzle, fantasy rpg art, dim torchlight, intricate carvings",
+      "system": "dnd5e"
+    },
+    {
+      "slug": "coc-arkham-street",
+      "tags": ["cthulhu", "horror", "1920s", "street", "urban", "noir", "investigation", "night"],
+      "prompt": "1920s Arkham street at night with fog, gas lamps, and shadowy figures, lovecraftian horror art, film noir atmosphere",
+      "system": "cthulhu"
+    },
+    {
+      "slug": "coc-mansion-exterior",
+      "tags": ["cthulhu", "horror", "mansion", "gothic", "outdoor", "night", "investigation", "mystery"],
+      "prompt": "gothic haunted mansion exterior at night with full moon, dead trees, lovecraftian horror art, oppressive atmosphere",
+      "system": "cthulhu"
+    },
+    {
+      "slug": "coc-asylum-corridor",
+      "tags": ["cthulhu", "horror", "asylum", "corridor", "indoor", "madness", "investigation", "dark"],
+      "prompt": "creepy abandoned asylum corridor with peeling paint, broken lights, and a shadowy figure in the distance, lovecraftian horror art",
+      "system": "cthulhu"
+    },
+    {
+      "slug": "coc-old-library",
+      "tags": ["cthulhu", "horror", "library", "books", "indoor", "investigation", "forbidden", "study"],
+      "prompt": "old dark library with forbidden books, candles, and a tentacled shadow on the wall, lovecraftian horror art, dust and shadows",
+      "system": "cthulhu"
+    },
+    {
+      "slug": "coc-port-fog",
+      "tags": ["cthulhu", "horror", "port", "fog", "sea", "outdoor", "innsmouth", "mystery"],
+      "prompt": "foggy port town with strange fish-eyed people on the dock, old boats, lovecraftian horror art, Innsmouth vibes",
+      "system": "cthulhu"
+    },
+    {
+      "slug": "coc-ritual-circle",
+      "tags": ["cthulhu", "horror", "ritual", "cult", "magic", "indoor", "tentacle", "summoning"],
+      "prompt": "occult ritual circle with candles, blood symbols, and a tentacled horror emerging from the center, lovecraftian horror art",
+      "system": "cthulhu"
+    },
+    {
+      "slug": "coc-1920s-office",
+      "tags": ["cthulhu", "horror", "1920s", "office", "indoor", "investigation", "noir", "detective"],
+      "prompt": "1920s detective office with wooden desk, typewriter, files, and a single lamp, lovecraftian horror art, film noir",
+      "system": "cthulhu"
+    },
+    {
+      "slug": "coc-hospital-vintage",
+      "tags": ["cthulhu", "horror", "hospital", "vintage", "1920s", "indoor", "madness", "sanitarium"],
+      "prompt": "1920s abandoned sanitarium hallway with rusted wheelchairs and shadows, lovecraftian horror art, peeling paint, oppressive",
+      "system": "cthulhu"
+    },
+    {
+      "slug": "coc-graveyard-fog",
+      "tags": ["cthulhu", "horror", "graveyard", "fog", "outdoor", "night", "ritual", "death"],
+      "prompt": "foggy graveyard at night with tilted headstones and a non-human silhouette, lovecraftian horror art, dead trees",
+      "system": "cthulhu"
+    },
+    {
+      "slug": "coc-ship-storm",
+      "tags": ["cthulhu", "horror", "ship", "storm", "sea", "outdoor", "eldritch", "night"],
+      "prompt": "old ship in a stormy sea at night with lightning revealing a tentacled shape in the waves, lovecraftian horror art",
+      "system": "cthulhu"
+    },
+    {
+      "slug": "coc-cultist-meeting",
+      "tags": ["cthulhu", "horror", "cult", "meeting", "indoor", "ritual", "conspiracy", "social"],
+      "prompt": "hooded cultists gathered around a table with forbidden tome, candles, lovecraftian horror art, conspiracy, shadowy",
+      "system": "cthulhu"
+    },
+    {
+      "slug": "coc-eldritch-horror",
+      "tags": ["cthulhu", "horror", "eldritch", "monster", "combat", "tentacle", "indoor", "boss"],
+      "prompt": "colossal eldritch horror with tentacles and many eyes emerging from darkness, lovecraftian horror art, awe-inspiring terror",
+      "system": "cthulhu"
+    },
+    {
+      "slug": "coc-tentacle-creature",
+      "tags": ["cthulhu", "horror", "creature", "tentacle", "monster", "combat", "outdoor", "deep"],
+      "prompt": "deep one creature emerging from dark water with tentacles and fish eyes, lovecraftian horror art, swamp at night",
+      "system": "cthulhu"
+    },
+    {
+      "slug": "coc-old-letter",
+      "tags": ["cthulhu", "horror", "letter", "evidence", "1920s", "indoor", "investigation", "discovery"],
+      "prompt": "old handwritten letter on yellowed paper with occult symbols, magnifying glass, lovecraftian horror art, investigator desk",
+      "system": "cthulhu"
+    }
+  ]
+}
