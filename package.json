@@ -7,7 +7,7 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "test": "node scripts/test-image-matching.mjs",
+    "test": "node scripts/test-image-matching.mjs && node scripts/test-game-views.mjs",
     "images": "node scripts/generate-image-library.mjs",
     "images:dry": "node scripts/generate-image-library.mjs --dry"
   },
