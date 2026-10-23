@@ -15,7 +15,21 @@ export default defineConfig({
         display: 'standalone',
         orientation: 'portrait',
         start_url: '/',
-        icons: []
+        lang: 'es',
+        categories: ['games', 'entertainment'],
+        // ponytail: usamos SVG porque Chrome/Firefox/Edge lo soportan y Vite
+        // lo copia a dist sin procesado extra. iOS Safari necesita PNG aparte.
+        icons: [
+          { src: '/icons/icon.svg', sizes: 'any', type: 'image/svg+xml', purpose: 'any' },
+          { src: '/icons/icon.svg', sizes: 'any', type: 'image/svg+xml', purpose: 'maskable' }
+        ]
+      },
+      workbox: {
+        // ponytail: por defecto workbox solo precachea js/css/html. Ampliamos a
+        // json (packs de /samples/) y jpg/svg (librería de imágenes en
+        // /images/library/) para que todo funcione offline tras la 1ª carga.
+        globPatterns: ['**/*.{js,css,html,json,jpg,svg}'],
+        maximumFileSizeToCacheInBytes: 2 * 1024 * 1024
       },
       devOptions: { enabled: true }
     })
