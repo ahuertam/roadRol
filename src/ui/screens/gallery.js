@@ -9,9 +9,20 @@ import { escapeHtml } from '../../core/escape.js'
 
 export async function renderGallery(params, container) {
   // Estado de UI vive en este closure
+  // ponytail: pre-computar imagen para cada personaje (1 fetch a la library, después cache)
+  const { imageFor } = await import('../../core/images.js')
+  const characters = await listCharacters()
+  const charImages = {}
+  await Promise.all(characters.map(async c => {
+    charImages[c.id] = await imageFor({
+      id: c.id, name: c.name, title: c.name, system: c.system, setting: c.setting
+    })
+  }))
+
   const state = {
     query: '',
-    characters: await listCharacters(),
+    characters,
+    charImages,
     systemFilter: ''
   }
 
@@ -58,7 +69,7 @@ export async function renderGallery(params, container) {
           </div>
         ` : `
           <div class="gallery__list">
-            ${filtered.map(renderCharacterCard).join('')}
+            ${filtered.map(c => renderCharacterCard({ ...c, _img: state.charImages[c.id] })).join('')}
           </div>
         `}
       </main>

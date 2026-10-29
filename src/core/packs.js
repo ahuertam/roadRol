@@ -43,7 +43,7 @@ export async function importPackFromJSON(raw) {
   })
 }
 
-/** Importa todos los JSONs de /samples/ de un golpe. Devuelve { imported, skipped }. */
+/** Importa todos los JSONs de /samples/ de un golpe. Devuelve { imported, skipped, errors, total }. */
 export async function importSamplePacks() {
   // Listado explícito para no depender de un directory listing.
   const samples = [
@@ -61,7 +61,12 @@ export async function importSamplePacks() {
     'pack-momia-museo.json',
     'pack-nave-estrellas.json'
   ]
+  // ponytail: comprobar nombres existentes para no duplicar si el user hace click dos veces
+  const existing = await listPacks()
+  const existingNames = new Set(existing.map(p => p.name))
+
   let imported = 0
+  let skipped = 0
   const errors = []
   for (const filename of samples) {
     try {
@@ -71,13 +76,20 @@ export async function importSamplePacks() {
         continue
       }
       const json = await resp.json()
-      await importPackFromJSON(json)
+      const pack = json?.pack || json?.entity || json
+      if (existingNames.has(pack?.name)) {
+        skipped++
+        continue
+      }
+      validatePack(pack)
+      await savePack({ ...pack, id: newId(), importedAt: new Date().toISOString() })
+      existingNames.add(pack.name)
       imported++
     } catch (e) {
       errors.push(`${filename}: ${e.message}`)
     }
   }
-  return { imported, errors, total: samples.length }
+  return { imported, skipped, errors, total: samples.length }
 }
 
 export function validatePack(pack) {
@@ -111,6 +123,27 @@ export function validatePack(pack) {
     }
   }
 }
+
+/** Lista de samples conocidas (mirror del array interno). Útil para que la UI
+ *  sepa cuántos samples hay y si el user ya los importó todos. */
+export const SAMPLE_PACKS = [
+  'pack-mina-perdida.json',
+  'pack-bosque-maldito.json',
+  'pack-expediente-whately.json',
+  'pack-galeon-maldito.json',
+  'pack-tumba-faraon.json',
+  'pack-asedio-piedra-alta.json',
+  'pack-robo-torre-cristal.json',
+  'pack-bosque-susurros.json',
+  'pack-profundidades-innsmouth.json',
+  'pack-sanatorio-abandonado.json',
+  'pack-culto-ojo.json',
+  'pack-momia-museo.json',
+  'pack-nave-estrellas.json'
+]
+
+/** Devuelve los nombres de los samples. Para fetch, no usar este array. */
+export const SAMPLE_PACK_NAMES = SAMPLE_PACKS.length
 
 /** Re-exporta las funciones de storage para conveniencia. */
 export { listPacks, getPack, savePack, deletePack }

@@ -69,8 +69,13 @@ export async function renderSetup(params, container) {
     missionId: '',
     selectedCharIds: new Set(),
     characters,
-    packs
+    packs,
+    importingSamples: false,
+    importError: null
   }
+  // Flags efímeros (no se persisten en sessionStorage)
+  state.importingSamples = state.importingSamples || false
+  state.importError = state.importError || null
   // Si recargamos desde storage, refrescamos characters y packs
   state.characters = characters
   state.packs = packs
@@ -91,14 +96,10 @@ export async function renderSetup(params, container) {
 
   function persist() { saveStoredState(state) }
 
-  // ponytail: limpia sessionStorage cuando el usuario sale del wizard (excepto a /character/new)
-  const onHashChange = () => {
-    const path = location.hash.slice(1).split('?')[0]
-    if (path !== '/setup' && !path.startsWith('/character/new')) {
-      clearStoredState()
-    }
-  }
-  window.addEventListener('hashchange', onHashChange)
+  // ponytail: limpiamos sessionStorage solo en eventos explícitos (cancel-wizard, startGame).
+  // Quitamos el listener global hashchange — antes se acumulaba uno nuevo por cada
+  // entrada al wizard, y se borraba el state al cancelar desde /character/new.
+  // function persist() ya guarda en cada cambio de state.
 
   function paint() {
     container.innerHTML = renderWizard(state)
@@ -158,14 +159,24 @@ export async function renderSetup(params, container) {
     } else if (action === 'create-character') {
       const url = `/character/new/${state.systemId}?returnTo=/setup`
       location.hash = url
+    } else if (action === 'cancel-wizard') {
+      clearStoredState()
+      location.hash = '/'
     } else if (action === 'import-samples') {
-      importSamplePacks().then(({ imported, total }) => {
-        state.packs = state.packs.concat()  // forzar refresh
-        return listPacks()
-      }).then(packs => {
-        state.packs = packs
-        paint()
-      })
+      state.importingSamples = true
+      state.importError = null
+      paint()
+      importSamplePacks()
+        .then(async () => {
+          state.packs = await listPacks()
+        })
+        .catch((err) => {
+          state.importError = `No se pudieron cargar los packs: ${err.message}`
+        })
+        .finally(() => {
+          state.importingSamples = false
+          paint()
+        })
     }
   }
 
@@ -257,7 +268,7 @@ function renderStep1(state) {
       </div>
 
       <div class="setup__nav">
-        <button class="btn btn--ghost" data-nav="/" type="button">← Cancelar</button>
+        <button class="btn btn--ghost" data-action="cancel-wizard" type="button">← Cancelar</button>
         <button class="btn btn--primary" data-action="next" type="button" ${state.systemId ? '' : 'disabled'}>Siguiente →</button>
       </div>
     </section>
@@ -280,7 +291,7 @@ function renderStep2(state) {
       </div>
 
       <div class="setup__nav">
-        <button class="btn btn--ghost" type="button" data-nav="/">🏠 Inicio</button>
+        <button class="btn btn--ghost" type="button" data-action="cancel-wizard">🏠 Inicio</button>
         <button class="btn btn--ghost" data-action="back" type="button">← Atrás</button>
         <button class="btn btn--primary" data-action="next" type="button" ${state.settingId ? '' : 'disabled'}>Siguiente →</button>
       </div>
@@ -317,15 +328,19 @@ function renderStep3(state) {
           <p>No hay misiones de <strong>${escapeHtml(getSystem(state.systemId)?.name || state.systemId)}</strong> en tus packs.</p>
           <p class="setup__empty-hint">Importa un pack que coincida con este sistema, o juega sin misión.</p>
           <div class="setup__empty-actions">
-            <button type="button" class="btn btn--primary" data-action="import-samples">✨ Cargar 13 packs de ejemplo</button>
+            <button type="button" class="btn btn--primary" data-action="import-samples"
+                    ${state.importingSamples ? 'disabled' : ''}>
+              ${state.importingSamples ? '⏳ Cargando…' : '✨ Cargar 13 packs de ejemplo'}
+            </button>
             <button type="button" class="btn btn--ghost" data-nav="/packs">📥 Ir a Packs</button>
           </div>
+          ${state.importError ? `<div class="settings__banner settings__banner--err">${escapeHtml(state.importError)}</div>` : ''}
           ${renderAvailablePacksList(state.packs, state.systemId, state.settingId)}
         </div>
       ` : ''}
 
       <div class="setup__nav">
-        <button class="btn btn--ghost" type="button" data-nav="/">🏠 Inicio</button>
+        <button class="btn btn--ghost" type="button" data-action="cancel-wizard">🏠 Inicio</button>
         <button class="btn btn--ghost" data-action="back" type="button">← Atrás</button>
         <button class="btn btn--primary" data-action="next" type="button">Siguiente →</button>
       </div>
@@ -384,7 +399,7 @@ function renderStep4(state) {
       ${charactersBlock}
 
       <div class="setup__nav">
-        <button class="btn btn--ghost" type="button" data-nav="/">🏠 Inicio</button>
+        <button class="btn btn--ghost" type="button" data-action="cancel-wizard">🏠 Inicio</button>
         <button class="btn btn--ghost" data-action="back" type="button">← Atrás</button>
         <button class="btn btn--primary" data-action="next" type="button">Iniciar partida</button>
       </div>

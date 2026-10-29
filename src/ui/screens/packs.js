@@ -1,7 +1,7 @@
 // Pantalla de packs de misiones. Lista, importa desde archivo, importa samples, elimina.
 
 import { listPacks, deletePack } from '../../core/storage.js'
-import { importPackFromFile, importSamplePacks } from '../../core/packs.js'
+import { importPackFromFile, importSamplePacks, SAMPLE_PACKS } from '../../core/packs.js'
 import { getSystem, getSetting } from '../../modules/index.js'
 import { escapeHtml } from '../../core/escape.js'
 
@@ -46,18 +46,22 @@ export async function renderPacks(params, container) {
       samplesBtn.addEventListener('click', async () => {
         if (state.importingSamples) return
         state.importingSamples = true
+        state.error = null
+        state.success = null
         paint()
         try {
-          const { imported, total, errors } = await importSamplePacks()
+          const { imported, skipped, errors, total } = await importSamplePacks()
           state.packs = await listPacks()
-          if (imported === total) {
-            state.success = `✓ Importados los ${imported} packs de ejemplo.`
+          if (imported === 0 && skipped === total) {
+            state.success = `✓ Los ${total} packs de ejemplo ya estaban importados.`
+          } else if (imported > 0 && skipped > 0) {
+            state.success = `✓ Importados ${imported} packs nuevos (${skipped} ya existían).`
           } else if (imported > 0) {
-            state.success = `Importados ${imported} de ${total} packs (${errors.length} fallaron).`
-          } else {
-            state.error = `No se pudo importar ningún pack. Errores: ${errors.join('; ')}`
+            state.success = `✓ Importados los ${imported} packs de ejemplo.`
           }
-          state.error = state.error || (errors.length ? `Algunos fallaron: ${errors.join('; ')}` : state.error)
+          if (errors.length) {
+            state.error = `Fallaron ${errors.length}: ${errors.join('; ')}`
+          }
         } finally {
           state.importingSamples = false
           paint()
@@ -87,6 +91,11 @@ function renderView(state) {
       ? `<div class="settings__banner settings__banner--ok">${escapeHtml(state.success)}</div>`
       : ''
 
+  // ponytail: si el user ya tiene todos los samples, el botón se deshabilita solo
+  const sampleNameSet = new Set(SAMPLE_PACKS)
+  const importedSamples = state.packs.filter(p => /^pack-/.test(p.name)).length
+  const allSamplesPresent = importedSamples >= SAMPLE_PACKS.length
+
   return `
     <main class="screen packs">
       <header class="packs__header">
@@ -95,7 +104,7 @@ function renderView(state) {
       </header>
 
       <p class="packs__hint">
-        Los packs son ficheros JSON con misiones y encuentros prefabricados.
+        Los packs son ficheros JSON con misiones y encounters prefabricados.
         Impórtalos aquí para usarlos al crear partidas.
       </p>
 
@@ -106,8 +115,13 @@ function renderView(state) {
           📥 Importar pack (.json)
           <input type="file" data-file-input accept=".json,application/json" hidden />
         </label>
-        <button type="button" class="btn btn--ghost packs__import-samples" data-import-samples ${state.importingSamples ? 'disabled' : ''}>
-          ${state.importingSamples ? '⏳ Importando…' : '✨ Importar 13 packs de ejemplo'}
+        <button type="button" class="btn btn--ghost packs__import-samples" data-import-samples
+                ${state.importingSamples || allSamplesPresent ? 'disabled' : ''}>
+          ${state.importingSamples
+            ? '⏳ Importando…'
+            : allSamplesPresent
+              ? '✓ Samples ya importados'
+              : `✨ Importar ${SAMPLE_PACKS.length} packs de ejemplo`}
         </button>
       </div>
 

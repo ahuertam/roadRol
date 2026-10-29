@@ -6,8 +6,9 @@ import { renderPlaceholder } from './ui/screens/placeholder.js'
 import { renderCharacterNew, renderCharacterEdit } from './ui/screens/character.js'
 import { renderGallery } from './ui/screens/gallery.js'
 import { renderSetup } from './ui/screens/setup.js'
-import { renderGame } from './ui/screens/game.js'
+import { renderGame } from './ui/screens/game/index.js'
 import { renderPacks } from './ui/screens/packs.js'
+import { initPWABanners } from './ui/pwaBanners.js'
 import { seedIfEmpty } from './core/seed.js'
 import {
   listCharacters, getCharacter, saveCharacter, deleteCharacter,
@@ -26,6 +27,8 @@ import { systems, settings, getSystem, getSetting } from './modules/index.js'
   } catch (err) {
     console.error('Seed falló:', err)
   }
+  // ponytail: PWA banners (install + update) fuera de #app, sobreviven navegación
+  initPWABanners()
   mountApp()
 })()
 

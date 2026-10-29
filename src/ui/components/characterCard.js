@@ -2,6 +2,7 @@
 
 import { getSystem } from '../../modules/index.js'
 import { escapeHtml } from '../../core/escape.js'
+import { imageFor, fallbackGradient } from '../../core/images.js'
 
 // Devuelve el "stat vital secundario" según el sistema (AC para D&D, SAN para CoC).
 function secondaryVital(systemId) {
@@ -16,8 +17,18 @@ export function renderCharacterCard(character) {
   const vital = secondaryVital(character.system)
   const vitalValue = vital ? character.stats[vital.key] ?? '-' : null
 
+  // ponytail: imagen pre-computada async en gallery.js, pasada por attr data-img.
+  // Si no, usamos gradient fallback determinista.
+  const img = character._img
+  const bgStyle = img?.url
+    ? `background-image: url('${escapeHtml(img.url)}'), ${img.gradient}`
+    : `background: ${img?.gradient || fallbackGradient(character.id)}`
+
   return `
     <article class="character-card" data-character-id="${escapeHtml(character.id)}">
+      <div class="character-card__cover" style="${bgStyle}">
+        <span class="character-card__cover-icon">${character.system === 'cthulhu' ? '👤' : '⚔️'}</span>
+      </div>
       <header class="character-card__header">
         <div>
           <h3 class="character-card__name">${escapeHtml(character.name)}</h3>
@@ -38,7 +49,7 @@ export function renderCharacterCard(character) {
         <div class="character-card__stat">
           <dt>${escapeHtml(vital.label)}</dt>
           <dd>
-            <span class="stat-edit" data-edit-stat="${vital.key}" data-id="${escapeHtml(character.id)}" tabindex="0" title="Click para editar" role="button">${escapeHtml(vitalValue)}</span>
+            <span class="stat-edit" data-stat-edit="${vital.key}" data-id="${escapeHtml(character.id)}" tabindex="0" title="Click para editar" role="button">${escapeHtml(vitalValue)}</span>
           </dd>
         </div>
         ` : ''}
