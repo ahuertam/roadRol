@@ -81,3 +81,9 @@ para IndexedDB.
 - **Router**: hash router propio (~65 líneas)
 - **PWA**: `vite-plugin-pwa` + workbox
 - **Imágenes**: librería local precacheada + Pollinations bajo demanda
+
+---
+
+## Licencia
+
+MIT. Ver [`LICENSE`](LICENSE).
