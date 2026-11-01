@@ -6,8 +6,7 @@ import { importPackFromJSON } from '../../core/packs.js'
 import { getSystem, getSetting } from '../../modules/index.js'
 import { imageFor, fallbackGradient } from '../../core/images.js'
 import { escapeHtml } from '../../core/escape.js'
-
-function newId() { return crypto.randomUUID() }
+import { newId } from '../../core/id.js'
 
 function now() { return new Date().toISOString() }
 
