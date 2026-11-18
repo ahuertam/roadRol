@@ -2,7 +2,7 @@
 
 import { getSystem } from '../../modules/index.js'
 import { escapeHtml } from '../../core/escape.js'
-import { imageFor, fallbackGradient } from '../../core/images.js'
+import { fallbackGradient } from '../../core/images.js'
 
 // Devuelve el "stat vital secundario" según el sistema (AC para D&D, SAN para CoC).
 function secondaryVital(systemId) {
@@ -49,7 +49,7 @@ export function renderCharacterCard(character) {
         <div class="character-card__stat">
           <dt>${escapeHtml(vital.label)}</dt>
           <dd>
-            <span class="stat-edit" data-stat-edit="${vital.key}" data-id="${escapeHtml(character.id)}" tabindex="0" title="Click para editar" role="button">${escapeHtml(vitalValue)}</span>
+            <span class="stat-edit" data-edit-stat="${vital.key}" data-id="${escapeHtml(character.id)}" tabindex="0" title="Click para editar" role="button">${escapeHtml(vitalValue)}</span>
           </dd>
         </div>
         ` : ''}

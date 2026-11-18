@@ -92,7 +92,6 @@ function renderView(state) {
       : ''
 
   // ponytail: si el user ya tiene todos los samples, el botón se deshabilita solo
-  const sampleNameSet = new Set(SAMPLE_PACKS)
   const importedSamples = state.packs.filter(p => /^pack-/.test(p.name)).length
   const allSamplesPresent = importedSamples >= SAMPLE_PACKS.length
 

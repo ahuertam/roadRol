@@ -69,7 +69,7 @@ const SYNONYMS = {
   'mansion': 'mansion', 'mansión': 'mansion', 'casaron': 'mansion', 'casona': 'mansion',
   'finca': 'mansion', 'villa': 'mansion', 'casa': 'indoor',
   'taberna': 'tavern', 'posada': 'tavern', 'meson': 'tavern', 'bar': 'tavern',
-  'biblioteca': 'library', 'archivo': 'library', 'libros': 'books', 'libro': 'books',
+  'biblioteca': 'library', 'archivo': 'library', 'libros': 'books',
   'hospital': 'hospital', 'sanatorio': 'sanatorio', 'clínica': 'hospital', 'clinica': 'hospital',
   'manicomio': 'asylum', 'enfermería': 'asylum', 'enfermeria': 'asylum',
   'puerto': 'port', 'muelle': 'port', 'faro': 'port',
@@ -157,7 +157,7 @@ function tagEntity({ type, system, setting, title = '', description = '' } = {})
 
   // Keywords del título y descripción → tags simples (con traducción ES→EN)
   const text = `${title} ${description}`.toLowerCase()
-  const words = text.split(/[\s,;.()\[\]'"]+/)
+  const words = text.split(/[\s,;.()[\]'"]+/)
   for (const raw of words) {
     if (raw.length < 3) continue
     if (STOPWORDS.has(raw)) continue

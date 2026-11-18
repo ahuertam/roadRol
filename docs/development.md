@@ -7,30 +7,90 @@ npm run dev              # dev server en :5173
 npm run dev -- --host    # dev server accesible desde el móvil en la red local
 npm run build            # → dist/ con service worker
 npm run preview          # sirve dist/ para probar el build
+npm run lint             # parseo de todos los JS (sin dependencias)
+npm test                 # todos los checks de Node
+npm run e2e              # E2E en Chrome headless (necesita el build servido)
 ```
 
 Checks sueltos (no hay framework de test):
 
 ```bash
-node scripts/test-image-matching.mjs      # matching entity→imagen, 10 casos
+node scripts/test-id.mjs             # UUID en contexto inseguro
+node scripts/test-dice.mjs           # parser y tirada de dados
+node scripts/test-regressions.mjs    # bugs de P0 (ver abajo)
+node scripts/test-image-matching.mjs # matching entity→imagen, 10 casos
+node scripts/test-game-views.mjs     # render de la pantalla de partida
 node scripts/generate-image-library.mjs  # descarga la librería de imágenes
 ```
 
 ## Checks que existen
 
-Solo hay dos, y cubren lo único que es lógica notrivial:
+Sin framework: cada check es un script de Node con `process.exit(1)` si falla.
+`npm test` los encadena.
+
+**`scripts/test-id.mjs`** — `crypto.randomUUID()` solo existe en contexto
+seguro. Simula un contexto inseguro y comprueba que el fallback devuelve un
+UUID v4 válido.
+
+**`scripts/test-dice.mjs`** — el parser `NdM(+|-)X`, sus límites (máx. 100
+dados, 1.000 caras) y que el total sea la suma de los dados más el modificador.
+Incluye 200 tiradas para cazar errores de rango. Es la lógica que no se ve al
+usar la app: un total mal calculado no crashea, que da un número equivocado.
+
+**`scripts/test-regressions.mjs`** — los bugs que no crasheaban pero se
+comportaban mal:
+
+- Un `Game` incompleto (importado a mano, de una versión vieja) no puede
+  reventar el render de la pantalla de partida. Cubre `normalizeGame()` de
+  `core/models.js`.
+- Los atributos de edición inline de la tarjeta de personaje tienen que
+  coincidir con los que conecta `gallery.js`. Un desajuste ahí hacía que el
+  SAN/CA fuese de adorno: el elemento no tenía listener.
+- Si una partida referencia personajes que no están en el dispositivo, se avisa.
 
 **`scripts/test-image-matching.mjs`** — replica el scoring de `core/images.js` y
 lo corre contra 10 entidades reales de los packs, verificando que eligen la
 imagen semánticamente correcta. Es el único sitio donde el scoring está
 escrito dos veces; si cambias uno, corre el otro.
 
+**`scripts/test-game-views.mjs`** — renderiza la pantalla de partida con 4
+casos y comprueba el HTML que sale.
+
 **`scripts/generate-image-library.mjs`** — tiene `--dry` para listar sin
 descargar, y `--only=SLUG` para reintentar uno fallido. Falla con exit code 1
 si algún download falla, para poder encadenarlo en CI.
 
-Lo demás es render o CRUD sobre IndexedDB: si se rompe, se ve al usar la app.
-Ponerle un framework de tests a eso es sobreingeniería.
+## Lint
+
+`npm run lint` corre `eslint .` con el flat config de `eslint.config.js`
+(`js.configs.recommended` + los globals de browser/node de cada carpeta).
+
+ponytail: si eslint no está instalado, `scripts/lint.mjs` cae a `node --check`
+sobre cada JS, para que el comando y el CI no dependan de una devDependency
+concreta. Con eslint: `no-unused-vars` y `no-undef` además de la sintaxis.
+
+## E2E
+
+`npm run e2e` arranca un Chrome headless, lo conecta por CDP y comprueba los
+flujos que los checks de Node no ven: la app monta, una partida importada a
+mano se abre sin reventar, el SAN se edita en línea en la galería y se guarda,
+y no hay errores JS en consola.
+
+Necesita el build servido en otra terminal:
+
+```bash
+npm run build
+npm run preview -- --port 4173 &
+npm run e2e
+```
+
+Chrome se busca en las rutas habituales; si está en otro sitio, define
+`CHROME_PATH`.
+
+## CI
+
+`.github/workflows/ci.yml` corre `npm ci` → `npm run lint` → `npm test` →
+`npm run build` → E2E en Chrome headless. En cada push a `main` y en cada PR.
 
 ## Añadir un sistema de juego
 

@@ -5,7 +5,6 @@
 
 let installPromptEvent = null
 let swUpdateWaiting = null
-let swRegistration = null
 
 export function initPWA() {
   // Install prompt — Chrome/Edge/Android disparan este evento cuando la PWA es instalable
@@ -26,7 +25,6 @@ export function initPWA() {
   if ('serviceWorker' in navigator) {
     navigator.serviceWorker.getRegistration().then((reg) => {
       if (!reg) return
-      swRegistration = reg
       if (reg.waiting) {
         swUpdateWaiting = reg.waiting
         notifyUpdateChange()

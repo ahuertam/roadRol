@@ -29,11 +29,12 @@ export async function renderGame(params, container) {
 
   const characters = await loadGameCharacters(game.characters)
 
-  // ponytail: normaliza campos que luego se usan sin guard (8 accesos a
-  // state.game.encounters). Un game importado a mano o de una versión vieja
-  // sin encounters crasheaba con TypeError en el primer render.
-  if (!Array.isArray(game.encounters)) game.encounters = []
-  if (!Array.isArray(game.characters)) game.characters = []
+  // ponytail: el Game ya viene normalizado desde storage (normalizeGame).
+  // Aquí solo detectamos personajes referenciados que no existen en este
+  // dispositivo — sin aviso, la partida abre con 0 PJs y el master no sabe
+  // si es un bug o un import mal hecho.
+  const validCharIds = new Set(characters.map(c => c.id))
+  const missingCharIds = game.characters.filter(id => !validCharIds.has(id))
 
   // Pre-computar imágenes para mission + encounter actual. La library se cachea
   // internamente, así que tras la primera pantalla es instantáneo.
@@ -64,7 +65,6 @@ export async function renderGame(params, container) {
 
   // si el personaje guardado fue borrado, resetea el id para no rodar tiradas
   // con characterId huérfano. Persiste el reset.
-  const validCharIds = new Set(characters.map(c => c.id))
   const safeCharId = savedPrefs.characterId && validCharIds.has(savedPrefs.characterId)
     ? savedPrefs.characterId
     : ''
@@ -72,6 +72,7 @@ export async function renderGame(params, container) {
   const state = {
     game,
     characters,
+    missingCharIds,
     showMission: true,
     showDiceTray: false,
     diceExpression: savedPrefs.expression || '1d20',

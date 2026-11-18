@@ -251,8 +251,11 @@ async function importUniversal(file, state) {
 
   // Game: tiene "encounters" + "characters"
   if (Array.isArray(entity?.encounters) && Array.isArray(entity?.characters)) {
-    const saved = await importGame(entity)
-    state.importMessage = { type: 'ok', text: `✓ Partida "${saved.name}" importada.` }
+    const { saved, missing } = await importGame(entity)
+    const extra = missing.length
+      ? ` ⚠ ${missing.length} personaje(s) referenciados no están en este dispositivo.`
+      : ''
+    state.importMessage = { type: 'ok', text: `✓ Partida "${saved.name}" importada.${extra}` }
     return
   }
 
@@ -280,13 +283,20 @@ async function importGame(entity) {
   if (!Array.isArray(entity.encounters)) {
     throw new Error('Falta encounters (debe ser array)')
   }
+  // ponytail: avisamos de los personajes referenciados que no están aquí, en
+  // vez de dejar la partida con 0 PJs sin explicación.
+  const existing = new Set((await listCharacters()).map(c => c.id))
+  const characters = Array.isArray(entity.characters) ? entity.characters : []
+  const missing = characters.filter(id => !existing.has(id))
+
   // ponytail: importamos con id nuevo para evitar colisiones
-  return saveGame({
+  const saved = await saveGame({
     ...entity,
     id: newId(),
     status: entity.status === 'finished' ? 'finished' : 'active',
-    characters: Array.isArray(entity.characters) ? entity.characters : [],
+    characters,
     createdAt: entity.createdAt || now(),
     updatedAt: now()
   })
+  return { saved, missing }
 }

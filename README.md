@@ -29,6 +29,16 @@ npm run build      # → dist/
 npm run preview
 ```
 
+Checks (sin framework de test, cada uno es un script de Node):
+
+```bash
+npm run lint       # eslint + parseo de todos los JS
+npm test           # ids, dados, regresiones, matching de imágenes, render
+npm run e2e        # E2E en Chrome headless (necesita el build servido)
+```
+
+En cada push a `main` y en cada PR, la CI corre lint → test → build → e2e.
+
 El service worker requiere **HTTPS o localhost**. Con la IP de red en el móvil
 no habrá SW — solo funciona servido por HTTPS (Netlify, Vercel, Cloudflare
 Pages) o en localhost.

@@ -3,6 +3,7 @@
 
 import { openDB } from 'idb'
 import { newId } from './id.js'
+import { normalizeGame } from './models.js'
 
 const DB_NAME = 'roadrol'
 const DB_VERSION = 2
@@ -57,22 +58,23 @@ export async function deleteCharacter(id) {
 // ----- Games -----
 
 export async function listGames() {
-  return (await getDB()).getAll('games')
+  return (await getDB()).getAll('games').then(list => list.map(normalizeGame))
 }
 
 export async function getGame(id) {
-  return (await getDB()).get('games', id)
+  const g = await (await getDB()).get('games', id)
+  return g ? normalizeGame(g) : g
 }
 
 export async function saveGame(/** @type {Game} */ game) {
   const db = await getDB()
   const now = new Date().toISOString()
-  const g = {
+  const g = normalizeGame({
     ...game,
     id: game.id || newId(),
     createdAt: game.createdAt ?? now,
     updatedAt: now
-  }
+  })
   await db.put('games', g)
   return g
 }

@@ -699,6 +699,7 @@ textarea.encounter-edit__input { resize: vertical; min-height: 6rem; }
 }
 .game__panel-title { font-size: 0.875rem; color: var(--color-text-dim); text-transform: uppercase; letter-spacing: 0.05em; }
 .game__empty-hint { font-size: 0.875rem; color: var(--color-text-dim); }
+.game__warn { font-size: 0.875rem; color: var(--color-danger); }
 
 .game__chars { display: flex; flex-direction: column; gap: var(--space-2); }
 .game-char {

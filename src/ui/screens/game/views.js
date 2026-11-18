@@ -139,10 +139,18 @@ function renderNoEncounter(state) {
 }
 
 function renderCharacters(state) {
+  // ponytail: aviso de personajes referenciados que no están en este
+  // dispositivo. Sin esto la partida abre con 0 PJs y no se sabe por qué.
+  const missing = state.missingCharIds || []
+  const warn = missing.length ? `
+    <p class="game__warn">⚠ ${missing.length} personaje(s) de esta partida no están en este dispositivo. Impórtalos para verlos.</p>
+  ` : ''
+
   if (state.characters.length === 0) {
     return `
       <section class="game__panel">
         <h3 class="game__panel-title">Personajes</h3>
+        ${warn}
         <p class="game__empty-hint">No hay personajes en la partida.</p>
         <button type="button" class="btn btn--ghost btn--sm" data-game-action="add-character">+ Añadir personaje</button>
       </section>
@@ -151,6 +159,7 @@ function renderCharacters(state) {
   return `
     <section class="game__panel">
       <h3 class="game__panel-title">Personajes (${state.characters.length})</h3>
+      ${warn}
       <ul class="game__chars">
         ${state.characters.map(c => renderCharRow(c, state.game.system)).join('')}
       </ul>

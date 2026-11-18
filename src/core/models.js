@@ -1,4 +1,9 @@
-// JSDoc + constantes compartidas. No genera código en runtime.
+// Modelos: JSDoc + el normalizador que rellena los huecos de un Game.
+// ponytail: una sola función, en vez de un validador por campo. Los datos
+// llegan de 3 sitios (IndexedDB, import JSON, seed) y solo necesitamos que
+// no crasheen al renderizar.
+
+import { newId } from './id.js'
 
 export const SCHEMA_VERSION = 1
 
@@ -82,3 +87,50 @@ export const SCHEMA_VERSION = 1
  * @property {PackMission[]} missions
  * @property {string} importedAt
  */
+
+/**
+ * Rellena los campos que falten de un Game para que la UI pueda leerlos sin
+ * comprobar null en cada sitio. Muta el objeto y lo devuelve.
+ *
+ * ponytail: sin esquema por versión. Un Game importado a mano o de una versión
+ * vieja solo necesitaDefaults para no reventar el render; los campos que de
+ * verdad importan (name, system) se validan en la entrada, no aquí.
+ *
+ * @param {Game} game
+ * @returns {Game}
+ */
+export function normalizeGame(game) {
+  if (!game || typeof game !== 'object') return game
+
+  if (!Array.isArray(game.characters)) game.characters = []
+  if (!Array.isArray(game.encounters)) game.encounters = []
+  if (!Number.isFinite(game.missionCursor)) game.missionCursor = 0
+  if (!game.currentEncounterId) game.currentEncounterId = null
+  if (game.mission === undefined) game.mission = null
+
+  game.encounters = game.encounters
+    .filter(e => e && typeof e === 'object')
+    .map((e, i) => {
+      if (!e.id) e.id = newId()
+      if (!e.type) e.type = 'combat'
+      if (typeof e.title !== 'string' || !e.title) e.title = `Encuentro ${i + 1}`
+      if (typeof e.description !== 'string') e.description = ''
+      if (e.outcome !== 'resolved') e.outcome = 'pending'
+      if (typeof e.masterNotes !== 'string') e.masterNotes = ''
+      if (!Array.isArray(e.rollHistory)) e.rollHistory = []
+      e.rollHistory = e.rollHistory
+        .filter(r => r && typeof r === 'object')
+        .map(r => {
+          if (!r.ts) r.ts = new Date().toISOString()
+          if (r.characterId === undefined) r.characterId = null
+          if (r.expression === undefined) r.expression = ''
+          if (r.result === undefined) r.result = 0
+          return r
+        })
+      if (e.resolvedAt === undefined) e.resolvedAt = null
+      return e
+    })
+
+  return game
+}
+

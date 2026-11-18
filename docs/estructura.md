@@ -16,8 +16,15 @@ roadRol/
 │   └── samples/            13 packs de misiones de ejemplo (.json)
 │
 ├── scripts/                Herramientas de Node (no forman parte del bundle)
+│   ├── lint.mjs                    Parseo de todos los JS (npm run lint)
+│   ├── e2e.mjs                     E2E en Chrome headless (npm run e2e)
 │   ├── generate-image-library.mjs   Descarga la librería de Pollinations
-│   └── test-image-matching.mjs      Check del matching entity→imagen
+│   ├── test-id.mjs                 Check del UUID en contexto inseguro
+│   ├── test-dice.mjs               Check del parser de dados
+│   ├── test-regressions.mjs        Checks de regresion (bugs de P0)
+│   ├── test-image-matching.mjs     Check del matching entity→imagen
+│   ├── test-game-views.mjs         Check del render de la pantalla de partida
+│   └── shot.mjs                    Captura de pantalla por CDP (manual)
 │
 └── src/
     ├── main.js             Bootstrap: seed + banners PWA + rutas
@@ -30,7 +37,7 @@ roadRol/
     │   ├── importExport.js Export/import JSON
     │   ├── pwa.js          Install prompt + SW update
     │   ├── seed.js         Personajes de ejemplo en primer arranque
-    │   ├── models.js       Tipos JSDoc (sin runtime)
+    │   ├── models.js       Tipos JSDoc + normalizeGame() (rellena campos)
     │   ├── escape.js       escapeHtml — usar SIEMPRE al interpolar user data
     │   └── id.js           UUID (crypto.randomUUID)
     │

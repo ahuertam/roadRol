@@ -104,7 +104,7 @@ const CASES = [
   }
 ]
 
-let pass = 0, fail = 0
+let fail = 0
 
 for (const c of CASES) {
   console.log(`\n${c.label}`)
@@ -127,7 +127,6 @@ for (const c of CASES) {
     if (bad) fail++
     console.log(`  ${bad ? '✗' : '✓'} ${desc}`)
   }
-  pass++
 }
 
 console.log(`\n${CASES.length} casos renderizados, ${fail} fallo(s)`)
