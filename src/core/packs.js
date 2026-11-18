@@ -26,6 +26,26 @@ import { newId } from './id.js'
 const VALID_ENCOUNTER_TYPES = ['combat', 'puzzle', 'trap', 'conversation', 'discovery']
 const VALID_DIFFICULTIES = ['easy', 'medium', 'hard', 'deadly']
 
+/** Los packs de ejemplo que hay en /public/samples/.
+ *  ponytail: listado explícito para no depender de un directory listing.
+ *  Única fuente de verdad — la UI lo usa para contar y el importador para
+ *  traerlos. Antes estaba duplicado en los dos sitios. */
+export const SAMPLE_PACKS = [
+  'pack-mina-perdida.json',
+  'pack-bosque-maldito.json',
+  'pack-expediente-whately.json',
+  'pack-galeon-maldito.json',
+  'pack-tumba-faraon.json',
+  'pack-asedio-piedra-alta.json',
+  'pack-robo-torre-cristal.json',
+  'pack-bosque-susurros.json',
+  'pack-profundidades-innsmouth.json',
+  'pack-sanatorio-abandonado.json',
+  'pack-culto-ojo.json',
+  'pack-momia-museo.json',
+  'pack-nave-estrellas.json'
+]
+
 /** Lee un File, lo valida, lo guarda como Pack. Lanza Error si algo falla. */
 export async function importPackFromFile(file) {
   const raw = await readJSONFile(file)
@@ -45,22 +65,6 @@ export async function importPackFromJSON(raw) {
 
 /** Importa todos los JSONs de /samples/ de un golpe. Devuelve { imported, skipped, errors, total }. */
 export async function importSamplePacks() {
-  // Listado explícito para no depender de un directory listing.
-  const samples = [
-    'pack-mina-perdida.json',
-    'pack-bosque-maldito.json',
-    'pack-expediente-whately.json',
-    'pack-galeon-maldito.json',
-    'pack-tumba-faraon.json',
-    'pack-asedio-piedra-alta.json',
-    'pack-robo-torre-cristal.json',
-    'pack-bosque-susurros.json',
-    'pack-profundidades-innsmouth.json',
-    'pack-sanatorio-abandonado.json',
-    'pack-culto-ojo.json',
-    'pack-momia-museo.json',
-    'pack-nave-estrellas.json'
-  ]
   // ponytail: comprobar nombres existentes para no duplicar si el user hace click dos veces
   const existing = await listPacks()
   const existingNames = new Set(existing.map(p => p.name))
@@ -68,7 +72,7 @@ export async function importSamplePacks() {
   let imported = 0
   let skipped = 0
   const errors = []
-  for (const filename of samples) {
+  for (const filename of SAMPLE_PACKS) {
     try {
       const resp = await fetch(`/samples/${filename}`)
       if (!resp.ok) {
@@ -89,7 +93,7 @@ export async function importSamplePacks() {
       errors.push(`${filename}: ${e.message}`)
     }
   }
-  return { imported, skipped, errors, total: samples.length }
+  return { imported, skipped, errors, total: SAMPLE_PACKS.length }
 }
 
 export function validatePack(pack) {
@@ -123,27 +127,6 @@ export function validatePack(pack) {
     }
   }
 }
-
-/** Lista de samples conocidas (mirror del array interno). Útil para que la UI
- *  sepa cuántos samples hay y si el user ya los importó todos. */
-export const SAMPLE_PACKS = [
-  'pack-mina-perdida.json',
-  'pack-bosque-maldito.json',
-  'pack-expediente-whately.json',
-  'pack-galeon-maldito.json',
-  'pack-tumba-faraon.json',
-  'pack-asedio-piedra-alta.json',
-  'pack-robo-torre-cristal.json',
-  'pack-bosque-susurros.json',
-  'pack-profundidades-innsmouth.json',
-  'pack-sanatorio-abandonado.json',
-  'pack-culto-ojo.json',
-  'pack-momia-museo.json',
-  'pack-nave-estrellas.json'
-]
-
-/** Devuelve los nombres de los samples. Para fetch, no usar este array. */
-export const SAMPLE_PACK_NAMES = SAMPLE_PACKS.length
 
 /** Re-exporta las funciones de storage para conveniencia. */
 export { listPacks, getPack, savePack, deletePack }

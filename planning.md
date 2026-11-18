@@ -1,174 +1,99 @@
-# Planning — Juego de rol web
+# Planning — RoadRol
 
-## Convenciones
+Estado real del proyecto. Lo que está hecho, lo que se descartó y por qué, y lo
+que queda.
 
-- **MVP** = partidas single-device completas (master hace todo, guardado local, IA genera contenido)
-- **v1** = MVP + multijugador
-- Cada fase termina con un *check*: se prueba en navegador y se confirma que funciona antes de pasar a la siguiente
-- Sin frameworks (vanilla + Vite). Si una pantalla se vuelve inmanejable, se mete Svelte solo para esa pantalla
-
----
-
-## Fase 0 · Esqueleto
-
-**Qué se hace:**
-- `npm init` + Vite + plugin PWA (`vite-plugin-pwa`)
-- `index.html` con viewport mobile-first
-- `manifest.webmanifest` (nombre, iconos placeholder, theme color)
-- Router hash mínimo (`#/`, `#/setup`, `#/game/:id`, `#/player/:gameId/:charId`)
-- CSS reset + tokens (colores, spacing, tipografía)
-- Pantalla Home con 4 botones stub (sin lógica)
-
-**Check:** abrir en móvil, instalar como PWA, navegar entre hashes, UI responsive.
+- ✅ hecho
+- ❌ descartado (con el motivo)
+- ⬜ pendiente
 
 ---
 
-## Fase 1 · Storage + modelos
+## Fases
 
-**Qué se hace:**
-- `core/storage.js`: wrapper IndexedDB (vía `idb`)
-  - `listCharacters()`, `getCharacter(id)`, `saveCharacter(c)`, `deleteCharacter(id)`
-  - `listGames()`, `getGame(id)`, `saveGame(g)`, `deleteGame(id)`
-- `core/id.js`: `crypto.randomUUID()`
-- `core/importExport.js`: `exportJSON(entity)`, `importJSON(file)` → valida y guarda
-- Modelos JSDoc en `core/models.js` (Character, Game, Encounter, Roll)
-- Seed: 2 personajes de ejemplo en D&D 5e al primer arranque
-
-**Check:** crear personaje por consola del navegador, recargar, sigue ahí. Exportar JSON, importar en otra pestaña.
-
----
-
-## Fase 2 · Sistemas y ambientaciones
-
-**Qué se hace:**
-- `modules/systems/dnd5e.js`: schema personaje, validador, prompts por tipo de encuentro
-- `modules/systems/cthulhu.js`: schema (SAN, HP, skills, era 1920s), validador, prompts
-- `modules/settings/fantasy.js`, `horror.js` (fantasía para D&D, horror para Cthulhu)
-- `modules/index.js`: registro y carga por id
-- `core/loader.js`: `loadSystem(id)`, `loadSetting(id)` con caché
-
-**Check:** cargar sistema por id desde consola, validar personaje de prueba, ver prompts generados.
+| Fase | Qué era | Estado |
+|---|---|---|
+| 0 | Esqueleto: Vite, PWA, hash router, Home | ✅ |
+| 1 | Storage: IndexedDB (`idb`), modelos, import/export JSON, seed | ✅ |
+| 2 | Sistemas (D&D 5e, CoC 7e) y ambientaciones (fantasía, horror) | ✅ |
+| 3 | Wizard de personaje + galería con búsqueda y stats editables | ✅ |
+| 4 | Setup de partida (4 pasos: sistema → ambientación → misión → personajes) | ✅ |
+| 5 | Pantalla de partida: encuentros, dados, edición inline, finalizar | ✅ |
+| 6 | Generación de encuentros con IA | ❌ → packs de misiones |
+| 7 | Generación de misión con IA | ❌ → packs de misiones |
+| 8 | Persistencia, home con "continuar partida", export/import | ✅ |
+| 9 | Multijugador P2P | ⬜ pendiente |
+| 10 | PWA instalable, offline, banners de install/update | ✅ |
+| 11 | Pulido móvil (gestos, haptics, modo oscuro) | ⬜ parcial |
 
 ---
 
-## Fase 3 · Wizard de creación de personaje
+## Fases 6 y 7 · por qué se descartaron
 
-**Qué se hace:**
-- Pantalla `#/character/new?system=dnd5e`: formulario dinámico según `system.characterSchema`
-- Edición libre: cualquier campo se modifica en cualquier momento (sin modo edición, como papel)
-- Validación inline (rojo si `min/max` falla)
-- Guardar → vuelve a setup o a galería
-- Galería de personajes con búsqueda por nombre/sistema y botón editar/eliminar/duplicar
+El plan original generaba encuentros y misiones con la API de Claude: el master
+elegía el tipo de encuentro, la IA lo escribía y el master lo validaba a mano
+antes de aceptarlo.
 
-**Check:** crear personaje D&D, crear personaje Cthulhu, editar HP en la galería, recargar y persiste.
+Se sustituyó por **packs de misiones en JSON**: 13 packs de ejemplo (25
+misiones, 125 encuentros) que el master importa y usa tal cual. Encaja mejor
+con el producto actual — PWA offline, sin backend, sin cuentas, sin API keys —
+que es lo que vende la app.
 
----
+Lo que se perdió: la capacidad de improvisar un encuentro que ningún pack
+cubre. Es justo la primera decisión abierta de abajo.
 
-## Fase 4 · Setup de partida
-
-**Qué se hace:**
-- Pantalla `#/setup` con 3 pasos:
-  1. Elegir sistema (lista de los registrados)
-  2. Elegir ambientación (filtrada o sugerida por sistema, pero libre)
-  3. Elegir personajes (multi-select de galería + "crear nuevo" inline)
-- Botón "Iniciar partida" → crea Game, redirige a `#/game/:id`
-- Estado inicial de Game: status `active`, mission `null`, encounters `[]`
-
-**Check:** flujo completo de setup → entra a pantalla de partida vacía con personajes en sidebar.
+El código de prompts (`systemPrompt`, `encounterPrompts`, `buildPrompt`) que
+quedó de aquella fase se borró en la limpieza: no lo leía nadie y era ruido. Si
+la IA vuelve, se reescribe desde cero junto con el cliente API — no se
+recupera del git, porque el prompt necesitará otra forma (contexto de partida,
+caché, validación modal).
 
 ---
 
-## Fase 5 · Pantalla de partida (master, single-device)
+## Fase 9 · multijugador (pendiente)
 
-**Qué se hace:**
-- Layout: header (misión colapsable) + encuentro actual grande + sidebar (personajes, feed tiradas)
-- Botones principales: 🎲 Dados · 🔄 Regenerar · ✅ Finalizar
-- `core/dice.js`: parser `NdM(+|-)X`, animación, feed
-- Edición de stats inline en cada personaje del sidebar (input directo, blur guarda)
-- "Finalizar encuentro" → marca `outcome=resolved`, pasa al siguiente
-- Cuando no hay siguiente → generar nuevo encuentro (botón explícito)
+El README promete "comparte la partida por enlace" y hoy no existe: la ruta
+`#/player` es un placeholder.
 
-**Check:** tirar dados, modificar HP de un PJ en mitad de "combate", finalizar encuentro, generar el siguiente manualmente.
+Dos caminos, que no son la misma cosa:
 
----
+- **PeerJS** — peer-to-peer real. Necesita servidor de señalización (STUN/TURN
+  público), lo que mete una dependencia de red y superficie de bugs
+  (reconexión, estado, permisos).
+- **Enlace con código** — el master genera un código corto, el jugador lo
+  introduce o escanea un QR. Más barato de prometer y de mantener.
 
-## Fase 6 · Generación con IA
+Pendiente de decidir: cuál se implementa primero, si es que se implementa.
 
-**Qué se hace:**
-- `core/ai.js`: cliente Claude API con `response_format: json_object`, system prompt estricto
-- Configuración: API key guardada en `localStorage` (configurada en Home/settings)
-- Flujo: master elige tipo de encuentro → llamada IA → resultado parseado y validado → **modal de validación** donde el master ve título/desc y acepta/regenera/edita texto libre
-- Cada sistema declara sus prompts con contexto (setting, mission, último encuentro)
-- Caché: misma (tipo + misión) → devuelve cacheado; botón "forzar nuevo" la salta
-
-**Check:** configurar API key, generar encuentro de combate en D&D, regenerar 3 veces, validar uno, ver que aparece en pantalla.
+La fase 9 va, en cualquier caso, contra la promesa de "todo local, sin
+backend" — es un cambio de producto, no una tarea técnica.
 
 ---
 
-## Fase 7 · Generación de misión
+## Fase 11 · pulido móvil (parcial)
 
-**Qué se hace:**
-- Pantalla inicial de partida vacía: botón "Generar misión"
-- Mismo flujo que encuentro (IA → validación → aceptar)
-- Una vez aceptada, se muestra arriba colapsable; botones rápidos para regenerar objetivo concreto
-- El "tipo de encuentro" se decide por el master al pedirlo (IA no decide por él, mantiene control)
+Hecho: `inputmode="numeric"` en los campos de stats, botones grandes, layout
+mobile-first, viewport con `viewport-fit=cover`.
 
-**Check:** generar misión, leerla, generar primer encuentro ligado a ella.
-
----
-
-## Fase 8 · Persistencia y galerías
-
-**Qué se hace:**
-- Auto-guardado de Game en cada cambio (debounced 500ms)
-- En Home: lista "Continuar partida" (último updated), "Partidas finalizadas"
-- Botones por partida: continuar, exportar JSON, eliminar
-- Botones por personaje: exportar JSON, importar JSON
-
-**Check:** jugar 10 min, cerrar pestaña, volver a abrir, partida sigue exactamente donde estaba.
+Pendiente: swipe para finalizar encuentro, long-press en el dado para el
+historial, vibración háptica en nat 20 / nat 1, modo claro/oscuro según
+sistema.
 
 ---
 
-## Fase 9 · Multijugador (PeerJS)
+## Decisiones abiertas
 
-**Qué se hace:**
-- `core/multiplayer.js`: abstracción host/client con PeerJS
-- Botón "Hospedar partida" en partida → genera peer id → muestra enlace `?join=<id>`
-- Vista `#/player/:id`: cliente conecta, recibe estado, identifica su personaje, ve ficha
-- Protocolo: `state`, `rollReq` (cliente→master), `roll` (master→todos)
-- Botón "Tirar dados" en vista jugador → envía petición, master resuelve y broadcast
-- Master ve feed de tiradas entrantes con personaje origen
-
-**Check:** dos pestañas abiertas (master + jugador simulado), tirar dado como jugador, master ve resultado y lo broadcasta.
+1. **¿La IA vuelve?** Si sí, hay que decidir el cliente (API con clave del
+   user, u Ollama/local) y rehacer los prompts por sistema.
+2. **¿Multijugador?** PeerJS o enlace con código. Y si entra, rompe la promesa
+   "sin backend".
+3. **Iconos PNG** — el manifest solo declara SVG. iOS Safari no acepta SVG en
+   `apple-touch-icon`: al instalar en iPhone sale el screenshot de la página.
+   Es la plataforma principal de "mobile-first".
 
 ---
 
-## Fase 10 · PWA + offline
-
-**Qué se hace:**
-- Service worker con vite-plugin-pwa: cachea shell + assets
-- IndexedDB funciona offline, IA no (mostrar mensaje claro si no hay red al generar)
-- Pantalla de configuración de API key con validación
-- Iconos PWA definitivos
-
-**Check:** instalar PWA, activar modo avión, abrir partida guardada, todo carga menos generación IA.
-
----
-
-## Fase 11 · Pulido móvil
-
-**Qué se hace:**
-- Gestos: swipe para finalizar encuentro, long-press en dado para ver historial completo
-- Teclado numérico en inputs de stats
-- Vibración háptica al tirar dado crítico (nat 20 / nat 1)
-- Modo oscuro/claro según sistema
-- Atajos: botones grandes en master view, dedos gordos
-
-**Check:** uso en móvil real durante 30 min sin frustraciones.
-
----
-
-## Fuera de MVP (después)
+## Fuera de MVP
 
 - [ ] Autenticación / cuentas (ahora todo local)
 - [ ] Más sistemas (Pathfinder, Cyberpunk, etc.)
@@ -180,14 +105,12 @@
 
 ---
 
-## Orden de ejecución
+## Reglas que se mantienen
 
-```
-0 → 1 → 2 → 3 → 4 → 5 → 6 → 7 → 8 → 9 → 10 → 11
-        │           │       │       │       │
-        └── MVP funcional ──┘       │       │
-                                    └── v1 ──┘
-                                            └── pulido
-```
-
-Estimación rough: cada fase = 1-3 sesiones cortas. MVP (fase 8) = fin de semana dedicado con cabeza. v1 completa (fase 10) = +1-2 fines de semana. Pulido (fase 11) = iterativo.
+- **Sin framework de tests.** Cada check es un script de Node con
+  `process.exit(1)` si falla. `npm test` los encadena. E2E aparte
+  (`npm run e2e`, Chrome headless por CDP).
+- **El CI corre lint → test → build → e2e** en cada push a `main` y cada PR.
+- **Cada fase termina con un *check***: se prueba en navegador y se confirma
+  que funciona antes de pasar a la siguiente.
+- **Sin dependencias nuevas** sin justificar en `docs/development.md`.

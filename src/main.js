@@ -14,7 +14,7 @@ import {
   listCharacters, getCharacter, saveCharacter, deleteCharacter,
   listGames, getGame, saveGame, deleteGame
 } from './core/storage.js'
-import { downloadJSON, readJSONFile, validateShape, defaultFilename } from './core/importExport.js'
+import { downloadJSON, readJSONFile, defaultFilename } from './core/importExport.js'
 import { newId } from './core/id.js'
 import { systems, settings, getSystem, getSetting } from './modules/index.js'
 
@@ -54,7 +54,7 @@ if (import.meta.env.DEV) {
     listCharacters, getCharacter, saveCharacter, deleteCharacter,
     listGames, getGame, saveGame, deleteGame,
     // import/export
-    downloadJSON, readJSONFile, validateShape, defaultFilename,
+    downloadJSON, readJSONFile, defaultFilename,
     // módulos
     systems, settings, getSystem, getSetting,
     // utils

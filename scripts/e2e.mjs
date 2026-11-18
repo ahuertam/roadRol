@@ -210,13 +210,38 @@ try {
   `)
   check('el SAN se guardó como 42', san === 42, `san=${san}`)
 
-  // ---- 5. La partida sigue abrirse después de editar ----
+  // ---- 5. Importar los packs de ejemplo ----
+  console.log('\nimportar packs de ejemplo')
+  await evaluate(`location.hash = '#/packs'`)
+  await sleep(1200)
+  check('la pantalla de packs tiene el botón de samples',
+    await evaluate(`!!document.querySelector('[data-import-samples]')`) === true)
+  await evaluate(`document.querySelector('[data-import-samples]').click()`)
+
+  const countPacks = `
+    new Promise(async (res) => {
+      const db = await new Promise((r, j) => { const q = indexedDB.open('roadrol'); q.onsuccess = () => r(q.result); q.onerror = () => j(q.error) })
+      const q = db.transaction('packs', 'readonly').objectStore('packs').getAll()
+      q.onsuccess = () => res(q.result.length)
+      q.onerror = () => res(-1)
+    })
+  `
+  let packCount = 0
+  for (let i = 0; i < 30 && packCount !== 13; i++) {
+    await sleep(400)
+    packCount = await evaluate(countPacks)
+  }
+  check('se importaron los 13 packs de ejemplo', packCount === 13, `n=${packCount}`)
+  check('la UI muestra las 13 tarjetas de pack',
+    await evaluate(`document.querySelectorAll('.pack-card').length`) === 13)
+
+  // ---- 6. La partida sigue abrirse después de editar ----
   console.log('\npersistencia')
   await evaluate(`location.hash = '#/game/test-malformed'`)
   await sleep(1200)
   check('la partida vuelve a abrir sin error', !(await evaluate(`document.querySelector('#app').innerHTML`)).includes('Error:'))
 
-  // ---- 6. Sin errores JS en consola ----
+  // ---- 7. Sin errores JS en consola ----
   check('sin errores JS capturados', consoleErrors.length === 0, consoleErrors.join(' | '))
 } catch (err) {
   console.error('\nE2E roto:', err.message)

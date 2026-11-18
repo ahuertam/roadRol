@@ -42,57 +42,10 @@ function validateCharacter(json) {
   return errors.length ? { ok: false, errors } : { ok: true }
 }
 
-const systemPrompt = `Eres un director de juego (DM) experto en D&D 5e. Conoces el SRD, las acciones en combate, las pruebas de habilidad y cómo diseñar encuentros equilibrados y memorables. Responde SIEMPRE en español.`
-
-function buildPrompt(type, ctx = {}) {
-  const settingBlock = ctx.setting
-    ? `AMBIENTACIÓN: ${ctx.setting.name} (${ctx.setting.tone})\n${ctx.setting.promptContext || ''}`
-    : 'AMBIENTACIÓN: genérica medieval fantástica.'
-  const missionBlock = ctx.mission
-    ? `MISIÓN ACTUAL:\n- Título: ${ctx.mission.title}\n- Trama: ${ctx.mission.brief}\n- Objetivos: ${(ctx.mission.objectives || []).join('; ')}`
-    : 'MISIÓN: aún no definida.'
-  const prevBlock = ctx.previousEncounter
-    ? `ENCUENTRO ANTERIOR (resuelto): ${ctx.previousEncounter.type} — ${ctx.previousEncounter.title}`
-    : 'Es el primer encuentro de la partida.'
-
-  const typeBlock = {
-    combat: 'Diseña un COMBATE con enemigos del SRD (o coherentes con la ambientación). Para cada enemigo incluye HP, CA, ataque y rasgos relevantes. Describe el terreno y los ganchos narrativos.',
-    puzzle: 'Diseña un PUZZLE ambiental (no de combate). Resoluble con ingenio o una prueba de habilidad D&D 5e. Indica qué habilidad se tiraría, la CD sugerida y por qué.',
-    trap: 'Diseña una TRAMPA mecánica o mágica. Indica CD de salvación, daño en éxito/fallo y cómo se descubre/desactiva.',
-    conversation: 'Diseña un encuentro de CONVERSACIÓN con un NPC memorable. Da su motivación, una pista oculta, un dilema moral y un posible giro.'
-  }[type] || 'Diseña un encuentro.'
-
-  return `${settingBlock}
-
-${missionBlock}
-
-${prevBlock}
-
-TAREA:
-${typeBlock}
-
-FORMATO DE SALIDA — JSON estricto, sin texto fuera del JSON:
-{
-  "title": "Título evocador",
-  "description": "Descripción en markdown (2-4 párrafos)",
-  "difficulty": "easy|medium|hard|deadly",
-  "rewards": "Recompensas (XP, tesoro, pista narrativa)"
-}`
-}
-
-const encounterPrompts = {
-  combat:       (ctx) => buildPrompt('combat', ctx),
-  puzzle:       (ctx) => buildPrompt('puzzle', ctx),
-  trap:         (ctx) => buildPrompt('trap', ctx),
-  conversation: (ctx) => buildPrompt('conversation', ctx)
-}
-
 export default {
   id: 'dnd5e',
   name: 'D&D 5e',
   characterSchema: schema,
   defaultStats,
-  validateCharacter,
-  systemPrompt,
-  encounterPrompts
+  validateCharacter
 }

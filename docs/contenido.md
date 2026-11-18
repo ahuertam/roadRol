@@ -4,7 +4,7 @@ Un **pack** es un fichero JSON con misiones y encuentros prefabricados. El
 master importa el pack, elige una misión al crear la partida, y va minerizando
 encuentros con el botón *Siguiente*.
 
-Hay 13 packs de ejemplo en `public/samples/` (25 misiones, 145 encuentros).
+Hay 13 packs de ejemplo en `public/samples/` (25 misiones, 125 encuentros).
 
 ## Formato
 

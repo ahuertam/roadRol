@@ -48,7 +48,7 @@ Pages) o en localhost.
 ## Primeros pasos
 
 1. **Home → Packs de misiones → ✨ Importar 13 packs de ejemplo** — carga la
-   biblioteca de 25 misiones y 145 encuentros.
+   biblioteca de 25 misiones y 125 encuentros.
 2. **Nueva partida** — 4 pasos: sistema → ambientación → misión → personajes.
    El estado del wizard vive en `sessionStorage`, así que si creas un personaje
    a medio camino no pierdes las selecciones.
@@ -73,7 +73,10 @@ Pages) o en localhost.
 
 ## Estado
 
-Fases 0–8 y 10 completas. Fase 9 (multijugador P2P con PeerJS) pendiente.
+Fases 0–5, 8 y 10 completas. Las fases 6-7 (generación con IA) se sustituyeron
+por packs de misiones en JSON. Fase 9 (multijugador) pendiente — es también la
+decisión de producto abierta: hoy no existe el "comparte por enlace" que
+promete este README.
 
 Funciona hoy: packs de misiones, wizard de 4 pasos, partida con encuentros
 secuenciales, dados con animación, edición inline de stats y de encounters,

@@ -55,58 +55,10 @@ function validateCharacter(json) {
   return errors.length ? { ok: false, errors } : { ok: true }
 }
 
-const systemPrompt = `Eres un Guardián (Keeper) experto en La Llamada de Cthulhu 7ª edición. Conoces los mitos, la mecánica de cordura, el horror cósmico lento y la inevitabilidad del fracaso humano. Prioriza tensión y atmósfera sobre acción. Responde SIEMPRE en español.`
-
-function buildPrompt(type, ctx = {}) {
-  const settingBlock = ctx.setting
-    ? `AMBIENTACIÓN: ${ctx.setting.name} (${ctx.setting.tone})\n${ctx.setting.promptContext || ''}`
-    : 'AMBIENTACIÓN: genérica horror cósmico.'
-  const missionBlock = ctx.mission
-    ? `INVESTIGACIÓN ACTUAL:\n- Título: ${ctx.mission.title}\n- Trama: ${ctx.mission.brief}\n- Pistas: ${(ctx.mission.objectives || []).join('; ')}`
-    : 'INVESTIGACIÓN: aún no definida.'
-  const prevBlock = ctx.previousEncounter
-    ? `EVENTO ANTERIOR (resuelto): ${ctx.previousEncounter.type} — ${ctx.previousEncounter.title}`
-    : 'Es el primer evento de la partida.'
-
-  const typeBlock = {
-    combat: 'Diseña un encuentro de VIOLENCIA FÍSICA. CoC es letal: un arma de fuego a quemarropa puede matar. Incluye al atacante, su arma, daño probable y, sobre todo, una vía de huida o negociación.',
-    puzzle: 'Diseña un ENIGMA o una PISTA que requiera tirar habilidades (Buscar, Bibliotecismo, Persuasión, Ocultarse, etc.). Indica la habilidad sugerida y la CD.',
-    trap: 'Diseña una TRAMPA física O una trampa mental con pérdida de cordura (indica coste de SAN al activarse y si es visible o no).',
-    conversation: 'Diseña un encuentro con un PNJ perturbador, sospechoso o con información parcial. Da su motivación oculta, una pista, el coste potencial (SAN, dinero, tiempo) y un matiz inquietante.'
-  }[type] || 'Diseña un evento.'
-
-  return `${settingBlock}
-
-${missionBlock}
-
-${prevBlock}
-
-TAREA:
-${typeBlock}
-
-FORMATO DE SALIDA — JSON estricto, sin texto fuera del JSON:
-{
-  "title": "Título evocador y atmosférico",
-  "description": "Descripción en markdown (2-4 párrafos). Tono opresivo, no épico.",
-  "difficulty": "easy|medium|hard",
-  "sanCost": "Coste de cordura sugerido si lo hay, ej. '0/1d3' (éxito/fallo)",
-  "rewards": "Pistas, aliados o conocimiento obtenido"
-}`
-}
-
-const encounterPrompts = {
-  combat:       (ctx) => buildPrompt('combat', ctx),
-  puzzle:       (ctx) => buildPrompt('puzzle', ctx),
-  trap:         (ctx) => buildPrompt('trap', ctx),
-  conversation: (ctx) => buildPrompt('conversation', ctx)
-}
-
 export default {
   id: 'cthulhu',
   name: 'La Llamada de Cthulhu 7e',
   characterSchema: schema,
   defaultStats,
-  validateCharacter,
-  systemPrompt,
-  encounterPrompts
+  validateCharacter
 }

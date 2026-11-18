@@ -107,9 +107,7 @@ export default {
     ]
   },
   defaultStats: () => ({ hp: 10, str: 10 }),
-  validateCharacter(json) { /* → { ok: true } | { ok: false, errors: [...] } */ },
-  systemPrompt: 'Eres un director de juego experto…',  // opcional, fase 9
-  encounterPrompts: { /* opcional, fase 9 */ }
+  validateCharacter(json) { /* → { ok: true } | { ok: false, errors: [...] } */ }
 }
 ```
 
@@ -123,8 +121,8 @@ El `defaultStats()` debe devolver exactamente las keys que declara
 
 ## Añadir una ambientación
 
-`src/modules/settings/<nombre>.js`, con `id`, `name`, `tone` y
-`promptContext`. Añadir al array en `modules/index.js`.
+`src/modules/settings/<nombre>.js`, con `id`, `name` y `tone`. Añadir al array
+en `modules/index.js`.
 
 ## Añadir un pack de misiones
 
@@ -171,8 +169,9 @@ Ver [imagenes.md](imagenes.md). En resumen: añade la entrada al
 
 ## Estado del proyecto
 
-Ver `planning.md` para las fases. Fase 9 (multijugador P2P) pendiente — cuando
-se implemente, afecta a `game/index.js` (sincronizar estado) y crea
-`core/multiplayer.js`. La estructura de `game/` ya está preparada: la lógica
-está en `index.js`, el render en `views.js`, así que meter la sincronización
-no toca la presentación.
+Ver `planning.md` para el estado real de las fases y las decisiones abiertas.
+
+Lo grande que queda: la fase 9 (multijugador). Cuando se implemente, afecta a
+`game/index.js` (sincronizar estado) y crea `core/multiplayer.js`. La
+estructura de `game/` ya está preparada: la lógica está en `index.js`, el
+render en `views.js`, así que meter la sincronización no toca la presentación.

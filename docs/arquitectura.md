@@ -66,17 +66,15 @@ Esto permite testear `core/` en Node sin DOM (ver [development.md](development.m
   id, name,
   characterSchema: { fields: [...] },  // genera el formulario automáticamente
   defaultStats(),                      // stats de un personaje nuevo
-  validateCharacter(json),             // → { ok, errors[] }
-  systemPrompt,                        // rol del LLM (fase 9)
-  encounterPrompts                     // por tipo de encuentro (fase 9)
+  validateCharacter(json)              // → { ok, errors[] }
 }
 ```
 
 Añadir un sistema nuevo es escribir **un archivo** y añadirlo al array de
 `modules/index.js`. El formulario, la validación y el storage se adaptan solos.
 
-Ambientaciones (`src/modules/settings/`) son más simples: `id`, `name`, `tone`,
-`promptContext`. Se usan como contexto de flavor.
+Ambientaciones (`src/modules/settings/`) son más simples: `id`, `name` y `tone`
+(la línea de flavor que se ve en el wizard).
 
 ## Storage
 
@@ -124,7 +122,8 @@ Cosas que se saben que están mal o son frágiles, con su detonante:
 |---|---|---|
 | `confirm()`/`alert()` nativos | UX pobre en móvil, bloquea el hilo | Si se nota en uso real → modal custom |
 | Gallery repinta en cada keystroke del search | Con >100 personajes se nota | Si la galería crece |
-| Sin tests de UI | Solo hay checks de lógica pura | Si se toca mucho el render |
+| E2E cubre 3 flujos, no la app entera | Escribir un E2E por pantalla no escala | Si se toca mucho el render |
 | Sin CSP | Cualquier XSS puede leer las prefs de localStorage | Antes de aceptar packs de terceros |
-| Iconos SVG en manifest | iOS no soporta SVG → hace screenshot | Si se publica a App Store |
+| Iconos SVG en manifest | iOS no soporta SVG → hace screenshot al instalar | Antes de publicar: iPhone es la plataforma principal |
 | `SYNONYMS` en `images.js` ajustados a mano a los packs actuales | Nuevos packs con otro vocabulario necesitan ampliarlo | Al importar packs nuevos |
+| Títulos de encuentros sendos a `image.pollinations.ai` | Fuga de datos a un tercero, sin aviso ni opt-out | Al publicar |
